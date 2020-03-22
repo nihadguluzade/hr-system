@@ -1,0 +1,94 @@
+.label {
+    -fx-font-family: "Helvetica Neue";
+}
+
+#loginGridPane {
+    /*-fx-background-color: #ffffff;*/
+}
+
+#managerBtn, #employeeBtn {
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 80px 80px;
+    -fx-background-color: transparent;
+
+    -fx-border-width: 1px;
+    /*-fx-border-color: #e0e0e0;*/
+    -fx-border-color: transparent;
+    -fx-border-radius: 2px;
+}
+
+#managerBtn {
+    -fx-background-image: url("/app/resources/images/icons8-administrator-male-80.png");
+}
+
+#employeeBtn {
+    -fx-background-image: url("/app/resources/images/icons8-user-80.png");
+}
+
+#managerBtn:hover, #employeeBtn:hover {
+    -fx-border-color: #4FC3F7;
+}
+
+.text-field, .password-field {
+    -fx-border-radius: 2px;
+    -fx-border-color: #e0e0e0;
+    -fx-background-color: -fx-text-box-border, -fx-control-inner-background;
+}
+
+.text-field:hover, .text-field:selected, .password-field:hover, .password-field:selected {
+    -fx-border-color: #4FC3F7;
+}
+
+.text-field {
+    -fx-max-width: 250px;
+    -fx-min-height: 30px;
+}
+
+.password-field {
+    -fx-max-width: 165px;
+    -fx-min-height: 30px;
+}
+
+#forgotPassword {
+    -fx-background-color: transparent;
+    -fx-border-width: 1px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 2px;
+
+    -fx-pref-width: 80px;
+}
+
+#forgotPassword:hover, #forgotPassword:selected {
+    -fx-border-color: #4FC3F7;
+}
+
+#signUpBtn {
+    -fx-background-color: transparent;
+}
+
+#signUpBtn:hover {
+    -fx-underline: true;
+}
+
+#logInBtn {
+    -fx-pref-width: 80px;
+    -fx-background-color: #4FC3F7;
+    -fx-border-radius: 2px;
+}
+
+#logInBtn:hover {
+    -fx-background-color: #01579B;
+}
+
+#langBtn {
+    -fx-background-image: url("/app/resources/images/gb-32.png");
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: 20px 20px;
+    -fx-background-color: transparent;
+}
+
+#langBtn .arrow {
+    -fx-opacity: 0;
+}
