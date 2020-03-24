@@ -1,21 +1,22 @@
 package app.controller;
 
 import app.DBUtils;
+import app.Manager;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
+import javafx.scene.control.Label;
 
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class SignUp {
+public class EmployeeImport {
 
     @FXML
-    private TextField nameField;
+    private Label ERFLabel;
     private Connection connection;
 
-    public void start() {
-        Scene scene = nameField.getScene();
+    public void start(final Manager manager) {
+        Scene scene = ERFLabel.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
     }
 

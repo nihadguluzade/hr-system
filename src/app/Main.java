@@ -27,7 +27,7 @@ public class Main extends Application {
         Scene scene = new Scene(new StackPane());
 
         Manager manager = new Manager(scene);
-        manager.viewSignUpPage();
+        manager.viewDashboard();
 
         //stage.getIcons().add(new Image(Main.class.getResourceAsStream("/app/resources/icon.png")));
         stage.setTitle(Strings.MAIN_APP_TITLE);

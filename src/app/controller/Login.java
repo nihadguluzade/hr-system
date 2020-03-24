@@ -1,6 +1,7 @@
 package app.controller;
 
 import app.DBUtils;
+import app.Manager;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
@@ -10,11 +11,11 @@ import java.sql.SQLException;
 
 public class Login {
 
-    @FXML private TextField nameField;
+    @FXML private TextField fullNameField;
     private Connection connection;
 
-    public void start() {
-        Scene scene = nameField.getScene();
+    public void start(final Manager manager) {
+        Scene scene = fullNameField.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
     }
 

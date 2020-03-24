@@ -1,0 +1,46 @@
+#DashboardTab GridPane {
+    -fx-border-width: 1px;
+    -fx-background-radius: 10px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 10px;
+}
+
+#MainPane .button {
+    -fx-background-color: #4FC3F7;
+    -fx-border-radius: 2px;
+    -fx-text-fill: #FFFFFF;
+}
+
+#MainPane .button:hover {
+    -fx-background-color: #01579B;
+}
+
+.tab *.tab-label {
+    -fx-rotate: 90;
+}
+
+.tab-pane {
+    -fx-tab-min-width: 20px;
+    -fx-tab-min-height: 100px;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab {
+    -fx-background-color: #e6e6e6;
+}
+
+.tab-pane .tab:selected
+{
+    -fx-background-color: #E3F2FD;
+    -fx-border-radius: 4px;
+}
+
+#TeamsGridPane AnchorPane {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
+}

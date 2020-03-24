@@ -67,6 +67,16 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <Label text="Choose Account Type" textAlignment="CENTER" textFill="#03a9f4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -76,7 +86,7 @@
          <GridPane.margin>
             <Insets bottom="15.0" top="15.0" />
          </GridPane.margin></Label>
-      <Button fx:id="managerBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Manager" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="adminBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Administrator" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -84,11 +94,11 @@
             <Insets bottom="5.0" top="10.0" />
          </padding>
          <GridPane.margin>
-            <Insets left="25.0" />
-         </GridPane.margin></Button>
-      <Button fx:id="employeeBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Employee" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-         <GridPane.margin>
             <Insets right="25.0" />
+         </GridPane.margin></Button>
+      <Button fx:id="employeeBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Employee" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="25.0" />
          </GridPane.margin></Button>
       <Label text="Full Name" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
@@ -97,7 +107,7 @@
          <GridPane.margin>
             <Insets left="15.0" top="25.0" />
          </GridPane.margin></Label>
-      <TextField fx:id="nameField" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <TextField fx:id="fullNameField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin></TextField>
@@ -109,7 +119,7 @@
             <Insets left="15.0" />
          </GridPane.margin>
       </Label>
-      <PasswordField GridPane.halignment="LEFT" GridPane.rowIndex="5">
+      <PasswordField fx:id="logInPassField" maxWidth="165.0" GridPane.halignment="LEFT" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets bottom="10.0" left="12.0" />
          </GridPane.margin>
@@ -118,7 +128,7 @@
          <GridPane.margin>
             <Insets bottom="10.0" right="14.0" />
          </GridPane.margin></Button>
-      <Button fx:id="signUpBtn" mnemonicParsing="false" text="Sign up" textFill="#03a9f4" GridPane.rowIndex="7">
+      <Button fx:id="signUpBtn" mnemonicParsing="false" text="Sign up" textFill="#03a9f4" visible="false" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="10.0" top="15.0" />
          </GridPane.margin>
@@ -126,7 +136,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="logInBtn" mnemonicParsing="false" text="Log In" textFill="WHITE" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+      <Button fx:id="logInBtn" mnemonicParsing="false" text="Log In" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
          <font>
             <Font size="14.0" />
          </font>
@@ -134,17 +144,17 @@
             <Insets right="14.0" top="15.0" />
          </GridPane.margin>
       </Button>
-      <Label fx:id="loginHeader" alignment="CENTER" contentDisplay="CENTER" maxWidth="250.0" prefHeight="60.0" text="YSOFT Software House Human Resources System" textFill="#9e9e9e" wrapText="true" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="BASELINE">
+      <Label fx:id="loginHeader" alignment="CENTER" contentDisplay="CENTER" maxWidth="275.0" prefHeight="60.0" text="YSOFT Software House Human Resources System" textFill="#9e9e9e" wrapText="true" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="BASELINE">
          <font>
             <Font size="12.0" />
          </font>
          <GridPane.margin>
-            <Insets right="25.0" top="15.0" />
+            <Insets top="15.0" />
          </GridPane.margin>
       </Label>
-      <ChoiceBox fx:id="langBtn" prefWidth="20.0" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+      <ChoiceBox fx:id="langBtn" prefWidth="20.0" GridPane.halignment="LEFT" GridPane.rowIndex="7">
          <GridPane.margin>
-            <Insets top="15.0" />
+            <Insets left="15.0" top="15.0" />
          </GridPane.margin>
       </ChoiceBox>
    </children>

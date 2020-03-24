@@ -1,4 +1,4 @@
-.label {
+.label, .text-field, .button {
     -fx-font-family: "Helvetica Neue";
 }
 
@@ -6,10 +6,9 @@
     /*-fx-background-color: #ffffff;*/
 }
 
-#managerBtn, #employeeBtn {
+#adminBtn, #employeeBtn, #managerBtn, #analystBtn, #designerBtn, #coderBtn, #testerBtn {
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
-    -fx-background-size: 80px 80px;
     -fx-background-color: transparent;
 
     -fx-border-width: 1px;
@@ -18,36 +17,57 @@
     -fx-border-radius: 2px;
 }
 
-#managerBtn {
-    -fx-background-image: url("/app/resources/images/icons8-administrator-male-80.png");
+#adminBtn, #employeeBtn {
+    -fx-background-size: 80px 80px;
+}
+
+#managerBtn, #analystBtn, #designerBtn, #coderBtn, #testerBtn {
+    -fx-background-size: 50px 50px;
+    -fx-font-size: 12px;
+}
+
+#adminBtn:hover, #employeeBtn:hover, #managerBtn:hover, #analystBtn:hover, #designerBtn:hover,
+#coderBtn:hover, #testerBtn:hover {
+    -fx-border-color: #4FC3F7;
+}
+
+#adminBtn {
+    -fx-background-image: url("/app/resources/images/icons8-user-male-3-80.png");
 }
 
 #employeeBtn {
     -fx-background-image: url("/app/resources/images/icons8-user-80.png");
 }
 
-#managerBtn:hover, #employeeBtn:hover {
-    -fx-border-color: #4FC3F7;
+#managerBtn {
+    -fx-background-image: url("/app/resources/images/icons8-administrator-male-80.png");
+}
+
+#analystBtn {
+    -fx-background-image: url("/app/resources/images/icons8-combo-chart-80.png");
+}
+
+#designerBtn {
+    -fx-background-image: url("/app/resources/images/icons8-paint-palette-80.png");
+}
+
+#coderBtn {
+    -fx-background-image: url("/app/resources/images/icons8-code-80.png");
+}
+
+#testerBtn {
+    -fx-background-image: url("/app/resources/images/icons8-pass-fail-80.png");
 }
 
 .text-field, .password-field {
     -fx-border-radius: 2px;
     -fx-border-color: #e0e0e0;
     -fx-background-color: -fx-text-box-border, -fx-control-inner-background;
+    -fx-min-height: 30px;
 }
 
 .text-field:hover, .text-field:selected, .password-field:hover, .password-field:selected {
     -fx-border-color: #4FC3F7;
-}
-
-.text-field {
-    -fx-max-width: 250px;
-    -fx-min-height: 30px;
-}
-
-.password-field {
-    -fx-max-width: 165px;
-    -fx-min-height: 30px;
 }
 
 #forgotPassword {
@@ -71,13 +91,14 @@
     -fx-underline: true;
 }
 
-#logInBtn {
+#logInBtn, #signUpFinishBtn {
     -fx-pref-width: 80px;
     -fx-background-color: #4FC3F7;
     -fx-border-radius: 2px;
+    -fx-text-fill: #FFFFFF;
 }
 
-#logInBtn:hover {
+#logInBtn:hover, #signUpFinishBtn:hover {
     -fx-background-color: #01579B;
 }
 

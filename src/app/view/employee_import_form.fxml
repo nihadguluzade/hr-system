@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane fx:id="signUpGridPane" alignment="center" prefHeight="700.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.EmployeeImport">
+   <columnConstraints>
+      <ColumnConstraints />
+   </columnConstraints>
+    <columnConstraints>
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+   </columnConstraints>
+   <rowConstraints>
+      <RowConstraints />
+   </rowConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+   </rowConstraints>
+   <children>
+      <Label fx:id="ERFLabel" text="Employee Register Form" textFill="#03a9f4" GridPane.halignment="LEFT">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="15.0" top="25.0" />
+         </GridPane.margin></Label>
+      <Label fx:id="ERFLabel1" layoutX="48.0" layoutY="90.0" text="YSOFT" textFill="#9e9e9e">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="35.0" />
+         </GridPane.margin>
+      </Label>
+      <Label text="Choose employee type" GridPane.rowIndex="1">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" top="20.0" />
+         </GridPane.margin>
+      </Label>
+      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="2">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints />
+            <ColumnConstraints />
+            <ColumnConstraints />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="managerBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Manager" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" top="10.0" />
+               </padding>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="analystBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Analyst" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="designerBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Designer" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="coderBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Programmer" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+            <Button fx:id="testerBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Tester" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+         </children>
+         <GridPane.margin>
+            <Insets bottom="50.0" top="20.0" />
+         </GridPane.margin>
+      </GridPane>
+      <GridPane GridPane.columnSpan="2" GridPane.rowIndex="3">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+            <RowConstraints />
+        </rowConstraints>
+         <children>
+            <Label text="ID" textAlignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="nameField2" maxWidth="200.0" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Name" textAlignment="CENTER" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="nameField" maxWidth="200.0" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Surname" textAlignment="CENTER" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="nameField1" maxWidth="200.0" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Personal Email" textAlignment="CENTER" GridPane.rowIndex="6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="nameField11" maxWidth="200.0" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label text="Password" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="8" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <PasswordField maxWidth="200.0" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </PasswordField>
+            <Label text="Date Of Birth" textAlignment="CENTER" GridPane.columnIndex="1">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <DatePicker promptText="Click to select date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </DatePicker>
+            <Label layoutX="10.0" layoutY="74.0" text="Phone Number" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="nameField3" layoutX="10.0" layoutY="100.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label layoutX="260.0" layoutY="74.0" text="Nationality" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="nameField31" layoutX="260.0" layoutY="100.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Label layoutX="260.0" layoutY="137.0" text="Salary" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="6">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="nameField311" layoutX="260.0" layoutY="160.0" maxWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <Button fx:id="signUpFinishBtn" mnemonicParsing="false" text="Finish" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+         </children>
+      </GridPane>
+   </children>
+</GridPane>
