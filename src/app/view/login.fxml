@@ -77,6 +77,11 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <Label text="Choose Account Type" textAlignment="CENTER" textFill="#03a9f4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -86,7 +91,7 @@
          <GridPane.margin>
             <Insets bottom="15.0" top="15.0" />
          </GridPane.margin></Label>
-      <Button fx:id="adminBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Administrator" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+      <Button fx:id="adminBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Senior" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>

@@ -1,17 +1,16 @@
 #DashboardTab GridPane {
     -fx-border-width: 1px;
     -fx-background-radius: 10px;
-    -fx-border-color: #e0e0e0;
     -fx-border-radius: 10px;
 }
 
-#MainPane .button {
+.db-tab .button, .db-toolbar .button {
     -fx-background-color: #4FC3F7;
     -fx-border-radius: 2px;
     -fx-text-fill: #FFFFFF;
 }
 
-#MainPane .button:hover {
+.db-tab .button:hover, .db-toolbar .button:hover {
     -fx-background-color: #01579B;
 }
 
@@ -24,7 +23,7 @@
     -fx-tab-min-height: 100px;
 }
 
-.tab{
+.tab {
     -fx-background-insets: 0 1 0 1,0,0;
 }
 .tab-pane .tab {
@@ -43,4 +42,41 @@
     -fx-background-radius: 6px;
     -fx-border-color: #e0e0e0;
     -fx-border-width: 1px;
+}
+
+.teams-gridcell {
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5px;
+}
+
+.teams-indv-tile > .label { /* AnchorPane */
+    /*-fx-font-weight: bold;*/
+}
+
+.db-projects-gridpane {
+    -fx-background-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-min-width: 160px;
+    -fx-min-height: 160px;
+    -fx-background-color: #bbdefb;
+    -fx-border-color: #1565c0;
+    -fx-border-radius: 10px;
+}
+
+.db-projects-gridpane .label {
+    -fx-max-width: 150px;
+    -fx-min-height: 35px;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-row-valignment: center;
+    -fx-column-halignment: center;
+    -fx-wrap-text: true;
+    /*-fx-font-weight: bold;*/
+    -fx-font-size: 14px;
+}
+
+.tb-teams {
+    -fx-background-color: #FFFFFF;
 }
