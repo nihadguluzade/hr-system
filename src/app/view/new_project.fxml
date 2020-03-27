@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="NewProjectPane" maxHeight="480.0" maxWidth="720.0" minHeight="480.0" minWidth="720.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.NewProject">
+<AnchorPane fx:id="NewProjectPane" maxHeight="480.0" maxWidth="720.0" minHeight="480.0" minWidth="720.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.NewProject">
    <children>
       <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -32,14 +32,19 @@
                   <Insets bottom="6.0" top="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField maxWidth="300.0" promptText="Project Name">
+            <TextField maxWidth="300.0" promptText="Project Name" GridPane.valignment="BOTTOM">
                <GridPane.margin>
-                  <Insets top="89.0" />
+                  <Insets bottom="10.0" />
                </GridPane.margin>
                <font>
                   <Font size="14.0" />
                </font>
             </TextField>
+            <ChoiceBox fx:id="langSelector" prefWidth="150.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
             <Separator maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
                <GridPane.margin>
                   <Insets />
@@ -126,6 +131,16 @@
                </GridPane.margin>
             </Label>
             <Label text="Tester" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label layoutX="369.0" layoutY="402.0" text="Creation Date" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="125.0" />
+               </GridPane.margin>
+            </Label>
+            <Label layoutX="566.0" layoutY="402.0" text="21/03/2020" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets left="117.0" />
+               </GridPane.margin>
+            </Label>
          </children>
          <padding>
             <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />

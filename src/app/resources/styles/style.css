@@ -103,13 +103,17 @@
 }
 
 #langBtn {
-    -fx-background-image: url("/app/resources/images/gb-32.png");
+    -fx-background-image: url("/app/resources/images/gb-48.png");
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
-    -fx-background-size: 20px 20px;
+    -fx-background-size: 32px 32px;
     -fx-background-color: transparent;
 }
 
 #langBtn .arrow {
     -fx-opacity: 0;
+}
+
+.project-info-label {
+    -fx-fill: #6F7782;
 }

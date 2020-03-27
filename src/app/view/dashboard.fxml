@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Dashboard">
+<AnchorPane fx:id="MainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="980.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.Dashboard">
    <children>
       <TabPane prefHeight="680.0" prefWidth="980.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
@@ -339,6 +339,14 @@
                </padding>
             </Label>
             <Pane HBox.hgrow="ALWAYS" />
+            <Label layoutX="832.0" layoutY="18.0" text="21/03/2020">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <padding>
+                  <Insets right="15.0" top="1.0" />
+               </padding>
+            </Label>
             <Label text="John Doe">
                <font>
                   <Font size="14.0" />

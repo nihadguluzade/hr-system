@@ -5,7 +5,8 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="EmployeeInfoPane" alignment="center" prefHeight="700.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.EmployeeInfo">
+<AnchorPane maxHeight="700.0" maxWidth="575.0" minHeight="700.0" minWidth="575.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.EmployeeInfo">
+    <GridPane fx:id="EmployeeInfoPane" alignment="center" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
     <columnConstraints>
         <ColumnConstraints />
     </columnConstraints>
@@ -31,6 +32,11 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+         <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints />
@@ -123,6 +129,31 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
     </rowConstraints>
     <children>
         <Label fx:id="ERFLabel" text="Employee Information" textFill="#03a9f4" GridPane.columnSpan="2" GridPane.halignment="LEFT">
@@ -148,7 +179,7 @@
             <Insets top="64.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="employeePhoneNum" layoutX="45.0" layoutY="106.0" text="+90 534 200 67 94" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
+      <Label fx:id="employeePhoneNum" layoutX="45.0" layoutY="106.0" text="+90 534 200 67 94" GridPane.columnIndex="3" GridPane.halignment="RIGHT">
          <font>
             <Font size="14.0" />
          </font>
@@ -232,15 +263,39 @@
             <Insets />
          </GridPane.margin>
       </Label>
-      <Button mnemonicParsing="false" prefWidth="70.0" text="Close" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="9">
+      <Label alignment="CENTER_RIGHT" layoutX="120.0" layoutY="507.0" maxWidth="70.0" text="Known Language:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+         <font>
+            <Font size="13.0" />
+         </font>
          <GridPane.margin>
-            <Insets top="50.0" />
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label layoutX="201.0" layoutY="507.0" text="Java" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <Button mnemonicParsing="false" prefWidth="70.0" text="Close" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefWidth="70.0" text="Edit" GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+      <Button mnemonicParsing="false" prefWidth="70.0" text="Edit" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
          <GridPane.margin>
-            <Insets top="50.0" />
+            <Insets left="50.0" />
          </GridPane.margin>
       </Button>
+      <Button layoutX="201.0" layoutY="616.0" mnemonicParsing="false" prefWidth="70.0" text="Fire" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets right="50.0" />
+         </GridPane.margin>
+      </Button>
+         <Label alignment="CENTER_RIGHT" layoutX="120.0" layoutY="204.0" minWidth="70.0" text="Apply date:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+               <Font size="13.0" />
+            </font>
+            <GridPane.margin>
+               <Insets right="10.0" />
+            </GridPane.margin>
+         </Label>
+         <Label layoutX="201.0" layoutY="204.0" text="21/03/2020" GridPane.columnIndex="3" GridPane.rowIndex="1" />
     </children>
 </GridPane>
+</AnchorPane>

@@ -16,7 +16,7 @@ public class DBUtils {
 
     public static void createDatabase() {
         // creates 'ysoft' database when program launchs
-        String sql = "create database if not exists ysoft character set utf8";
+        String sql = "create database if not exists ysofthr character set utf8";
 
         try (Connection con = DriverManager.getConnection(url, username, password)) {
             PreparedStatement statement = con.prepareStatement(sql);

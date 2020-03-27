@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="loginGridPane" alignment="center" hgap="10.0" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Login">
+<GridPane fx:id="loginGridPane" alignment="center" hgap="10.0" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.Login">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -21,6 +21,31 @@
       <RowConstraints />
    </rowConstraints>
    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
@@ -105,14 +130,14 @@
          <GridPane.margin>
             <Insets left="25.0" />
          </GridPane.margin></Button>
-      <Label text="Full Name" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Label text="ID" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
          <GridPane.margin>
             <Insets left="15.0" top="25.0" />
          </GridPane.margin></Label>
-      <TextField fx:id="fullNameField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <TextField fx:id="idField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin></TextField>
@@ -124,15 +149,11 @@
             <Insets left="15.0" />
          </GridPane.margin>
       </Label>
-      <PasswordField fx:id="logInPassField" maxWidth="165.0" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+      <PasswordField fx:id="loginPassField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <GridPane.margin>
-            <Insets bottom="10.0" left="12.0" />
+            <Insets bottom="10.0" />
          </GridPane.margin>
       </PasswordField>
-      <Button fx:id="forgotPassword" disable="true" mnemonicParsing="false" text="Forgot" textFill="#03a9f4" GridPane.halignment="RIGHT" GridPane.rowIndex="5">
-         <GridPane.margin>
-            <Insets bottom="10.0" right="14.0" />
-         </GridPane.margin></Button>
       <Button fx:id="signUpBtn" mnemonicParsing="false" text="Sign up" textFill="#03a9f4" visible="false" GridPane.rowIndex="7">
          <GridPane.margin>
             <Insets left="10.0" top="15.0" />
