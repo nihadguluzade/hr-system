@@ -12,7 +12,7 @@ public class DBUtils {
 
     private static String url = "jdbc:mysql://localhost";
     private static String username = "root";
-    private static String password = "";
+    private static String password = "mysql";
 
     public static void createDatabase() {
         // creates 'ysoft' database when program launchs

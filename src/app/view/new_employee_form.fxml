@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<GridPane fx:id="signUpGridPane" alignment="center" prefHeight="700.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.EmployeeImport">
+<GridPane fx:id="signUpGridPane" alignment="center" prefHeight="700.0" prefWidth="575.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.EmployeeRegister">
    <columnConstraints>
       <ColumnConstraints />
    </columnConstraints>
@@ -29,6 +29,10 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
@@ -42,6 +46,26 @@
       <RowConstraints />
    </rowConstraints>
    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
@@ -144,7 +168,7 @@
             <Insets bottom="5.0" top="19.0" />
          </GridPane.margin>
       </Label>
-      <Label text="274892" GridPane.rowSpan="2">
+      <Label fx:id="idLabel" text="274892" GridPane.rowSpan="2">
          <GridPane.margin>
             <Insets left="25.0" top="14.0" />
          </GridPane.margin>
@@ -160,7 +184,7 @@
             <Insets bottom="5.0" top="19.0" />
          </GridPane.margin>
       </Label>
-      <Label layoutX="70.0" layoutY="111.0" text="21/03/2020" GridPane.halignment="RIGHT" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+      <Label fx:id="dateLabel" layoutX="70.0" layoutY="111.0" text="21/03/2020" GridPane.halignment="RIGHT" GridPane.rowSpan="2" GridPane.valignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
@@ -192,6 +216,14 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
+            </Button>
+            <Button fx:id="seniorBtn" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="-15.0" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Senior" visible="false" GridPane.rowIndex="1">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets bottom="5.0" top="10.0" />
+               </padding>
             </Button>
             <Button fx:id="analystBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Analyst" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
@@ -227,7 +259,7 @@
             <RowConstraints />
         </rowConstraints>
          <children>
-            <Label text="Name" textAlignment="CENTER">
+            <Label text="First Name" textAlignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
@@ -235,12 +267,12 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="nameField" maxWidth="200.0" GridPane.rowIndex="1">
+            <TextField fx:id="firstNameField" maxWidth="200.0" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </TextField>
-            <Label text="Surname" textAlignment="CENTER" GridPane.rowIndex="2">
+            <Label text="Last Name" textAlignment="CENTER" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>
@@ -248,7 +280,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="nameField1" maxWidth="200.0" GridPane.rowIndex="3">
+            <TextField fx:id="lastNameField" maxWidth="200.0" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -261,7 +293,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="nameField11" maxWidth="200.0" GridPane.rowIndex="5">
+            <TextField fx:id="emailField" maxWidth="200.0" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -274,7 +306,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <PasswordField maxWidth="200.0" GridPane.halignment="LEFT" GridPane.rowIndex="7">
+            <PasswordField fx:id="passwordField" maxWidth="200.0" GridPane.halignment="LEFT" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -287,7 +319,7 @@
                   <Insets />
                </GridPane.margin>
             </Label>
-            <DatePicker promptText="Click to select date" GridPane.halignment="LEFT" GridPane.rowIndex="9">
+            <DatePicker fx:id="birthDatePicker" promptText="Click to select date" GridPane.halignment="LEFT" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -300,7 +332,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="nameField3" layoutX="10.0" layoutY="100.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <TextField fx:id="phoneNoField" layoutX="10.0" layoutY="100.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -313,11 +345,16 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="nameField31" layoutX="260.0" layoutY="100.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+            <TextField fx:id="nationField" layoutX="260.0" layoutY="100.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </TextField>
+            <Label text="\$" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets bottom="13.0" right="23.0" />
+               </GridPane.margin>
+            </Label>
             <Label layoutX="260.0" layoutY="137.0" text="Initial salary" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="4">
                <font>
                   <Font size="14.0" />
@@ -326,9 +363,9 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="nameField311" layoutX="260.0" layoutY="160.0" maxWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
+            <TextField fx:id="salaryField" layoutX="260.0" layoutY="160.0" maxWidth="100.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets bottom="10.0" />
+                  <Insets bottom="10.0" left="17.0" />
                </GridPane.margin>
             </TextField>
             <Label layoutX="262.0" layoutY="272.0" text="Accounting program" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="6">
@@ -339,7 +376,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <ChoiceBox layoutX="262.0" layoutY="298.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
+            <ChoiceBox fx:id="accountingBox" layoutX="262.0" layoutY="298.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -352,17 +389,25 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <ChoiceBox prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
+            <ChoiceBox fx:id="languageBox" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <Button fx:id="signUpFinishBtn" mnemonicParsing="false" text="Finish" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
+            <Button fx:id="signUpFinishBtn" mnemonicParsing="false" text="Finish" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
                <GridPane.margin>
-                  <Insets bottom="10.0" />
+                  <Insets left="20.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="backBtn" layoutX="256.0" layoutY="317.0" mnemonicParsing="false" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets right="20.0" />
                </GridPane.margin>
             </Button>
          </children>

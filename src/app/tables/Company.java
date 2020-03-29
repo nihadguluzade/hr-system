@@ -1,8 +1,26 @@
 package app.tables;
 
+/**
+ * Sends all the user information to database.
+ * id Randomly generated id.
+ * @param acceptDate Date when worker is accepted to company.
+ * @param title Job; Manager, Analyst, Designer, etc.
+ * @param first_name First name
+ * @param last_name Last name
+ * @param email Personal email
+ * @param password Password to log in
+ * @param phone Personal phone number
+ * @param birthDate Date of birth
+ * @param nationality Nationality from birth
+ * @param salary Initial salary
+ * @param accounting Accounting program
+ * @param lang Programming language
+ * @param admin Is admin of the system
+ * @return True if info is in db.
+ */
 public class Company {
 
-    private String id;
+    private int id;
 //    private Date acceptdate;
     private String title; // job title ex: analyst
     private String first_name;
@@ -16,8 +34,9 @@ public class Company {
     private String accounting;
     private String lang;
     private boolean admin;
+    private boolean isLogged = false;
 
-    public Company(String id, String title, String first_name, String last_name, String email, String password, long phone,
+    public Company(int id, String title, String first_name, String last_name, String email, String password, long phone,
                    String nationality, int salary, String accounting, String lang, boolean admin) {
         this.id = id;
         this.title = title;
@@ -33,11 +52,13 @@ public class Company {
         this.admin = admin;
     }
 
-    public String getId() {
+    public Company() {}
+
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -127,5 +148,13 @@ public class Company {
 
     public void setAdmin(boolean admin) {
         this.admin = admin;
+    }
+
+    public boolean isLogged() {
+        return isLogged;
+    }
+
+    public void setLogged(boolean logged) {
+        isLogged = logged;
     }
 }

@@ -29,7 +29,7 @@ public class Dashboard {
         logOutBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                manager.viewSignUpPage();
+                manager.viewLoginPage();
             }
         });
     }

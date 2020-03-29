@@ -1,160 +1,133 @@
 package app.controllers;
 
-import app.DBUtils;
 import app.Manager;
 import app.tables.Company;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 
 public class Login {
 
     @FXML private GridPane loginGridPane;
     @FXML private Button employeeBtn;
     @FXML private Button adminBtn;
-    @FXML private TextField idField;
+    @FXML private TextField fullNameField;
     @FXML private TextField loginPassField;
     @FXML private Button logInBtn;
     @FXML private ChoiceBox langBtn;
+    @FXML private Label firstTimeLink;
 
-    private Connection connection;
-    private boolean isAdmin;
+    private boolean isTypeChosen = false;
+    private boolean isAdmin = false;
+    private Company user = null;
 
-    public void initDB() {
-        DBUtils.createDatabase();
-    }
-
-    private void openConnection() {
-        try {
-            connection = DBUtils.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    private void checkCompanyTable() {
-        String db = "use ysofthr;";
-        String sql = "create table if not exists company (" +
-                "    id int," +
-                "    acceptdate Date," +
-                "    title varchar(255)," +
-                "    first_name varchar(255)," +
-                "    last_name varchar(255)," +
-                "    email varchar(255)," +
-                "    password varchar(255)," +
-                "    phone bigint," +
-                "    birthdate Date," +
-                "    nationality varchar(255)," +
-                "    salary int" +
-                "    accounting varchar(255)" +
-                "    lang varchar(255)" +
-                ");";
-        try {
-            PreparedStatement statement = connection.prepareStatement(db);
-            statement.execute();
-            statement = connection.prepareStatement(sql);
-            statement.execute();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("Table `company` checked.");
-    }
-
+    /**
+     * This method is called whenever the view linked to it is opened.
+     * @param manager For calling another pages.
+     */
     public void start(final Manager manager) {
         Scene scene = loginGridPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
-        //openConnection();
-        checkCompanyTable();
-
-        employeeBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                employeeBtn.setStyle("-fx-border-color: #4FC3F7");
-                adminBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
-                isAdmin = false;
-            }
+        // TODO: find efficient solution
+        // Bugfix to prevent incorrect window size on logout.
+        scene.setOnMouseMoved(e -> {
+            Stage stage = (Stage) scene.getWindow();
+            stage.sizeToScene();
+            stage.setResizable(false);
+            stage.setTitle("YSOFT Login");
         });
 
-        adminBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                adminBtn.setStyle("-fx-border-color: #4FC3F7");
-                employeeBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
-                isAdmin = true;
-            }
+        employeeBtn.setOnAction(actionEvent -> {
+            employeeBtn.setStyle("-fx-border-color: #4FC3F7");
+            adminBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
+            isTypeChosen = true;
+            isAdmin = false;
         });
 
-        logInBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-
-                // check if fields are empty
-                if (idField.getText().isEmpty() || loginPassField.getText().isEmpty())
-                {
-                    manager.showAlert(Alert.AlertType.ERROR, "Empty field(s)",
-                            "Please, do not leave any empty field.");
-                    return;
-                }
-
-                Company user = null;
-                user = authorize(idField.getText(), loginPassField.getText(), isAdmin);
-
-                if (user != null)
-                {
-                    manager.viewDashboard(user);
-                }
-                else {
-                    manager.showAlert(Alert.AlertType.ERROR, "Invalid user",
-                            "No records found. Try again.");
-                }
-            }
+        adminBtn.setOnAction(actionEvent -> {
+            adminBtn.setStyle("-fx-border-color: #4FC3F7");
+            employeeBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
+            isTypeChosen = true;
+            isAdmin = true;
         });
 
-        langBtn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
+        logInBtn.setOnAction(actionEvent -> {
 
-                manager.showAlert(Alert.AlertType.INFORMATION, "Change language",
-                        "Language selection is not available right now.");
-
+            // check whether type is chosen
+            if (!isTypeChosen)
+            {
+                Manager.showAlert(Alert.AlertType.ERROR, "Type Invalid",
+                        "Please, choose employee type to continue.");
+                return;
             }
+
+            // check whether fields are empty
+            if (fullNameField.getText().isEmpty() || loginPassField.getText().isEmpty())
+            {
+                Manager.showAlert(Alert.AlertType.ERROR, "Empty field(s)",
+                        "Please, do not leave any empty field.");
+                return;
+            }
+
+            String fullName = fullNameField.getText();
+            String firstName = "";
+            String lastName = "";
+
+            if(fullName.split("\\w+").length>1)
+            {
+                lastName = fullName.substring(fullName.lastIndexOf(" ") + 1);
+                firstName = fullName.substring(0, fullName.lastIndexOf(' '));
+            }
+            else firstName = fullName;
+
+            user = authorize(firstName, lastName, loginPassField.getText(), isAdmin);
+
+            if (user != null)
+                manager.viewDashboard(user);
+            else
+                Manager.showAlert(Alert.AlertType.ERROR, "Invalid user", "No records found. Try again.");
         });
+
+        langBtn.setOnMouseClicked(mouseEvent -> Manager.showAlert(Alert.AlertType.INFORMATION, "Change language",
+                "Language selection is not available right now."));
+
+        firstTimeLink.setOnMouseEntered(e -> firstTimeLink.setStyle("-fx-underline: true"));
+        firstTimeLink.setOnMouseExited(e -> firstTimeLink.setStyle("-fx-underline: false"));
+        firstTimeLink.setOnMouseClicked(e -> manager.viewSignUpPage(true, new Company()));
     }
 
     /**
      * Sends the values to the database to login
-     * @param id Entered ID of worker
+     * @param firstName First and middle name of the worker
+     * @param lastName Surname of the worker
      * @param password Password of worker
      * @return All user information
      */
-    private Company authorize(String id, String password, boolean isAdmin) {
+    private Company authorize(String firstName, String lastName, String password, boolean isAdmin) {
 
         // Open connection to database
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "SELECT * FROM company WHERE id = ? and password = ? and admin = ?";
+        String sql = "SELECT * FROM company WHERE first_name = ? and last_name = ? and password = ? and admin = ?";
+        Connection connection = Manager.getConnection();
 
         try{
             // changing ? marks with real values in String sql
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, id);
-            preparedStatement.setString(2, password);
-            preparedStatement.setBoolean(3, isAdmin);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, password);
+            preparedStatement.setBoolean(4, isAdmin);
             resultSet = preparedStatement.executeQuery(); // sends sql code to database
 
-            System.out.printf("id: %s\npassword: %s\n", id, password);
+            System.out.printf("Full Name: %s %s\npassword: %s\n", firstName, lastName, password);
 
             if(!resultSet.next())
             {
@@ -163,7 +136,7 @@ public class Login {
             else {
                 // store resulted value
                 Company session;
-                session = new Company(resultSet.getString("id"),
+                session = new Company(resultSet.getInt("id"),
                         resultSet.getString("title"),
                         resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
@@ -182,7 +155,5 @@ public class Login {
             e.printStackTrace();
             return null;
         }
-
     }
-
 }

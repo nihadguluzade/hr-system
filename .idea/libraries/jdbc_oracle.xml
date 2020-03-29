@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="jdbc-oracle">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/jdbc-oracle.jar!/" />
+      <root url="jar://$PROJECT_DIR$/mysql-connector-java-8.0.11.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

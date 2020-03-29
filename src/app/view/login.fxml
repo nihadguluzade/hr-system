@@ -107,6 +107,16 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <Label text="Choose Account Type" textAlignment="CENTER" textFill="#03a9f4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -130,14 +140,14 @@
          <GridPane.margin>
             <Insets left="25.0" />
          </GridPane.margin></Button>
-      <Label text="ID" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+      <Label text="Full Name" textAlignment="CENTER" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="CENTER">
          <font>
             <Font size="14.0" />
          </font>
          <GridPane.margin>
             <Insets left="15.0" top="25.0" />
          </GridPane.margin></Label>
-      <TextField fx:id="idField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <TextField fx:id="fullNameField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin></TextField>
@@ -183,5 +193,6 @@
             <Insets left="15.0" top="15.0" />
          </GridPane.margin>
       </ChoiceBox>
+      <Label fx:id="firstTimeLink" text="First time?" textFill="#03a9f4" GridPane.halignment="CENTER" GridPane.rowIndex="8" GridPane.valignment="BOTTOM" />
    </children>
 </GridPane>
