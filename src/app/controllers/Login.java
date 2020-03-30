@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Login {
 
@@ -90,7 +91,10 @@ public class Login {
             user = authorize(firstName, lastName, loginPassField.getText(), isAdmin);
 
             if (user != null)
+            {
+                user.setLogged(true);
                 manager.viewDashboard(user);
+            }
             else
                 Manager.showAlert(Alert.AlertType.ERROR, "Invalid user", "No records found. Try again.");
         });
@@ -100,7 +104,17 @@ public class Login {
 
         firstTimeLink.setOnMouseEntered(e -> firstTimeLink.setStyle("-fx-underline: true"));
         firstTimeLink.setOnMouseExited(e -> firstTimeLink.setStyle("-fx-underline: false"));
-        firstTimeLink.setOnMouseClicked(e -> manager.viewSignUpPage(true, new Company()));
+        firstTimeLink.setOnMouseClicked(mouseEvent -> {
+            if (isFirstTime())
+            {
+                manager.viewSignUpPage(new Company(true, false));
+            }
+            else
+            {
+                manager.showAlert(Alert.AlertType.INFORMATION, "Senior exists",
+                        "There is already at least one Senior exists on the system.");
+            }
+        });
     }
 
     /**
@@ -154,6 +168,22 @@ public class Login {
         catch(Exception e){
             e.printStackTrace();
             return null;
+        }
+    }
+
+    /**
+     * Check if it is the first time opening the system.
+     */
+    private boolean isFirstTime() {
+        try {
+            String sql = "SELECT * FROM company WHERE admin = 1";
+            Connection connection = Manager.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return !resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

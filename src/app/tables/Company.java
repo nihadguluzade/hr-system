@@ -1,40 +1,24 @@
 package app.tables;
 
-/**
- * Sends all the user information to database.
- * id Randomly generated id.
- * @param acceptDate Date when worker is accepted to company.
- * @param title Job; Manager, Analyst, Designer, etc.
- * @param first_name First name
- * @param last_name Last name
- * @param email Personal email
- * @param password Password to log in
- * @param phone Personal phone number
- * @param birthDate Date of birth
- * @param nationality Nationality from birth
- * @param salary Initial salary
- * @param accounting Accounting program
- * @param lang Programming language
- * @param admin Is admin of the system
- * @return True if info is in db.
- */
+import java.time.LocalDate;
+
 public class Company {
 
-    private int id;
-//    private Date acceptdate;
-    private String title; // job title ex: analyst
-    private String first_name;
-    private String last_name;
-    private String email;
-    private String password;
-    private long phone;
-//    private Date birthdate;
-    private String nationality;
-    private int salary;
-    private String accounting;
-    private String lang;
-    private boolean admin;
-    private boolean isLogged = false;
+    private int id; // Randomly generated id.
+    private LocalDate acceptdate; // Date when worker is accepted to company.
+    private String title; // Job; Manager, Analyst, Designer, etc.
+    private String first_name; // First name
+    private String last_name; // Last name
+    private String email; // Personal email
+    private String password; // Password to log in
+    private long phone; // Personal phone number
+    private LocalDate birthdate; // Date of birth
+    private String nationality; // Nationality from birth
+    private int salary; // Initial salary
+    private String accounting; // Accounting program
+    private String lang; // Programming language
+    private boolean admin; // Is admin of the system
+    private boolean logged = false; // Is logged to the system
 
     public Company(int id, String title, String first_name, String last_name, String email, String password, long phone,
                    String nationality, int salary, String accounting, String lang, boolean admin) {
@@ -52,7 +36,10 @@ public class Company {
         this.admin = admin;
     }
 
-    public Company() {}
+    public Company(boolean admin, boolean logged) {
+        this.admin = admin;
+        this.logged = logged;
+    }
 
     public int getId() {
         return id;
@@ -151,10 +138,14 @@ public class Company {
     }
 
     public boolean isLogged() {
-        return isLogged;
+        return logged;
     }
 
     public void setLogged(boolean logged) {
-        isLogged = logged;
+        this.logged = logged;
+    }
+
+    public String getFullName() {
+        return first_name + " " + last_name;
     }
 }

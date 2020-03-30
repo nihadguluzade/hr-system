@@ -33,6 +33,9 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
@@ -46,6 +49,21 @@
       <RowConstraints />
    </rowConstraints>
    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
@@ -216,14 +234,6 @@
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
-            </Button>
-            <Button fx:id="seniorBtn" alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="-15.0" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Senior" visible="false" GridPane.rowIndex="1">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-               <padding>
-                  <Insets bottom="5.0" top="10.0" />
-               </padding>
             </Button>
             <Button fx:id="analystBtn" alignment="BOTTOM_CENTER" minHeight="140.0" minWidth="100.0" mnemonicParsing="false" text="Analyst" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <GridPane.margin>
@@ -412,5 +422,10 @@
             </Button>
          </children>
       </GridPane>
+      <CheckBox fx:id="seniorCheck" mnemonicParsing="false" text="Senior" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="8.0" />
+         </GridPane.margin>
+      </CheckBox>
    </children>
 </GridPane>

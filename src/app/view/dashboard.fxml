@@ -27,7 +27,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button mnemonicParsing="false" text="Import Candidate" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                    <Button fx:id="importCandidateBtn" mnemonicParsing="false" text="Import Candidate" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets top="40.0" />
                                        </GridPane.margin></Button>
@@ -72,7 +72,7 @@
                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                    </rowConstraints>
                                    <children>
-                                       <Button mnemonicParsing="false" text="Create Project" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                       <Button fx:id="createProjectBtn" mnemonicParsing="false" text="Create Project" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                            <GridPane.margin>
                                                <Insets top="40.0" />
                                            </GridPane.margin></Button>
@@ -339,7 +339,7 @@
                </padding>
             </Label>
             <Pane HBox.hgrow="ALWAYS" />
-            <Label layoutX="832.0" layoutY="18.0" text="21/03/2020">
+            <Label fx:id="todaysDate" layoutX="832.0" layoutY="18.0" text="21/03/2020">
                <font>
                   <Font size="14.0" />
                </font>
@@ -347,7 +347,7 @@
                   <Insets right="15.0" top="1.0" />
                </padding>
             </Label>
-            <Label text="John Doe">
+            <Label fx:id="userLabel" text="John Doe">
                <font>
                   <Font size="14.0" />
                </font>

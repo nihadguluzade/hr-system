@@ -7,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -15,7 +14,7 @@ import java.util.Calendar;
 public class EmployeeRegister {
 
     @FXML private GridPane signUpGridPane;
-    @FXML private Button seniorBtn;
+    @FXML private CheckBox seniorCheck;
     @FXML private Button managerBtn;
     @FXML private Button analystBtn;
     @FXML private Button designerBtn;
@@ -40,11 +39,12 @@ public class EmployeeRegister {
     private boolean newPhoneNo;
     private String title;
     private boolean isTypeChosen = false;
+    private boolean newAdmin;
 
     private String[] accountingPrograms = {"Program 1", "Program 2"};
     private String[] programmingLangs = {"C", "Java", "Python", "Go", "JavaScript", ".NET"};
 
-    public void start(final Manager manager, final boolean admin, final Company loggedUser) {
+    public void start(final Manager manager, final Company loggedUser) {
 
         Stage stage = (Stage) signUpGridPane.getScene().getWindow();
         stage.sizeToScene();
@@ -54,14 +54,9 @@ public class EmployeeRegister {
         Scene scene = signUpGridPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
-        if (admin) // if we want to create new admin
+        if (loggedUser.isAdmin()) // if we want to create new admin
         {
-            seniorBtn.setVisible(true);
-            managerBtn.setVisible(false);
-            analystBtn.setVisible(false);
-            designerBtn.setVisible(false);
-            coderBtn.setVisible(false);
-            testerBtn.setVisible(false);
+            seniorCheck.setVisible(true);
         }
 
         // define the range for random id
@@ -88,12 +83,8 @@ public class EmployeeRegister {
 
         dateLabel.setText(day + "/" + (month + 1) + "/" + year);
 
-        // Define title of employee
-
-        seniorBtn.setOnAction(actionEvent -> {
-            title = "Senior";
-            seniorBtn.setStyle("-fx-border-color: #4FC3F7");
-            isTypeChosen = true;
+        seniorCheck.setOnMouseClicked(mouseEvent -> {
+            newAdmin = !newAdmin; // toggle newAdmin
         });
 
         managerBtn.setOnAction(actionEvent -> {
@@ -147,7 +138,7 @@ public class EmployeeRegister {
         });
 
         backBtn.setOnAction(actionEvent -> {
-            if (admin && !loggedUser.isLogged()) manager.viewLoginPage();
+            if (loggedUser.isAdmin() && !loggedUser.isLogged()) manager.viewLoginPage();
             else manager.viewDashboard(loggedUser);
         });
 
@@ -164,9 +155,9 @@ public class EmployeeRegister {
 
 
             // check whether phone number consists only digits
-            if (!phoneNoField.getText().matches("[-1-9]*"))
+            if (!phoneNoField.getText().matches("[-1-9]*") || !salaryField.getText().matches("[-1-9]*"))
             {
-                Manager.showAlert(Alert.AlertType.ERROR, "Invalid Phone Number", "Phone number is invalid.");
+                Manager.showAlert(Alert.AlertType.ERROR, "Invalid input", "Something is invalid. Check your inputs.");
                 return;
             }
 
@@ -199,7 +190,7 @@ public class EmployeeRegister {
                 return;
             }
 
-            LocalDate acceptdate = LocalDate.of(year, month, day);
+            LocalDate acceptdate = LocalDate.of(year, month + 1, day);
             LocalDate birthdate = birthDatePicker.getValue();
             String accounting = accountingBox.getValue().toString();
             String lang = languageBox.getValue().toString();
@@ -207,7 +198,7 @@ public class EmployeeRegister {
             // add user to db
             signUp(id, acceptdate, title, firstNameField.getText(), lastNameField.getText(), emailField.getText(),
                     passwordField.getText(), Long.parseLong(phoneNoField.getText()), birthdate, nationField.getText(),
-                    Integer.parseInt(salaryField.getText()), accounting, lang, admin);
+                    Integer.parseInt(salaryField.getText()), accounting, lang, newAdmin);
 
             if (loggedUser.isLogged()) manager.viewDashboard(loggedUser);
             else manager.viewLoginPage();
@@ -312,7 +303,7 @@ public class EmployeeRegister {
             return true;
         } catch (Exception e) {
             System.out.println("Error while inserting new user.");
-            Manager.showAlert(Alert.AlertType.ERROR, "Register failed", "There must be an error. Please try again later.");
+            Manager.showAlert(Alert.AlertType.ERROR, "Register failed", "Error happened. Please try again later.");
             return false;
         }
     }

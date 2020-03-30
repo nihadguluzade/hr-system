@@ -6,7 +6,7 @@
     /*-fx-background-color: #ffffff;*/
 }
 
-#adminBtn, #employeeBtn, #managerBtn, #analystBtn, #designerBtn, #coderBtn, #testerBtn, #seniorBtn {
+#adminBtn, #employeeBtn, #managerBtn, #analystBtn, #designerBtn, #coderBtn, #testerBtn {
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-color: transparent;
@@ -21,17 +21,17 @@
     -fx-background-size: 80px 80px;
 }
 
-#managerBtn, #analystBtn, #designerBtn, #coderBtn, #testerBtn, #seniorBtn {
+#managerBtn, #analystBtn, #designerBtn, #coderBtn, #testerBtn {
     -fx-background-size: 50px 50px;
     -fx-font-size: 12px;
 }
 
 #adminBtn:hover, #employeeBtn:hover, #managerBtn:hover, #analystBtn:hover, #designerBtn:hover,
-#coderBtn:hover, #testerBtn:hover, #seniorBtn:hover {
+#coderBtn:hover, #testerBtn:hover {
     -fx-border-color: #4FC3F7;
 }
 
-#adminBtn, #seniorBtn {
+#adminBtn {
     -fx-background-image: url("/app/resources/images/icons8-user-male-3-80.png");
 }
 

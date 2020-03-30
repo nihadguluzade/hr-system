@@ -103,8 +103,7 @@ public class Manager extends Main {
 
     public static void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
-        // Set window on top of everyone
-        alert.initModality(Modality.APPLICATION_MODAL);
+        alert.initModality(Modality.APPLICATION_MODAL); // set window on top of everyone
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
@@ -122,12 +121,12 @@ public class Manager extends Main {
         }
     }
 
-    public void viewSignUpPage(boolean admin, Company loggedUser) {
+    public void viewSignUpPage(Company loggedUser) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_employee_form.fxml"), Strings.GetBundle());
             scene.setRoot(loader.load());
             EmployeeRegister controller = loader.getController();
-            controller.start(this, admin, loggedUser);
+            controller.start(this, loggedUser);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -138,7 +137,7 @@ public class Manager extends Main {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/dashboard.fxml"), Strings.GetBundle());
             scene.setRoot(loader.load());
             Dashboard controller = loader.getController();
-            controller.start(this);
+            controller.start(this, user);
         } catch (IOException e) {
             e.printStackTrace();
         }
