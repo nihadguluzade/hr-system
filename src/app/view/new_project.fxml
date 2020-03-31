@@ -19,7 +19,7 @@
             <RowConstraints maxHeight="94.41584043537404" minHeight="10.0" prefHeight="72.59405621088399" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Create New Project" textFill="#4fc3f7">
+            <Label text="Create New Project" textFill="#03a9f4">
                <GridPane.margin>
                   <Insets bottom="25.0" />
                </GridPane.margin>
@@ -32,7 +32,7 @@
                   <Insets bottom="6.0" top="30.0" />
                </GridPane.margin>
             </Label>
-            <TextField maxWidth="300.0" promptText="Project Name" GridPane.valignment="BOTTOM">
+            <TextField fx:id="projectNameField" maxWidth="300.0" promptText="Project Name" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -50,18 +50,18 @@
                   <Insets />
                </GridPane.margin>
             </Separator>
-            <Button mnemonicParsing="false" prefWidth="70.0" text="Create" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+            <Button fx:id="createBtn" mnemonicParsing="false" prefWidth="70.0" text="Create" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                <GridPane.margin>
-                  <Insets right="81.0" />
+                  <Insets right="90.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" prefWidth="70.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+            <Button fx:id="closeBtn" mnemonicParsing="false" prefWidth="70.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
             <Label text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="15.0" />
                </GridPane.margin>
             </Label>
-            <TextArea maxHeight="100.0" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
+            <TextArea fx:id="descriptionArea" maxHeight="100.0" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" promptText="(Optional)" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="24.0" />
                </GridPane.margin>
@@ -71,7 +71,7 @@
                   <Insets top="5.0" />
                </GridPane.margin>
             </Label>
-            <DatePicker GridPane.rowIndex="2">
+            <DatePicker fx:id="startDatePicker" promptText="Click to choose date" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets />
                </GridPane.margin>
@@ -81,64 +81,64 @@
                   <Insets top="5.0" />
                </GridPane.margin>
             </Label>
-            <DatePicker GridPane.rowIndex="3" />
-            <RadioButton mnemonicParsing="false" text="Assign team" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <DatePicker fx:id="dueDatePicker" promptText="Click to choose date" GridPane.rowIndex="3" />
+            <RadioButton mnemonicParsing="false" selected="true" text="Assign team" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="25.0" />
                </GridPane.margin>
             </RadioButton>
-            <RadioButton mnemonicParsing="false" text="Assign individually" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <RadioButton disable="true" mnemonicParsing="false" text="Assign individually" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="48.0" />
                </GridPane.margin>
             </RadioButton>
-            <Label fx:id="teamOrIndvLabel" text="Choose team / manager" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Label fx:id="teamOrIndvLabel" text="Choose team" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="20.0" />
                </GridPane.margin>
             </Label>
+            <ChoiceBox fx:id="teamSelector" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="18.0" />
+               </GridPane.margin>
+            </ChoiceBox>
             <ChoiceBox fx:id="managerChooser" layoutX="370.0" layoutY="239.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="18.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <ChoiceBox fx:id="teamChooser" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <ChoiceBox fx:id="analystChooser" layoutX="370.0" layoutY="262.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="18.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <ChoiceBox fx:id="analystChooser" layoutX="370.0" layoutY="262.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
-               <GridPane.margin>
-                  <Insets bottom="18.0" />
-               </GridPane.margin>
-            </ChoiceBox>
-            <ChoiceBox fx:id="teamChooser11" layoutX="25.0" layoutY="80.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="teamChooser111" layoutX="25.0" layoutY="80.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-            <ChoiceBox fx:id="teamChooser1111" layoutX="25.0" layoutY="80.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label fx:id="teamOrIndvLabel1" layoutX="370.0" layoutY="237.0" text="Analyst" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <ChoiceBox fx:id="teamChooser11" layoutX="25.0" layoutY="80.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="teamChooser111" layoutX="25.0" layoutY="80.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="teamChooser1111" layoutX="25.0" layoutY="80.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="teamOrIndvLabel1" layoutX="370.0" layoutY="237.0" text="Analyst" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="85.0" top="20.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="teamOrIndvLabel11" layoutX="565.0" layoutY="241.0" text="Designer" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Label fx:id="teamOrIndvLabel11" layoutX="565.0" layoutY="241.0" text="Designer" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label fx:id="teamOrIndvLabel111" layoutX="370.0" layoutY="321.0" text="Programmer" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+            <Label fx:id="teamOrIndvLabel111" layoutX="370.0" layoutY="321.0" text="Programmer" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets left="113.0" top="5.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Tester" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-            <Label layoutX="369.0" layoutY="402.0" text="Creation Date" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+            <Label text="Tester" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label layoutX="369.0" layoutY="402.0" text="Creation Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <GridPane.margin>
-                  <Insets left="125.0" />
+                  <Insets />
                </GridPane.margin>
             </Label>
-            <Label layoutX="566.0" layoutY="402.0" text="21/03/2020" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+            <Label fx:id="creationDateLabel" layoutX="566.0" layoutY="402.0" text="21/03/2020" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="117.0" />
+                  <Insets />
                </GridPane.margin>
             </Label>
          </children>

@@ -91,14 +91,14 @@
     -fx-underline: true;
 }
 
-#logInBtn, #signUpFinishBtn, #backBtn {
+#logInBtn, #signUpFinishBtn, #backBtn, #createBtn, #closeBtn {
     -fx-pref-width: 80px;
     -fx-background-color: #4FC3F7;
     -fx-border-radius: 2px;
     -fx-text-fill: #FFFFFF;
 }
 
-#logInBtn:hover, #signUpFinishBtn:hover {
+#logInBtn:hover, #signUpFinishBtn:hover, #createBtn:hover, #closeBtn:hover {
     -fx-background-color: #01579B;
 }
 

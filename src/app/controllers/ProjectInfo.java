@@ -21,17 +21,4 @@ public class ProjectInfo {
         scene.getStylesheets().add("app/resources/styles/style.css");
 
     }
-
-    public void initDB() {
-        DBUtils.createDatabase();
-    }
-
-    private void openConnection() {
-        try {
-            connection = DBUtils.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 }

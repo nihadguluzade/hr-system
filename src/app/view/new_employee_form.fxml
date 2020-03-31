@@ -36,6 +36,8 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
@@ -49,6 +51,16 @@
       <RowConstraints />
    </rowConstraints>
    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
@@ -277,7 +289,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="firstNameField" maxWidth="200.0" GridPane.rowIndex="1">
+            <TextField fx:id="firstNameField" maxWidth="200.0" promptText="John" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -290,7 +302,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="lastNameField" maxWidth="200.0" GridPane.rowIndex="3">
+            <TextField fx:id="lastNameField" maxWidth="200.0" promptText="Doe" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -303,7 +315,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="emailField" maxWidth="200.0" GridPane.rowIndex="5">
+            <TextField fx:id="emailField" maxWidth="200.0" promptText="johndoe@mail.com" GridPane.rowIndex="5">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -342,7 +354,7 @@
                   <Insets bottom="5.0" />
                </GridPane.margin>
             </Label>
-            <TextField fx:id="phoneNoField" layoutX="10.0" layoutY="100.0" maxWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <TextField fx:id="phoneNoField" layoutX="10.0" layoutY="100.0" maxWidth="200.0" promptText="05012001234" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets bottom="10.0" />
                </GridPane.margin>
@@ -422,7 +434,7 @@
             </Button>
          </children>
       </GridPane>
-      <CheckBox fx:id="seniorCheck" mnemonicParsing="false" text="Senior" visible="false" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <CheckBox fx:id="seniorCheck" mnemonicParsing="false" text="Senior" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets top="8.0" />
          </GridPane.margin>

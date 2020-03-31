@@ -117,6 +117,11 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <Label text="Choose Account Type" textAlignment="CENTER" textFill="#03a9f4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -147,7 +152,7 @@
          <GridPane.margin>
             <Insets left="15.0" top="25.0" />
          </GridPane.margin></Label>
-      <TextField fx:id="fullNameField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+      <TextField fx:id="fullNameField" maxWidth="250.0" promptText="John Doe" text="admin" GridPane.halignment="CENTER" GridPane.rowIndex="3">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin></TextField>
@@ -159,7 +164,7 @@
             <Insets left="15.0" />
          </GridPane.margin>
       </Label>
-      <PasswordField fx:id="loginPassField" maxWidth="250.0" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+      <PasswordField fx:id="loginPassField" maxWidth="250.0" text="admin" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <GridPane.margin>
             <Insets bottom="10.0" />
          </GridPane.margin>

@@ -41,10 +41,7 @@ public class EmployeeRegister {
     private boolean isTypeChosen = false;
     private boolean newAdmin;
 
-    private String[] accountingPrograms = {"Program 1", "Program 2"};
-    private String[] programmingLangs = {"C", "Java", "Python", "Go", "JavaScript", ".NET"};
-
-    public void start(final Manager manager, final Company loggedUser) {
+    public void start(final Manager manager, final Company loggedUser, final String[] accountingPrograms, final String[] programmingLangs) {
 
         Stage stage = (Stage) signUpGridPane.getScene().getWindow();
         stage.sizeToScene();
@@ -53,11 +50,6 @@ public class EmployeeRegister {
 
         Scene scene = signUpGridPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
-
-        if (loggedUser.isAdmin()) // if we want to create new admin
-        {
-            seniorCheck.setVisible(true);
-        }
 
         // define the range for random id
         int max = 999999, min = 100000, range = max - min + 1, randid;
@@ -142,6 +134,19 @@ public class EmployeeRegister {
             else manager.viewDashboard(loggedUser);
         });
 
+        // force the fields to be numeric only
+        phoneNoField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                phoneNoField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
+        salaryField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                salaryField.setText(newValue.replaceAll("[^\\d]", ""));
+            }
+        });
+
         signUpFinishBtn.setOnAction(actionEvent -> {
 
             // check whether any field is empty
@@ -150,14 +155,6 @@ public class EmployeeRegister {
                     nationField.getText().isEmpty() || salaryField.getText().isEmpty())
             {
                 Manager.showAlert(Alert.AlertType.ERROR, "Empty Field", "Please, do not leave any empty field.");
-                return;
-            }
-
-
-            // check whether phone number consists only digits
-            if (!phoneNoField.getText().matches("[-1-9]*") || !salaryField.getText().matches("[-1-9]*"))
-            {
-                Manager.showAlert(Alert.AlertType.ERROR, "Invalid input", "Something is invalid. Check your inputs.");
                 return;
             }
 
@@ -250,6 +247,7 @@ public class EmployeeRegister {
             return !resultSet.next();
         } catch (SQLException e) {
             e.printStackTrace();
+            Manager.showAlert(Alert.AlertType.WARNING, "Exception", "ERR_ID_CHECK");
             return false;
         }
     }
@@ -270,9 +268,8 @@ public class EmployeeRegister {
      * @param accounting Accounting program
      * @param lang Programming language
      * @param admin Is admin of the system
-     * @return True if info is in db.
      */
-    private boolean signUp(int id, LocalDate acceptDate, String title, String first_name, String last_name,
+    private void signUp(int id, LocalDate acceptDate, String title, String first_name, String last_name,
                                   String email, String password, long phone, LocalDate birthDate, String nationality,
                                   int salary, String accounting, String lang, boolean admin)
     {
@@ -298,13 +295,10 @@ public class EmployeeRegister {
             preparedStatement.setString(13, lang);
             preparedStatement.setBoolean(14, admin);
             preparedStatement.executeUpdate();
-            System.out.println("New user inserted successfully.");
             Manager.showAlert(Alert.AlertType.INFORMATION, "", "Registration successful.");
-            return true;
         } catch (Exception e) {
-            System.out.println("Error while inserting new user.");
-            Manager.showAlert(Alert.AlertType.ERROR, "Register failed", "Error happened. Please try again later.");
-            return false;
+            Manager.showAlert(Alert.AlertType.WARNING, "Exception", "ERR_SIGN_UP");
+            e.printStackTrace();
         }
     }
 

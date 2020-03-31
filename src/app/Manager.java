@@ -18,12 +18,12 @@ public class Manager extends Main {
     private Scene scene;
     private static Connection connection;
 
+    private static String[] TEAMS = {};
+    private final static String[] ACCOUNTING_PROGRAMS = {"Program 1", "Program 2"};
+    private final static String[] PROGRAMMING_LANGS = {"C", "Java", "Python", "Go", "JavaScript", ".NET"};
+
     public Manager(Scene scene) {
         this.scene = scene;
-    }
-
-    protected void initDB() {
-        DBUtils.createDatabase();
     }
 
     public static void openConnection() {
@@ -69,8 +69,9 @@ public class Manager extends Main {
                 "    pr_name varchar(255)," +
                 "    lang varchar(255)," +
                 "    team varchar(255)," +
-                "    create_date Date," +
-                "    due_date Date," +
+                "    startDate Date," +
+                "    dueDate Date," +
+                "    creationDate Date," +
                 "    description varchar(255)" +
                 ");";
         try {
@@ -126,7 +127,7 @@ public class Manager extends Main {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_employee_form.fxml"), Strings.GetBundle());
             scene.setRoot(loader.load());
             EmployeeRegister controller = loader.getController();
-            controller.start(this, loggedUser);
+            controller.start(this, loggedUser, ACCOUNTING_PROGRAMS, PROGRAMMING_LANGS);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -154,12 +155,12 @@ public class Manager extends Main {
         }
     }
 
-    public void viewNewProjectPane() {
+    public void viewNewProjectPane(Company user) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_project.fxml"), Strings.GetBundle());
             scene.setRoot(loader.load());
             NewProject controller = loader.getController();
-            controller.start(this);
+            controller.start(this, PROGRAMMING_LANGS, TEAMS, user);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -34,6 +34,7 @@
 {
     -fx-background-color: #E3F2FD;
     -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
 }
 
 #TeamsGridPane AnchorPane {
@@ -49,6 +50,8 @@
     -fx-background-radius: 5px;
     -fx-border-color: #e0e0e0;
     -fx-border-radius: 5px;
+    -fx-background-color:  #FBFBFB;
+    -fx-padding: 15px;
 }
 
 .teams-indv-tile > .label { /* AnchorPane */
@@ -79,4 +82,16 @@
 
 .tb-teams {
     -fx-background-color: #FFFFFF;
+}
+
+.db-teams-name {
+
+}
+
+.db-teams-worker-name {
+    -fx-padding: 6px 0 0 0;
+}
+
+.db-teams-worker-title {
+    -fx-padding: 21px 0 0 0;
 }

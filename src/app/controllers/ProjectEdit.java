@@ -22,16 +22,4 @@ public class ProjectEdit {
 
     }
 
-    public void initDB() {
-        DBUtils.createDatabase();
-    }
-
-    private void openConnection() {
-        try {
-            connection = DBUtils.getConnection();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
 }
