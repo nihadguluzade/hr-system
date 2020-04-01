@@ -3,10 +3,12 @@ package app;
 import app.controllers.*;
 import app.resources.Strings;
 import app.tables.Company;
+import app.tables.Project;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -166,12 +168,16 @@ public class Manager extends Main {
         }
     }
 
-    public void viewProjectInfo() {
+    public void popProjectInfo(Project project) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/project_info.fxml"), Strings.GetBundle());
-            scene.setRoot(loader.load());
+            Scene scene = new Scene(loader.load()); // create new scene, otherwise scene will not change after
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setScene(scene);
+            stage.show();
             ProjectInfo controller = loader.getController();
-            controller.start(this);
+            controller.start(this, project);
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -5,9 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="ProjectInfoPane" prefHeight="380.0" prefWidth="580.0" style="-fx-background-color: #FFFFFF;"
-            xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="app.controllers.ProjectInfo">
+<AnchorPane fx:id="ProjectInfoPane" prefHeight="380.0" prefWidth="580.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controllers.ProjectInfo">
    <children>
       <GridPane AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
         <columnConstraints>
@@ -29,14 +27,14 @@
                   <Insets />
                </GridPane.margin>
             </Label>
-            <Button mnemonicParsing="false" text="✕" GridPane.halignment="RIGHT" />
-            <Button mnemonicParsing="false" text="Modify" GridPane.halignment="RIGHT">
+            <Button mnemonicParsing="false" text="✕" GridPane.halignment="RIGHT" fx:id="xBtn" />
+            <Button fx:id="modifyBtn" mnemonicParsing="false" text="Modify" GridPane.halignment="RIGHT">
                <GridPane.margin>
                   <Insets right="43.0" />
                </GridPane.margin>
             </Button>
             <Separator maxWidth="1.7976931348623157E308" valignment="BOTTOM" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <Label text="Software Engineering Project" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+            <Label fx:id="nameLabel" text="Software Engineering Project" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
@@ -44,7 +42,7 @@
                   <Insets top="10.0" />
                </GridPane.margin>
             </Label>
-            <Label minWidth="120.0" text="Java" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <Label fx:id="langLabel" minWidth="120.0" text="Java" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>
@@ -64,7 +62,7 @@
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin></Label>
-            <Label text="Nihad Guluzade" GridPane.rowIndex="2">
+            <Label fx:id="managerLabel" text="Nihad Guluzade" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin></Label>
@@ -77,15 +75,15 @@
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin></Label>
-            <Label minWidth="120.0" text="Fuckers" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label fx:id="teamLabel" minWidth="120.0" text="Fuckers" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin></Label>
-            <Label minWidth="120.0" text="12/03/2020" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <Label fx:id="dueDateLabel" minWidth="120.0" text="12/03/2020" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin></Label>
-            <Label alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Some description for the system" GridPane.rowIndex="3" GridPane.valignment="TOP">
+            <Label fx:id="description" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Some description for the system" GridPane.rowIndex="3" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="20.0" />
                </GridPane.margin>

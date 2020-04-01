@@ -1,24 +1,38 @@
 package app.controllers;
 
-import app.DBUtils;
 import app.Manager;
+import app.tables.Project;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-
-import java.sql.Connection;
-import java.sql.SQLException;
+import javafx.stage.Stage;
 
 public class ProjectInfo {
 
-    @FXML
-    private AnchorPane ProjectInfoPane;
+    @FXML private AnchorPane ProjectInfoPane;
+    @FXML private Button modifyBtn;
+    @FXML private Button xBtn;
+    @FXML private Label nameLabel;
+    @FXML private Label langLabel;
+    @FXML private Label managerLabel;
+    @FXML private Label teamLabel;
+    @FXML private Label dueDateLabel;
+    @FXML private Label description;
 
-    private Connection connection;
+    public void start(final Manager manager, final Project project) {
 
-    public void start(final Manager manager) {
+        Stage stage = (Stage) ProjectInfoPane.getScene().getWindow();
+        stage.sizeToScene();
+        stage.setTitle("Project Info");
+        stage.setResizable(false);
+
         Scene scene = ProjectInfoPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
+        xBtn.setOnAction(actionEvent -> {
+            stage.close();
+        });
     }
 }
