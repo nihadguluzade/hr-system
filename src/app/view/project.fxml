@@ -7,7 +7,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.image.Image?>
-<AnchorPane maxHeight="160.0" maxWidth="160.0" prefHeight="160.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:controller="app.controllers.Dashboard" maxHeight="160.0" maxWidth="160.0" prefHeight="160.0" prefWidth="160.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
    <children>
        <GridPane prefHeight="160.0" prefWidth="160.0" styleClass="db-projects-gridpane">
            <columnConstraints>

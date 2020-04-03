@@ -1,7 +1,7 @@
 package app.controllers;
 
 import app.Manager;
-import app.tables.Company;
+import app.classes.Employee;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -41,7 +41,7 @@ public class EmployeeRegister {
     private boolean isTypeChosen = false;
     private boolean newAdmin;
 
-    public void start(final Manager manager, final Company loggedUser, final String[] accountingPrograms, final String[] programmingLangs) {
+    public void start(final Manager manager, final Employee loggedUser, final String[] accountingPrograms, final String[] programmingLangs) {
 
         Stage stage = (Stage) signUpGridPane.getScene().getWindow();
         stage.sizeToScene();
@@ -190,12 +190,12 @@ public class EmployeeRegister {
             LocalDate acceptdate = LocalDate.of(year, month + 1, day);
             LocalDate birthdate = birthDatePicker.getValue();
             String accounting = accountingBox.getValue().toString();
-            String lang = languageBox.getValue().toString();
+            String skill = languageBox.getValue().toString();
 
             // add user to db
             signUp(id, acceptdate, title, firstNameField.getText(), lastNameField.getText(), emailField.getText(),
                     passwordField.getText(), Long.parseLong(phoneNoField.getText()), birthdate, nationField.getText(),
-                    Integer.parseInt(salaryField.getText()), accounting, lang, newAdmin);
+                    Integer.parseInt(salaryField.getText()), accounting, skill, newAdmin);
 
             if (loggedUser.isLogged()) manager.viewDashboard(loggedUser);
             else manager.viewLoginPage();
@@ -266,17 +266,17 @@ public class EmployeeRegister {
      * @param nationality Nationality from birth
      * @param salary Initial salary
      * @param accounting Accounting program
-     * @param lang Programming language
+     * @param skill Particular skill(s) of employee
      * @param admin Is admin of the system
      */
     private void signUp(int id, LocalDate acceptDate, String title, String first_name, String last_name,
                                   String email, String password, long phone, LocalDate birthDate, String nationality,
-                                  int salary, String accounting, String lang, boolean admin)
+                                  int salary, String accounting, String skill, boolean admin)
     {
         Connection connection = Manager.getConnection();
         PreparedStatement preparedStatement = null;
         String sql = "INSERT INTO company (id, acceptdate, title, first_name, last_name, email, password, phone, " +
-                "birthdate, nationality, salary, accounting, lang, admin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+                "birthdate, nationality, salary, accounting, skills, admin) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         try {
             preparedStatement = connection.prepareStatement(sql);
@@ -292,7 +292,7 @@ public class EmployeeRegister {
             preparedStatement.setString(10, nationality);
             preparedStatement.setInt(11, salary);
             preparedStatement.setString(12, accounting);
-            preparedStatement.setString(13, lang);
+            preparedStatement.setString(13, skill);
             preparedStatement.setBoolean(14, admin);
             preparedStatement.executeUpdate();
             Manager.showAlert(Alert.AlertType.INFORMATION, "", "Registration successful.");

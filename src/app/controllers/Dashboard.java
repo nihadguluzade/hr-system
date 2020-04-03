@@ -2,8 +2,9 @@ package app.controllers;
 
 import app.DBUtils;
 import app.Manager;
-import app.tables.Company;
-import app.tables.Project;
+import app.classes.Employee;
+import app.classes.Project;
+import app.classes.Team;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
@@ -25,6 +27,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Dashboard {
@@ -38,9 +41,10 @@ public class Dashboard {
     @FXML private Button createProjectBtn;
 
     private ObservableList<Project> projectList = FXCollections.observableArrayList();
+    private Project project;
 
 
-    public void start(final Manager manager, final Company user) {
+    public void start(final Manager manager, final Employee user) {
 
         Stage stage = (Stage) MainPane.getScene().getWindow();
         stage.sizeToScene();
@@ -72,8 +76,12 @@ public class Dashboard {
                 node.setStyle("-fx-border-width: 1px; -fx-border-color: #4FC3F7");
             });
 
-            node.setOnMouseClicked(mouseEvent -> {
-                manager.popProjectInfo();
+            node.setOnMouseClicked(mouseEvent ->
+            {
+                GridPane gridPane = (GridPane) mouseEvent.getSource();
+                Label nameLabel = (Label) gridPane.lookup("#projectNameLabel");
+                project = findProject(nameLabel.getText());
+                manager.popProjectInfo(project, user);
             });
         }
 
@@ -107,15 +115,15 @@ public class Dashboard {
         projectList.clear();
 
         try {
-            Connection connection = DBUtils.getConnection();
+            Connection connection = Manager.getConnection();
             PreparedStatement statement = connection.prepareStatement("use ysofthr");
             statement.execute();
             ResultSet rs = connection.createStatement().executeQuery("SELECT * FROM projects");
 
-            // store all data in ProductsTable Observable List
+            // store all data in array
             while (rs.next())
             {
-                projectList.add(new Project(rs.getString("pr_name"), rs.getString("lang"), rs.getString("team"),
+                projectList.add(new Project(rs.getString("pr_name"), rs.getString("lang"), new Team(rs.getString("team")),
                         rs.getDate("startDate").toLocalDate(), rs.getDate("dueDate").toLocalDate(),
                         rs.getDate("creationDate").toLocalDate(), rs.getString("description")));
             }
@@ -138,6 +146,7 @@ public class Dashboard {
                 // set the name of project
                 Label nameLabel = (Label) gridPane.getChildren().get(1);
                 nameLabel.setText(p.getName());
+                nameLabel.setId("projectNameLabel");
 
                 // add these elements to the view now
                 projectsPane.getChildren().add(loader);
@@ -147,6 +156,104 @@ public class Dashboard {
             Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Network disconnected. Please try again later.");
         }
     }
+
+    /**
+     * Gets project record from the DB.
+     * @return Project
+     */
+    private Project findProject(String name) {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "select * from projects where pr_name = ?";
+        Connection connection = Manager.getConnection();
+
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, name);
+            resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next())
+            {
+                Manager.showAlert(Alert.AlertType.ERROR, "", "Something is not right. Project record is not found on the database.");
+                return null;
+            }
+            else {
+                project = new Project(resultSet.getString("pr_name"),
+                        resultSet.getString("lang"),
+                        resultSet.getDate("startDate").toLocalDate(),
+                        resultSet.getDate("dueDate").toLocalDate(),
+                        resultSet.getDate("creationDate").toLocalDate(),
+                        resultSet.getString("description"));
+                project.setTeam(findTeam(resultSet.getString("team")));
+                return project;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Utility method to get the team record from database.
+     * @param teamName Name of the team to find it in database
+     * @return Team that works on the project
+     */
+    protected static Team findTeam(String teamName) {
+        try {
+            Connection connection = Manager.getConnection();
+            String sql = "select * from teams where t_name = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, teamName);
+            ResultSet resultSet = statement.executeQuery();
+
+            Team team = null;
+
+            if (resultSet.next())
+            {
+               team = new Team(resultSet.getString("t_name"), resultSet.getInt("manager"),
+                       resultSet.getInt("analyst"), resultSet.getInt("designer"), resultSet.getInt("programmer"),
+                       resultSet.getInt("tester"));
+            }
+
+            return team;
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Utility method to get the employee records for findTeamMembers() method.
+     * @param
+     */
+    /*private Employee findEmployee(String name) {
+        try {
+            Connection connection = Manager.getConnection();
+            String sql = "SELECT * FROM company WHERE t_name = " + teamName;
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            ArrayList<String> membersNames = new ArrayList<>();
+
+            // TODO: get array from database
+            if (resultSet.next())
+                membersNames.add(resultSet.getString("members"));
+
+            ArrayList<Employee> members = new ArrayList<>();
+
+            for (String employeeName: membersNames)
+            {
+                members.add(findEmployee(employeeName));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }*/
 
     /**
      * Centers image inside of ImageView in FXML.

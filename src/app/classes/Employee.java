@@ -1,8 +1,8 @@
-package app.tables;
+package app.classes;
 
 import java.time.LocalDate;
 
-public class Company {
+public class Employee {
 
     private int id; // Randomly generated id.
     private LocalDate acceptdate; // Date when worker is accepted to company.
@@ -16,27 +16,30 @@ public class Company {
     private String nationality; // Nationality from birth
     private int salary; // Initial salary
     private String accounting; // Accounting program
-    private String lang; // Programming language
+    private String skill; // Skill; Language for programmer
     private boolean admin; // Is admin of the system
     private boolean logged = false; // Is logged to the system
 
-    public Company(int id, String title, String first_name, String last_name, String email, String password, long phone,
-                   String nationality, int salary, String accounting, String lang, boolean admin) {
+    public Employee(int id, LocalDate acceptdate, String title, String first_name, String last_name, String email,
+                    String password, long phone, LocalDate birthdate, String nationality, int salary, String accounting,
+                    String skill, boolean admin) {
         this.id = id;
+        this.acceptdate = acceptdate;
         this.title = title;
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.password = password;
         this.phone = phone;
+        this.birthdate = birthdate;
         this.nationality = nationality;
         this.salary = salary;
         this.accounting = accounting;
-        this.lang = lang;
+        this.skill = skill;
         this.admin = admin;
     }
 
-    public Company(boolean admin, boolean logged) {
+    public Employee(boolean admin, boolean logged) {
         this.admin = admin;
         this.logged = logged;
     }
@@ -47,6 +50,14 @@ public class Company {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public LocalDate getAcceptdate() {
+        return acceptdate;
+    }
+
+    public void setAcceptdate(LocalDate acceptdate) {
+        this.acceptdate = acceptdate;
     }
 
     public String getTitle() {
@@ -97,6 +108,14 @@ public class Company {
         this.phone = phone;
     }
 
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+    }
+
     public String getNationality() {
         return nationality;
     }
@@ -121,12 +140,12 @@ public class Company {
         this.accounting = accounting;
     }
 
-    public String getLang() {
-        return lang;
+    public String getSkill() {
+        return skill;
     }
 
-    public void setLang(String lang) {
-        this.lang = lang;
+    public void setSkill(String skill) {
+        this.skill = skill;
     }
 
     public boolean isAdmin() {

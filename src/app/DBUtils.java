@@ -25,7 +25,7 @@ public class DBUtils {
         System.out.println("Database checked.");
     }
 
-    public static Connection getConnection() throws SQLException {
+    protected static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(url, username, password);
     }
 

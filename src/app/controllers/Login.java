@@ -1,7 +1,7 @@
 package app.controllers;
 
 import app.Manager;
-import app.tables.Company;
+import app.classes.Employee;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -26,7 +26,7 @@ public class Login {
 
     private boolean isTypeChosen = false;
     private boolean isAdmin = false;
-    private Company user = null;
+    private Employee user = null;
 
     /**
      * This method is called whenever the view linked to it is opened.
@@ -107,11 +107,11 @@ public class Login {
         firstTimeLink.setOnMouseClicked(mouseEvent -> {
             if (isFirstTime())
             {
-                manager.viewSignUpPage(new Company(true, false));
+                manager.viewSignUpPage(new Employee(true, false));
             }
             else
             {
-                manager.showAlert(Alert.AlertType.INFORMATION, "Senior exists",
+                Manager.showAlert(Alert.AlertType.INFORMATION, "Senior exists",
                         "There is already at least one Senior exists on the system.");
             }
         });
@@ -124,9 +124,8 @@ public class Login {
      * @param password Password of worker
      * @return All user information
      */
-    private Company authorize(String firstName, String lastName, String password, boolean isAdmin) {
+    private Employee authorize(String firstName, String lastName, String password, boolean isAdmin) {
 
-        // Open connection to database
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
         String sql = "SELECT * FROM company WHERE first_name = ? and last_name = ? and password = ? and admin = ?";
@@ -149,18 +148,20 @@ public class Login {
             }
             else {
                 // store resulted value
-                Company session;
-                session = new Company(resultSet.getInt("id"),
+                Employee session;
+                session = new Employee(resultSet.getInt("id"),
+                        resultSet.getDate("acceptDate").toLocalDate(),
                         resultSet.getString("title"),
                         resultSet.getString("first_name"),
                         resultSet.getString("last_name"),
                         resultSet.getString("email"),
                         resultSet.getString("password"),
                         resultSet.getLong("phone"),
+                        resultSet.getDate("birthDate").toLocalDate(),
                         resultSet.getString("nationality"),
                         resultSet.getInt("salary"),
                         resultSet.getString("accounting"),
-                        resultSet.getString("lang"),
+                        resultSet.getString("skills"),
                         resultSet.getBoolean("admin"));
                 return session;
             }

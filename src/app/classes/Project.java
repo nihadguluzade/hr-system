@@ -1,4 +1,4 @@
-package app.tables;
+package app.classes;
 
 import java.time.LocalDate;
 
@@ -6,13 +6,13 @@ public class Project {
 
     private String name;
     private String language;
-    private String team;
+    private Team team;
     private LocalDate startDate;
     private LocalDate dueDate;
     private LocalDate creationDate;
     private String description;
 
-    public Project(String name, String language, String team, LocalDate startDate, LocalDate dueDate, LocalDate creationDate) {
+    public Project(String name, String language, Team team, LocalDate startDate, LocalDate dueDate, LocalDate creationDate) {
         this.name = name;
         this.language = language;
         this.team = team;
@@ -21,10 +21,20 @@ public class Project {
         this.creationDate = creationDate;
     }
 
-    public Project(String name, String language, String team, LocalDate startDate, LocalDate dueDate, LocalDate creationDate, String description) {
+    public Project(String name, String language, Team team, LocalDate startDate, LocalDate dueDate, LocalDate creationDate, String description) {
         this.name = name;
         this.language = language;
         this.team = team;
+        this.startDate = startDate;
+        this.dueDate = dueDate;
+        this.creationDate = creationDate;
+        this.description = description;
+    }
+
+    public Project(String name, String language, LocalDate startDate, LocalDate dueDate, LocalDate creationDate, String description) {
+        this.name = name;
+        this.language = language;
+        this.team = new Team();
         this.startDate = startDate;
         this.dueDate = dueDate;
         this.creationDate = creationDate;
@@ -47,11 +57,11 @@ public class Project {
         this.language = language;
     }
 
-    public String getTeam() {
+    public Team getTeam() {
         return team;
     }
 
-    public void setTeam(String team) {
+    public void setTeam(Team team) {
         this.team = team;
     }
 

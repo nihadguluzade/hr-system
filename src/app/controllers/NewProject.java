@@ -1,7 +1,7 @@
 package app.controllers;
 
 import app.Manager;
-import app.tables.Company;
+import app.classes.Employee;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -9,6 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class NewProject {
@@ -24,7 +25,7 @@ public class NewProject {
     @FXML private Button createBtn;
     @FXML private Button closeBtn;
 
-    public void start(final Manager manager, final String[] programmingLangs, final String[] teams, final Company user) {
+    public void start(final Manager manager, final String[] programmingLangs, final ArrayList<String> teams, final Employee user) {
 
         Stage stage = (Stage) NewProjectPane.getScene().getWindow();
         stage.sizeToScene();
@@ -66,12 +67,14 @@ public class NewProject {
 
             LocalDate creationDate = LocalDate.of(year, month + 1, day);
             String lang = "temp_lang", team = "temp_team";
+
             try {
                 lang = langSelector.getValue().toString();
             } catch (NullPointerException e) {
                 Manager.showAlert(Alert.AlertType.WARNING, "Exception", "ERR_PROJECT_LANGS_NOT_DEFINED");
                 e.printStackTrace();
             }
+
             try {
                 team = teamSelector.getValue().toString();
             } catch (NullPointerException e) {

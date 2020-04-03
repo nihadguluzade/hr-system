@@ -27,19 +27,19 @@
                         <Insets />
                     </GridPane.margin>
                 </Label>
-                <Button mnemonicParsing="false" text="Discard" GridPane.halignment="RIGHT" />
-                <Button mnemonicParsing="false" text="Save" GridPane.halignment="RIGHT">
+                <Button fx:id="discardBtn" mnemonicParsing="false" text="Discard" GridPane.halignment="RIGHT" />
+                <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" GridPane.halignment="RIGHT">
                     <GridPane.margin>
                         <Insets right="68.0" />
                     </GridPane.margin>
                 </Button>
                 <Separator maxWidth="1.7976931348623157E308" valignment="BOTTOM" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
-            <TextField maxWidth="250.0" text="Software Engineering Project" GridPane.halignment="LEFT" GridPane.rowIndex="1">
+            <TextField fx:id="nameField" maxWidth="250.0" GridPane.halignment="LEFT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>
             </TextField>
-            <ChoiceBox prefWidth="120.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+            <ChoiceBox fx:id="langField" prefWidth="120.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>
@@ -48,16 +48,7 @@
                     <GridPane.margin>
                         <Insets top="10.0" />
                     </GridPane.margin></Label>
-            <TextField layoutX="35.0" layoutY="123.0" maxWidth="120.0" text="Nihad Guluzade" GridPane.rowIndex="2">
-               <GridPane.margin>
-                  <Insets top="10.0" />
-               </GridPane.margin>
-            </TextField>
                 <Label minWidth="120.0" styleClass="project-info-label" text="Language" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                    <GridPane.margin>
-                        <Insets top="10.0" />
-                    </GridPane.margin></Label>
-                <Label styleClass="project-info-label" text="Manager" GridPane.rowIndex="2" GridPane.valignment="TOP">
                     <GridPane.margin>
                         <Insets top="10.0" />
                     </GridPane.margin></Label>
@@ -66,21 +57,21 @@
                         <Insets top="10.0" />
                     </GridPane.margin></Label>
                 <Label text="Description" GridPane.rowIndex="3" GridPane.valignment="TOP" />
-                <Label minWidth="120.0" styleClass="project-info-label" text="Team" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                <Label minWidth="120.0" styleClass="project-info-label" text="Team" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
                     <GridPane.margin>
                         <Insets top="10.0" />
                     </GridPane.margin></Label>
-            <ChoiceBox prefWidth="120.0" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <ChoiceBox fx:id="teamChooser" prefWidth="120.0" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <DatePicker prefWidth="120.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+            <DatePicker fx:id="dueDatePicker" prefWidth="120.0" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets top="10.0" />
                </GridPane.margin>
             </DatePicker>
-            <TextArea maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3">
+            <TextArea fx:id="descriptionArea" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets top="23.0" />
                </GridPane.margin>
