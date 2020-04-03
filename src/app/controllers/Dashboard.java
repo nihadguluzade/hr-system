@@ -39,6 +39,7 @@ public class Dashboard {
     @FXML private Button logOutBtn;
     @FXML private Button importCandidateBtn;
     @FXML private Button createProjectBtn;
+    @FXML private Button formTeamBtn;
 
     private ObservableList<Project> projectList = FXCollections.observableArrayList();
     private Project project;
@@ -224,36 +225,6 @@ public class Dashboard {
             return null;
         }
     }
-
-    /**
-     * Utility method to get the employee records for findTeamMembers() method.
-     * @param
-     */
-    /*private Employee findEmployee(String name) {
-        try {
-            Connection connection = Manager.getConnection();
-            String sql = "SELECT * FROM company WHERE t_name = " + teamName;
-            PreparedStatement statement = connection.prepareStatement(sql);
-            ResultSet resultSet = statement.executeQuery();
-
-            ArrayList<String> membersNames = new ArrayList<>();
-
-            // TODO: get array from database
-            if (resultSet.next())
-                membersNames.add(resultSet.getString("members"));
-
-            ArrayList<Employee> members = new ArrayList<>();
-
-            for (String employeeName: membersNames)
-            {
-                members.add(findEmployee(employeeName));
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
-        }
-    }*/
 
     /**
      * Centers image inside of ImageView in FXML.
