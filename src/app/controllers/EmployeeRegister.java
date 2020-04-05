@@ -31,6 +31,7 @@ public class EmployeeRegister {
     @FXML private TextField nationField;
     @FXML private TextField salaryField;
     @FXML private ChoiceBox accountingBox;
+    @FXML private Label langLabel;
     @FXML private ChoiceBox languageBox;
     @FXML private Button signUpFinishBtn;
     @FXML private Button backBtn;
@@ -51,6 +52,9 @@ public class EmployeeRegister {
         Scene scene = signUpGridPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
+        langLabel.setVisible(false);
+        languageBox.setVisible(false);
+
         // define the range for random id
         int max = 999999, min = 100000, range = max - min + 1, randid;
 
@@ -66,7 +70,6 @@ public class EmployeeRegister {
         accountingBox.getItems().addAll(accountingPrograms);
         accountingBox.getSelectionModel().selectFirst(); // sets default value of choicebox
         languageBox.getItems().addAll(programmingLangs);
-        languageBox.getSelectionModel().selectFirst(); // sets default value of choicebox
 
         Calendar calendar = Calendar.getInstance();
         int day = calendar.get(Calendar.DATE);
@@ -87,6 +90,8 @@ public class EmployeeRegister {
             coderBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             testerBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             isTypeChosen = true;
+            langLabel.setVisible(false);
+            languageBox.setVisible(false);
         });
 
         analystBtn.setOnAction(actionEvent -> {
@@ -97,6 +102,8 @@ public class EmployeeRegister {
             coderBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             testerBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             isTypeChosen = true;
+            langLabel.setVisible(false);
+            languageBox.setVisible(false);
         });
 
         designerBtn.setOnAction(actionEvent -> {
@@ -107,6 +114,8 @@ public class EmployeeRegister {
             coderBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             testerBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             isTypeChosen = true;
+            langLabel.setVisible(false);
+            languageBox.setVisible(false);
         });
 
         coderBtn.setOnAction(actionEvent -> {
@@ -117,6 +126,8 @@ public class EmployeeRegister {
             analystBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             testerBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             isTypeChosen = true;
+            langLabel.setVisible(true);
+            languageBox.setVisible(true);
         });
 
         testerBtn.setOnAction(actionEvent -> {
@@ -127,6 +138,8 @@ public class EmployeeRegister {
             coderBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             analystBtn.setStyle("-fx-border-color: transparent; -fx-opacity: 0.5");
             isTypeChosen = true;
+            langLabel.setVisible(false);
+            languageBox.setVisible(false);
         });
 
         backBtn.setOnAction(actionEvent -> {

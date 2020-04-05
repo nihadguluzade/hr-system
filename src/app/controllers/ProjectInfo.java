@@ -66,7 +66,7 @@ public class ProjectInfo {
         else
         {
             teamLabel.setText(project.getTeam().getName());
-            managerLabel.setText(getEmployeeName(project.getTeam().getManager()));
+            managerLabel.setText(Dashboard.getEmployeeName(project.getTeam().getManager()));
         }
 
         dueDateLabel.setText(project.getDueDate().toString());
@@ -76,26 +76,6 @@ public class ProjectInfo {
         } catch (NullPointerException e) {
             System.out.println("Exception occured.");
             description.setText("No description.");
-        }
-    }
-
-    /**
-     * Get employee's name from database given his/her id.
-     * @param id ID of employee
-     * @return Full name of the employee
-     */
-    private String getEmployeeName(int id) {
-        try {
-            Connection connection = Manager.getConnection();
-            String sql = "select * from company where id = ?";
-            PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setInt(1, id);
-            ResultSet result = statement.executeQuery();
-            result.next();
-            return result.getString("first_name") + " " + result.getString("last_name");
-        } catch (Exception e) {
-            e.printStackTrace();
-            return null;
         }
     }
 }

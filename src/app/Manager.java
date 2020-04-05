@@ -23,7 +23,6 @@ public class Manager extends Main {
     private Scene mainScene;
     private Scene projectInfoScene;
     private static Connection connection;
-    private static ArrayList<String> TEAMS = new ArrayList<>();
     private final static String[] ACCOUNTING_PROGRAMS = {"Program 1", "Program 2"};
     private final static String[] PROGRAMMING_LANGS = {"C", "Java", "Python", "Go", "JavaScript", ".NET"};
 
@@ -94,11 +93,11 @@ public class Manager extends Main {
         String db = "use ysofthr;";
         String sql = "create table if not exists teams (" +
                 "    t_name varchar(255) not null," +
-                "    manager varchar(255) references company(id)," +
-                "    analyst varchar(255) references company(id)," +
-                "    designer varchar(255) references company(id)," +
-                "    programmer varchar(255) references company(id)," +
-                "    tester varchar(255) references company(id)" +
+                "    manager int references company(id)," +
+                "    analyst int references company(id)," +
+                "    designer int references company(id)," +
+                "    programmer int references company(id)," +
+                "    tester int references company(id)" +
                 ");";
         try {
             // create table if not exists
@@ -106,15 +105,6 @@ public class Manager extends Main {
             statement.execute();
             statement = connection.prepareStatement(sql);
             statement.execute();
-
-            // if exists get records
-            ResultSet rs = connection.createStatement().executeQuery("select * from teams");
-            while (rs.next()) {
-                TEAMS.add(rs.getString("t_name"));
-            }
-
-            for (String t: TEAMS)
-                System.out.println(t);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -128,6 +118,27 @@ public class Manager extends Main {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.show();
+    }
+
+    public static ArrayList<String> getTeams() {
+        String sql = "select * from teams";
+
+        try {
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            ResultSet resultSet = statement.executeQuery();
+
+            ArrayList<String> teamList = new ArrayList<>();
+            while (resultSet.next()) {
+                teamList.add(resultSet.getString("t_name"));
+            }
+
+            return teamList;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public void viewLoginPage() {
@@ -179,7 +190,7 @@ public class Manager extends Main {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_project.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             NewProject controller = loader.getController();
-            controller.start(this, PROGRAMMING_LANGS, TEAMS, user);
+            controller.start(this, PROGRAMMING_LANGS, user);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -216,7 +227,18 @@ public class Manager extends Main {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("view/project_edit.fxml"), Strings.GetBundle());
             projectInfoScene.setRoot(loader.load());
             ProjectEdit controller = loader.getController();
-            controller.start(this, project, PROGRAMMING_LANGS, TEAMS, user);
+            controller.start(this, project, PROGRAMMING_LANGS, user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void viewNewTeam(Employee user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_team.fxml"), Strings.GetBundle());
+            mainScene.setRoot(loader.load());
+            FormTeam controller = loader.getController();
+            controller.start(this, user);
         } catch (IOException e) {
             e.printStackTrace();
         }

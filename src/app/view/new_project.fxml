@@ -50,12 +50,12 @@
                   <Insets />
                </GridPane.margin>
             </Separator>
-            <Button fx:id="createBtn" mnemonicParsing="false" prefWidth="70.0" text="Create" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+            <Button fx:id="createBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="mac-btn" text="Create" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
                <GridPane.margin>
                   <Insets right="90.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="closeBtn" mnemonicParsing="false" prefWidth="70.0" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+            <Button fx:id="closeBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="mac-btn" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
             <Label text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                <GridPane.margin>
                   <Insets top="15.0" />
@@ -97,12 +97,12 @@
                   <Insets top="20.0" />
                </GridPane.margin>
             </Label>
-            <ChoiceBox fx:id="teamSelector" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <ChoiceBox fx:id="teamSelector" prefWidth="150.0" visible="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="18.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <ChoiceBox fx:id="managerChooser" layoutX="370.0" layoutY="239.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <ChoiceBox fx:id="managerSelector" layoutX="370.0" visible="false" layoutY="239.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
                <GridPane.margin>
                   <Insets bottom="18.0" />
                </GridPane.margin>

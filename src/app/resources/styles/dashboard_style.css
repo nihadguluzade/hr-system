@@ -4,24 +4,6 @@
     -fx-border-radius: 3px;
 }
 
-.db-tab .button, .db-toolbar .button {
-    /*-fx-background-color: #4FC3F7;*/
-    /*-fx-background-color: linear-gradient(to left, rgba(23,103,239,0.85), rgba(20,196,251,0.85));*/
-    -fx-background-color: linear-gradient(#42a1ec, #0070c9);
-    -fx-border-color: #07c;
-    -fx-border-width: 1px;
-    -fx-border-style: solid;
-    /*-fx-border-radius: 2px;*/
-    -fx-text-fill: #FFFFFF;
-    -fx-padding: 2px 10px;
-    -fx-border-radius: 4px;
-}
-
-.db-tab .button:hover, .db-toolbar .button:hover {
-    -fx-background-color: linear-gradient(#51a9ee, #147bcd);
-    -fx-border-color: #1482d0;
-}
-
 .tab *.tab-label {
     -fx-rotate: 90;
 }
@@ -51,19 +33,6 @@
     -fx-background-radius: 6px;
     -fx-border-color: #e0e0e0;
     -fx-border-width: 1px;
-}
-
-.teams-gridcell {
-    -fx-border-width: 1px;
-    -fx-background-radius: 5px;
-    -fx-border-color: #e0e0e0;
-    -fx-border-radius: 5px;
-    -fx-background-color:  #FBFBFB;
-    -fx-padding: 15px;
-}
-
-.teams-indv-tile > .label { /* AnchorPane */
-    /*-fx-font-weight: bold;*/
 }
 
 .db-projects-gridpane {
@@ -102,4 +71,21 @@
 
 .db-teams-worker-title {
     -fx-padding: 21px 0 0 0;
+}
+
+.teams-parent-tile {
+    -fx-border-width: 1px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-radius: 5px;
+    -fx-background-color:  #FBFBFB;
+    -fx-padding: 0 15px;
+}
+
+.teams-indv-tile {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 1px;
 }

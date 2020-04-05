@@ -27,8 +27,8 @@
                         <Insets />
                     </GridPane.margin>
                 </Label>
-                <Button fx:id="discardBtn" mnemonicParsing="false" text="Discard" GridPane.halignment="RIGHT" />
-                <Button fx:id="saveBtn" mnemonicParsing="false" text="Save" GridPane.halignment="RIGHT">
+                <Button fx:id="discardBtn" mnemonicParsing="false" styleClass="mac-btn" text="Discard" GridPane.halignment="RIGHT" />
+                <Button fx:id="saveBtn" mnemonicParsing="false" styleClass="mac-btn" text="Save" GridPane.halignment="RIGHT">
                     <GridPane.margin>
                         <Insets right="68.0" />
                     </GridPane.margin>

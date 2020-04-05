@@ -1,6 +1,5 @@
 package app.controllers;
 
-import app.DBUtils;
 import app.Manager;
 import app.classes.Employee;
 import app.classes.Project;
@@ -16,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
@@ -27,13 +25,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Dashboard {
 
     @FXML private AnchorPane MainPane;
     @FXML private TilePane projectsPane;
+    @FXML private TilePane teamsTilePane;
     @FXML private Label todaysDate;
     @FXML private Label userLabel;
     @FXML private Button logOutBtn;
@@ -41,8 +39,8 @@ public class Dashboard {
     @FXML private Button createProjectBtn;
     @FXML private Button formTeamBtn;
 
-    private ObservableList<Project> projectList = FXCollections.observableArrayList();
-    private Project project;
+    private ObservableList<Project> projects = FXCollections.observableArrayList();
+    private ObservableList<Team> teams = FXCollections.observableArrayList();
 
 
     public void start(final Manager manager, final Employee user) {
@@ -66,6 +64,7 @@ public class Dashboard {
         userLabel.setText(user.getFullName());
 
         loadProjects();
+        loadTeams();
 
         for (Node node: projectsPane.lookupAll(".project-tile"))
         {
@@ -81,17 +80,12 @@ public class Dashboard {
             {
                 GridPane gridPane = (GridPane) mouseEvent.getSource();
                 Label nameLabel = (Label) gridPane.lookup("#projectNameLabel");
-                project = findProject(nameLabel.getText());
+                Project project = findProject(nameLabel.getText());
                 manager.popProjectInfo(project, user);
             });
         }
 
-        /*projectTile.setOnMouseEntered(mouseEvent -> {
-            projectTile.setStyle("-fx-border-width: 2px; -fx-border-color: #01579B");
-        });
-        projectTile.setOnMouseExited(mouseEvent ->  {
-            projectTile.setStyle("-fx-border-width: 1px; -fx-border-color: #4FC3F7");
-        });*/
+
 
         logOutBtn.setOnAction(actionEvent -> {
             user.setLogged(false);
@@ -105,6 +99,10 @@ public class Dashboard {
         createProjectBtn.setOnAction(actionEvent -> {
             manager.viewNewProjectPane(user);
         });
+
+        formTeamBtn.setOnAction(actionEvent -> {
+            manager.viewNewTeam(user);
+        });
     }
 
     /**
@@ -113,24 +111,22 @@ public class Dashboard {
     private void loadProjects() {
 
         projectsPane.getChildren().clear(); // clear the view
-        projectList.clear();
+        projects.clear();
 
         try {
             Connection connection = Manager.getConnection();
-            PreparedStatement statement = connection.prepareStatement("use ysofthr");
-            statement.execute();
-            ResultSet rs = connection.createStatement().executeQuery("SELECT * FROM projects");
+            ResultSet rs = connection.createStatement().executeQuery("select * from projects");
 
-            // store all data in array
+            // store all data in observable list
             while (rs.next())
             {
-                projectList.add(new Project(rs.getString("pr_name"), rs.getString("lang"), new Team(rs.getString("team")),
+                projects.add(new Project(rs.getString("pr_name"), rs.getString("lang"), new Team(rs.getString("team")),
                         rs.getDate("startDate").toLocalDate(), rs.getDate("dueDate").toLocalDate(),
                         rs.getDate("creationDate").toLocalDate(), rs.getString("description")));
             }
 
-            // adds projects to view
-            for (Project p: projectList)
+            // now add those projects to view
+            for (Project p: projects)
             {
                 // load view
                 AnchorPane loader = FXMLLoader.load(getClass().getResource("/app/view/project.fxml"));
@@ -154,7 +150,97 @@ public class Dashboard {
             }
 
         } catch (SQLException | IOException e) {
-            Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Network disconnected. Please try again later.");
+            Manager.showAlert(Alert.AlertType.WARNING, "", "Couldn't load projects.");
+        }
+    }
+
+    /**
+     * Load projects from DB and display them on dashboard.
+     */
+    private void loadTeams() {
+
+        teamsTilePane.getChildren().clear(); // clear the view
+        teams.clear();
+
+        try {
+            Connection connection = Manager.getConnection();
+            ResultSet rs = connection.createStatement().executeQuery("select * from teams");
+
+            // store all data in observable list
+            while (rs.next())
+            {
+                teams.add(new Team(rs.getString("t_name"), rs.getInt("manager"), rs.getInt("analyst"),
+                        rs.getInt("designer"), rs.getInt("programmer"), rs.getInt("tester")));
+            }
+
+            // now add those teams to view
+            for (Team t: teams)
+            {
+                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/app/view/team_tile.fxml"));
+                anchorPane.getStyleClass().add("teams-parent-tile");
+
+                Label teamName = (Label) anchorPane.getChildren().get(0);
+                teamName.setText(t.getName());
+
+                TilePane teamsParentTile = (TilePane) anchorPane.getChildren().get(1);
+
+                // create tile for titles; manager, analyst...
+                if (t.getManager() != 0) { // check if there is no person with this title
+                    AnchorPane managerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
+                    managerTile.getStyleClass().add("teams-indv-tile");
+                    Label name = (Label) managerTile.getChildren().get(0);
+                    name.setText(getEmployeeName(t.getManager()));
+                    Label title = (Label) managerTile.getChildren().get(1);
+                    title.setText("Manager");
+                    teamsParentTile.getChildren().add(managerTile);
+                }
+
+                if (t.getAnalyst() != 0) {
+                    AnchorPane analystTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
+                    analystTile.getStyleClass().add("teams-indv-tile");
+                    Label name = (Label) analystTile.getChildren().get(0);
+                    name.setText(getEmployeeName(t.getAnalyst()));
+                    Label title = (Label) analystTile.getChildren().get(1);
+                    title.setText("Analyst");
+                    teamsParentTile.getChildren().add(analystTile);
+                }
+
+                if (t.getDesigner() != 0) {
+                    AnchorPane designerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
+                    designerTile.getStyleClass().add("teams-indv-tile");
+                    Label name = (Label) designerTile.getChildren().get(0);
+                    name.setText(getEmployeeName(t.getDesigner()));
+                    Label title = (Label) designerTile.getChildren().get(1);
+                    title.setText("Designer");
+                    teamsParentTile.getChildren().add(designerTile);
+                }
+
+                if (t.getProgrammer() != 0) {
+                    AnchorPane programmerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
+                    programmerTile.getStyleClass().add("teams-indv-tile");
+                    Label name = (Label) programmerTile.getChildren().get(0);
+                    name.setText(getEmployeeName(t.getProgrammer()));
+                    Label title = (Label) programmerTile.getChildren().get(1);
+                    title.setText("Programmer");
+                    teamsParentTile.getChildren().add(programmerTile);
+                }
+
+                if (t.getTester() != 0) {
+                    AnchorPane testerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
+                    testerTile.getStyleClass().add("teams-indv-tile");
+                    Label name = (Label) testerTile.getChildren().get(0);
+                    name.setText(getEmployeeName(t.getTester()));
+                    Label title = (Label) testerTile.getChildren().get(1);
+                    title.setText("Tester");
+                    teamsParentTile.getChildren().add(testerTile);
+                }
+
+                // add parent pane to the dashboard
+                teamsTilePane.getChildren().add(anchorPane);
+            }
+
+        } catch (SQLException | IOException e) {
+            Manager.showAlert(Alert.AlertType.WARNING, "", "Couldn't load teams.");
         }
     }
 
@@ -180,7 +266,7 @@ public class Dashboard {
                 return null;
             }
             else {
-                project = new Project(resultSet.getString("pr_name"),
+                Project project = new Project(resultSet.getString("pr_name"),
                         resultSet.getString("lang"),
                         resultSet.getDate("startDate").toLocalDate(),
                         resultSet.getDate("dueDate").toLocalDate(),
@@ -250,6 +336,26 @@ public class Dashboard {
             imgView.setX((imgView.getFitWidth() - w) / 2);
             imgView.setY((imgView.getFitHeight() - h) / 2);
 
+        }
+    }
+
+    /**
+     * Get employee's name from database given his/her id.
+     * @param id ID of employee
+     * @return Full name of the employee
+     */
+    protected static String getEmployeeName(int id) {
+        try {
+            Connection connection = Manager.getConnection();
+            String sql = "select * from company where id = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet result = statement.executeQuery();
+            result.next();
+            return result.getString("first_name") + " " + result.getString("last_name");
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 }

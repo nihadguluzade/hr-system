@@ -37,6 +37,7 @@
       <ColumnConstraints />
       <ColumnConstraints />
          <ColumnConstraints />
+         <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints />
@@ -149,6 +150,11 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
          <RowConstraints />
          <RowConstraints />
          <RowConstraints />
@@ -272,17 +278,17 @@
          </GridPane.margin>
       </Label>
       <Label layoutX="201.0" layoutY="507.0" text="Java" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-      <Button mnemonicParsing="false" prefWidth="70.0" text="Close" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+      <Button mnemonicParsing="false" prefWidth="70.0" styleClass="mac-btn" text="Close" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" prefWidth="70.0" text="Edit" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+      <Button mnemonicParsing="false" prefWidth="70.0" styleClass="mac-btn" text="Edit" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets left="50.0" />
          </GridPane.margin>
       </Button>
-      <Button layoutX="201.0" layoutY="616.0" mnemonicParsing="false" prefWidth="70.0" text="Fire" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+      <Button layoutX="201.0" layoutY="616.0" mnemonicParsing="false" prefWidth="70.0" styleClass="mac-btn" text="Fire" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
          <GridPane.margin>
             <Insets right="50.0" />
          </GridPane.margin>

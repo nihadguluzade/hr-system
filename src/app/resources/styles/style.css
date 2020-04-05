@@ -6,6 +6,30 @@
     /*-fx-background-color: #ffffff;*/
 }
 
+.mac-btn {
+    -fx-background-color: linear-gradient(#42a1ec, #0070c9);
+    -fx-border-color: #07c;
+    -fx-border-width: 1px;
+    -fx-border-style: solid;
+    -fx-text-fill: #FFFFFF;
+    -fx-padding: 2px 10px;
+    -fx-border-radius: 4px;
+}
+
+.mac-btn:hover {
+    -fx-background-color: linear-gradient(#51a9ee, #147bcd);
+    -fx-border-color: #1482d0;
+}
+
+.mac-btn:focused {
+    -fx-border-color: rgba(131, 192, 253, 0.9);
+    -fx-border-width: 3px;
+}
+
+.mac-checkbox {
+
+}
+
 #adminBtn, #employeeBtn, #managerBtn, #analystBtn, #designerBtn, #coderBtn, #testerBtn {
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
@@ -91,17 +115,6 @@
     -fx-underline: true;
 }
 
-#logInBtn, #signUpFinishBtn, #backBtn, #createBtn, #closeBtn {
-    -fx-pref-width: 80px;
-    -fx-background-color: #4FC3F7;
-    -fx-border-radius: 2px;
-    -fx-text-fill: #FFFFFF;
-}
-
-#logInBtn:hover, #signUpFinishBtn:hover, #createBtn:hover, #closeBtn:hover {
-    -fx-background-color: #01579B;
-}
-
 #langBtn {
     -fx-background-image: url("/app/resources/images/gb-48.png");
     -fx-background-position: center;
@@ -116,4 +129,8 @@
 
 .project-info-label {
     -fx-fill: #6F7782;
+}
+
+#formTeamImages .button:hover {
+    -fx-border-color: transparent;
 }

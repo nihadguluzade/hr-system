@@ -25,7 +25,7 @@ public class NewProject {
     @FXML private Button createBtn;
     @FXML private Button closeBtn;
 
-    public void start(final Manager manager, final String[] programmingLangs, final ArrayList<String> teams, final Employee user) {
+    public void start(final Manager manager, final String[] programmingLangs, final Employee user) {
 
         Stage stage = (Stage) NewProjectPane.getScene().getWindow();
         stage.sizeToScene();
@@ -40,7 +40,7 @@ public class NewProject {
         // fill the choiceBoxes
         langSelector.getItems().addAll(programmingLangs);
         langSelector.getSelectionModel().selectFirst(); // sets default value of choicebox
-        teamSelector.getItems().addAll(teams);
+        teamSelector.getItems().addAll(Manager.getTeams());
         teamSelector.getSelectionModel().selectFirst(); // sets default value of choicebox
 
         Calendar calendar = Calendar.getInstance();

@@ -38,6 +38,8 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
@@ -51,6 +53,16 @@
       <RowConstraints />
    </rowConstraints>
    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
@@ -403,7 +415,7 @@
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <Label layoutX="262.0" layoutY="141.0" text="Programming Language" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="8">
+            <Label fx:id="langLabel" layoutX="262.0" layoutY="141.0" text="Programming Language" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="8">
                <font>
                   <Font size="14.0" />
                </font>
@@ -416,7 +428,7 @@
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </ChoiceBox>
-            <Button fx:id="signUpFinishBtn" mnemonicParsing="false" text="Finish" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+            <Button fx:id="signUpFinishBtn" mnemonicParsing="false" styleClass="mac-btn" text="Finish" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
@@ -424,7 +436,7 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Button>
-            <Button fx:id="backBtn" layoutX="256.0" layoutY="317.0" mnemonicParsing="false" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
+            <Button fx:id="backBtn" layoutX="256.0" layoutY="317.0" mnemonicParsing="false" styleClass="mac-btn" text="Back" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="CENTER">
                <font>
                   <Font size="14.0" />
                </font>
@@ -434,7 +446,7 @@
             </Button>
          </children>
       </GridPane>
-      <CheckBox fx:id="seniorCheck" mnemonicParsing="false" text="Senior" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <CheckBox fx:id="seniorCheck" mnemonicParsing="false" styleClass="mac-checkbox" text="Senior" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets top="8.0" />
          </GridPane.margin>

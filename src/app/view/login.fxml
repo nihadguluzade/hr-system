@@ -122,6 +122,11 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
    </rowConstraints>
    <children>
       <Label text="Choose Account Type" textAlignment="CENTER" textFill="#03a9f4" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
@@ -177,7 +182,7 @@
             <Font size="14.0" />
          </font>
       </Button>
-      <Button fx:id="logInBtn" mnemonicParsing="false" text="Log In" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+      <Button fx:id="logInBtn" mnemonicParsing="false" styleClass="mac-btn" text="Log In" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
          <font>
             <Font size="14.0" />
          </font>

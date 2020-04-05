@@ -27,7 +27,7 @@
                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                 </rowConstraints>
                                  <children>
-                                    <Button fx:id="importCandidateBtn" mnemonicParsing="false" styleClass="test-macos-btn" text="Import Candidate" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                    <Button fx:id="importCandidateBtn" mnemonicParsing="false" styleClass="mac-btn" text="Import Candidate" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                        <GridPane.margin>
                                           <Insets top="40.0" />
                                        </GridPane.margin></Button>
@@ -72,7 +72,7 @@
                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                    </rowConstraints>
                                    <children>
-                                       <Button fx:id="createProjectBtn" mnemonicParsing="false" styleClass="test-macos-btn" text="Create Project" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                       <Button fx:id="createProjectBtn" mnemonicParsing="false" styleClass="mac-btn" text="Create Project" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                            <GridPane.margin>
                                                <Insets top="40.0" />
                                            </GridPane.margin></Button>
@@ -117,7 +117,7 @@
                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                    </rowConstraints>
                                    <children>
-                                       <Button fx:id="formTeamBtn" mnemonicParsing="false" text="Form Team" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                                       <Button fx:id="formTeamBtn" mnemonicParsing="false" styleClass="mac-btn" text="Form Team" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                                            <GridPane.margin>
                                                <Insets top="40.0" />
                                            </GridPane.margin></Button>
@@ -180,117 +180,25 @@
                      <children>
                         <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <GridPane fx:id="TeamsGridPane" maxHeight="1.7976931348623157E308" maxWidth="860.0" minHeight="640.0" minWidth="860.0">
-                                <columnConstraints>
-                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                </columnConstraints>
-                                <rowConstraints>
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                </rowConstraints>
+                              <AnchorPane prefHeight="640.0" prefWidth="947.0">
                                  <children>
-                                    <Label alignment="CENTER" text="Teams" GridPane.halignment="LEFT" GridPane.valignment="TOP">
-                                       <GridPane.margin>
-                                          <Insets left="20.0" top="35.0" />
-                                       </GridPane.margin>
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Label>
-                                    <Label maxHeight="35.0" maxWidth="670.0" text="Here you can find all the information about the current employees and their teams." wrapText="true">
-                                       <GridPane.margin>
-                                          <Insets bottom="15.0" left="20.0" />
-                                       </GridPane.margin>
-                                    </Label>
-                                    <GridPane styleClass="teams-gridcell" GridPane.rowIndex="1">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Label styleClass="db-teams-name" text="Seniors" />
-                                          <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="teams-indv-tile" GridPane.rowIndex="1">
-                                             <children>
-                                                <Label alignment="TOP_CENTER" contentDisplay="CENTER" styleClass="db-teams-worker-name" text="John Doe" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <font>
-                                                      <Font name="System Bold" size="13.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets right="15.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" styleClass="db-teams-worker-title" text="Manager" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <padding>
-                                                      <Insets right="15.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                             <opaqueInsets>
-                                                <Insets />
-                                             </opaqueInsets>
-                                             <GridPane.margin>
-                                                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                             </GridPane.margin>
-                                          </AnchorPane>
-                                       </children>
-                                       <GridPane.margin>
-                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                       </GridPane.margin>
-                                    </GridPane>
-                                    <GridPane styleClass="teams-gridcell" GridPane.rowIndex="2">
-                                      <columnConstraints>
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                      </columnConstraints>
-                                      <rowConstraints>
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                      </rowConstraints>
-                                       <children>
-                                          <Label styleClass="db-teams-name" text="Finance (7 members)" GridPane.valignment="TOP">
-                                             <GridPane.margin>
-                                                <Insets top="15.0" />
-                                             </GridPane.margin>
-                                          </Label>
-                                          <AnchorPane layoutX="326.0" layoutY="88.0" prefHeight="200.0" prefWidth="200.0" styleClass="teams-indv-tile" GridPane.rowIndex="1">
-                                             <children>
-                                                <Label alignment="TOP_CENTER" contentDisplay="CENTER" styleClass="db-teams-worker-name" text="Tom Cruise" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <font>
-                                                      <Font name="System Bold" size="13.0" />
-                                                   </font>
-                                                   <padding>
-                                                      <Insets right="15.0" top="9.0" />
-                                                   </padding>
-                                                </Label>
-                                                <Label alignment="CENTER" contentDisplay="CENTER" styleClass="db-teams-worker-title" text="Analyst" textAlignment="CENTER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                                   <padding>
-                                                      <Insets right="15.0" top="24.0" />
-                                                   </padding>
-                                                </Label>
-                                             </children>
-                                             <GridPane.margin>
-                                                <Insets />
-                                             </GridPane.margin>
-                                          </AnchorPane>
-                                       </children>
-                                       <GridPane.margin>
-                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                       </GridPane.margin>
-                                    </GridPane>
+                                    <AnchorPane maxHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="490.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <Label alignment="CENTER" text="Teams" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </Label>
+                                        <Label maxHeight="35.0" maxWidth="670.0" text="Here you can find all the information about the current employees and their teams." wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0">
+                                        </Label>
+                                    </AnchorPane>
+
+
+                                     <TilePane fx:id="teamsTilePane" prefColumns="1" prefHeight="200.0" prefTileHeight="180.0" prefWidth="200.0" vgap="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+                                       <padding>
+                                          <Insets left="25.0" right="25.0" />
+                                       </padding></TilePane>
                                  </children>
-                                 <padding>
-                                    <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                 </padding>
-                              </GridPane>
+                              </AnchorPane>
                            </content>
                         </ScrollPane>
                      </children></AnchorPane>
@@ -328,7 +236,7 @@
                   <Insets right="15.0" />
                </padding>
             </Label>
-            <Button fx:id="logOutBtn" mnemonicParsing="false" text="Sign Out" />
+            <Button fx:id="logOutBtn" mnemonicParsing="false" styleClass="mac-btn" text="Sign Out" />
         </items>
       </ToolBar>
    </children>

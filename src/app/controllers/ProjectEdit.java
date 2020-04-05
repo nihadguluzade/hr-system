@@ -25,7 +25,7 @@ public class ProjectEdit {
     @FXML private DatePicker dueDatePicker;
     @FXML private TextArea descriptionArea;
 
-    public void start(final Manager manager, final Project project, final String[] programmingLangs, final ArrayList<String> teams,
+    public void start(final Manager manager, final Project project, final String[] programmingLangs,
                       final Employee employee) {
 
         Stage stage = (Stage) ProjectEditPane.getScene().getWindow();
@@ -36,7 +36,7 @@ public class ProjectEdit {
         Scene scene = ProjectEditPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
-        initializeFields(project, programmingLangs, teams);
+        initializeFields(project, programmingLangs);
 
         saveBtn.setOnAction(actionEvent -> {
             Project modifiedProject = saveChanges(project); // 'project' should be final, java rule
@@ -48,11 +48,11 @@ public class ProjectEdit {
         });
     }
 
-    private void initializeFields(Project project, String[] programmingLangs, ArrayList<String> teams) {
+    private void initializeFields(Project project, String[] programmingLangs) {
         nameField.setText(project.getName());
         langField.getItems().addAll(programmingLangs);
         langField.getSelectionModel().select(project.getLanguage());
-        teamChooser.getItems().addAll(teams);
+        teamChooser.getItems().addAll(Manager.getTeams());
         teamChooser.getSelectionModel().selectFirst();
         dueDatePicker.setValue(project.getDueDate());
         if (project.getDescription() != null)
