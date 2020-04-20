@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -20,8 +19,8 @@ import java.util.ArrayList;
 
 public class Manager extends Main {
 
-    private Scene mainScene;
-    private Scene projectInfoScene;
+    private static Scene mainScene;
+    private static Scene projectInfoScene;
     private static Connection connection;
     private final static String[] ACCOUNTING_PROGRAMS = {"Program 1", "Program 2"};
     private final static String[] PROGRAMMING_LANGS = {"C", "Java", "Python", "Go", "JavaScript", ".NET"};
@@ -141,106 +140,184 @@ public class Manager extends Main {
         }
     }
 
-    public void viewLoginPage() {
+    public static void viewLoginPage() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/login.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/login.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             Login controller = loader.getController();
-            controller.start(this);
+            controller.start();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void viewSignUpPage(Employee loggedUser) {
+    public static void viewSignUpPage(Employee loggedUser) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_employee_form.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/new_employee_form.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             EmployeeRegister controller = loader.getController();
-            controller.start(this, loggedUser, ACCOUNTING_PROGRAMS, PROGRAMMING_LANGS);
+            controller.start(loggedUser, ACCOUNTING_PROGRAMS, PROGRAMMING_LANGS);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void viewDashboard(Employee user) {
+    public static void viewDashboard(Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/dashboard.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/dashboard.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             Dashboard controller = loader.getController();
-            controller.start(this, user);
+            controller.start(user);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void viewEmployeeInfo() {
+    public static void viewEmployeeInfo(Employee employee) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/employee_info.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/employee_info.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             EmployeeInfo controller = loader.getController();
-            controller.start(this);
+            controller.start(employee);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void viewNewProjectPane(Employee user) {
+    public static void viewNewProjectPane(Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_project.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/new_project.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             NewProject controller = loader.getController();
-            controller.start(this, PROGRAMMING_LANGS, user);
+            controller.start(PROGRAMMING_LANGS, user);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void popProjectInfo(Project project, Employee user) {
+    public static void popProjectInfo(Project project, Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/project_info.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/project_info.fxml"), Strings.GetBundle());
             projectInfoScene = new Scene(loader.load()); // create new scene, otherwise scene will not change after
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setScene(projectInfoScene);
             stage.show();
             ProjectInfo controller = loader.getController();
-            controller.start(this, project, user);
+            controller.start(project, user);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void viewProjectInfo(Project project, Employee user) {
+    public static void viewProjectInfo(Project project, Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/project_info.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/project_info.fxml"), Strings.GetBundle());
             projectInfoScene.setRoot(loader.load());
             ProjectInfo controller = loader.getController();
-            controller.start(this, project, user);
+            controller.start(project, user);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void viewProjectEdit(Project project, Employee user) {
+    public static void viewProjectEdit(Project project, Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/project_edit.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/project_edit.fxml"), Strings.GetBundle());
             projectInfoScene.setRoot(loader.load());
             ProjectEdit controller = loader.getController();
-            controller.start(this, project, PROGRAMMING_LANGS, user);
+            controller.start(project, PROGRAMMING_LANGS, user);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void viewNewTeam(Employee user) {
+    public static void viewNewTeam(Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("view/new_team.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/new_team.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             FormTeam controller = loader.getController();
-            controller.start(this, user);
+            controller.start(user);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    public static void viewTeamEdit(Team team, final Employee user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/team_edit.fxml"), Strings.GetBundle());
+            mainScene.setRoot(loader.load());
+            TeamEdit controller = loader.getController();
+            controller.start(team, user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Return employee's id given his/her full name.
+     * @param fullName First and last name
+     * @return ID
+     */
+    public static Integer getEmployeeId(String fullName) {
+        try {
+
+            if (fullName == null) return null;
+
+            String firstName = "";
+            String lastName = "";
+
+            if(fullName.split("\\w+").length>1)
+            {
+                lastName = fullName.substring(fullName.lastIndexOf(" ") + 1);
+                firstName = fullName.substring(0, fullName.lastIndexOf(' '));
+            }
+            else firstName = fullName;
+
+            Connection connection = Manager.getConnection();
+            String sql = "select * from company where first_name = ? and last_name = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, firstName);
+            statement.setString(2, lastName);
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                return resultSet.getInt("id");
+            }
+
+            return null;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
+     * Gets employee names according to title from database.
+     * @param title Title; Manager, Analyst..
+     * @return Employee names in ArrayList.
+     */
+    public static ArrayList<String> getEmployeeList(String title) {
+        try {
+
+            Connection connection = Manager.getConnection();
+            String sql = "select * from company where title = ?";
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, title);
+            ResultSet resultSet = statement.executeQuery();
+
+            ArrayList<String> employees = new ArrayList<>(); // store employee names here
+
+            while (resultSet.next()) {
+                String fullName = resultSet.getString("first_name") + " " + resultSet.getString("last_name");
+                employees.add(fullName);
+            }
+
+            return employees;
+        } catch (SQLException e) {
+            Manager.showAlert(Alert.AlertType.WARNING, "Exception", "ERR_GET_EMPLOYEES");
+            e.printStackTrace();
+            return null;
         }
     }
 

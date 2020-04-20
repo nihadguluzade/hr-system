@@ -30,9 +30,8 @@ public class Login {
 
     /**
      * This method is called whenever the view linked to it is opened.
-     * @param manager For calling another pages.
      */
-    public void start(final Manager manager) {
+    public void start() {
         Scene scene = loginGridPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
@@ -93,7 +92,7 @@ public class Login {
             if (user != null)
             {
                 user.setLogged(true);
-                manager.viewDashboard(user);
+                Manager.viewDashboard(user);
             }
             else
                 Manager.showAlert(Alert.AlertType.ERROR, "Invalid user", "No records found. Try again.");
@@ -107,7 +106,7 @@ public class Login {
         firstTimeLink.setOnMouseClicked(mouseEvent -> {
             if (isFirstTime())
             {
-                manager.viewSignUpPage(new Employee(true, false));
+                Manager.viewSignUpPage(new Employee(true, false));
             }
             else
             {

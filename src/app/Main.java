@@ -46,7 +46,7 @@ public class Main extends Application {
         catch (Exception e)
         {
             Manager.showAlert(Alert.AlertType.ERROR, "No connection",
-                    "Localhost connection is not open. To continue using this application please open the localhost (127.0.0.1) connection.");
+                    "No connection to database. To continue using this application, please make sure that the MySQL is running.");
             e.printStackTrace();
         }
     }

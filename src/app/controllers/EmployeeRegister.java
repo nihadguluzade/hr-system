@@ -42,7 +42,7 @@ public class EmployeeRegister {
     private boolean isTypeChosen = false;
     private boolean newAdmin;
 
-    public void start(final Manager manager, final Employee loggedUser, final String[] accountingPrograms, final String[] programmingLangs) {
+    public void start(final Employee loggedUser, final String[] accountingPrograms, final String[] programmingLangs) {
 
         Stage stage = (Stage) signUpGridPane.getScene().getWindow();
         stage.sizeToScene();
@@ -143,8 +143,8 @@ public class EmployeeRegister {
         });
 
         backBtn.setOnAction(actionEvent -> {
-            if (loggedUser.isAdmin() && !loggedUser.isLogged()) manager.viewLoginPage();
-            else manager.viewDashboard(loggedUser);
+            if (loggedUser.isAdmin() && !loggedUser.isLogged()) Manager.viewLoginPage();
+            else Manager.viewDashboard(loggedUser);
         });
 
         // force the fields to be numeric only
@@ -210,8 +210,8 @@ public class EmployeeRegister {
                     passwordField.getText(), Long.parseLong(phoneNoField.getText()), birthdate, nationField.getText(),
                     Integer.parseInt(salaryField.getText()), accounting, skill, newAdmin);
 
-            if (loggedUser.isLogged()) manager.viewDashboard(loggedUser);
-            else manager.viewLoginPage();
+            if (loggedUser.isLogged()) Manager.viewDashboard(loggedUser);
+            else Manager.viewLoginPage();
         });
     }
 

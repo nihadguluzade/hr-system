@@ -10,9 +10,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -21,10 +19,7 @@ import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.Calendar;
 
 public class Dashboard {
@@ -43,7 +38,7 @@ public class Dashboard {
     private ObservableList<Team> teams = FXCollections.observableArrayList();
 
 
-    public void start(final Manager manager, final Employee user) {
+    public void start(final Employee user) {
 
         Stage stage = (Stage) MainPane.getScene().getWindow();
         stage.sizeToScene();
@@ -66,6 +61,7 @@ public class Dashboard {
         loadProjects();
         loadTeams();
 
+        // detect mouse on projects tile on Projects tab of dashboard
         for (Node node: projectsPane.lookupAll(".project-tile"))
         {
             node.setOnMouseEntered(mouseEvent -> {
@@ -76,37 +72,74 @@ public class Dashboard {
                 node.setStyle("-fx-border-width: 1px; -fx-border-color: #4FC3F7");
             });
 
-            node.setOnMouseClicked(mouseEvent ->
-            {
+            node.setOnMouseClicked(mouseEvent -> {
                 GridPane gridPane = (GridPane) mouseEvent.getSource();
                 Label nameLabel = (Label) gridPane.lookup("#projectNameLabel");
                 Project project = findProject(nameLabel.getText());
-                manager.popProjectInfo(project, user);
+                Manager.popProjectInfo(project, user);
             });
         }
 
+        // detect mouse on employee tile on Teams tab of dashboard
+        for (Node node: teamsTilePane.lookupAll(".teams-indv-tile"))
+        {
+            node.setOnMouseEntered(mouseEvent -> {
+                node.setStyle("-fx-border-width: 1px; -fx-border-color: #42a1ec");
+            });
 
+            node.setOnMouseExited(mouseEvent -> {
+                node.setStyle("-fx-border-width: 1px; -fx-border-color: #e0e0e0");
+            });
+
+            node.setOnMouseClicked(mouseEvent -> {
+                AnchorPane anchorPane = (AnchorPane) mouseEvent.getSource();
+                Label employeeNameLabel = (Label) anchorPane.lookup("#employeeName");
+                Label employeeTitleLabel = (Label) anchorPane.lookup("#employeeTitle");
+                Employee employee = findEmployee(employeeNameLabel.getText(), employeeTitleLabel.getText());
+                Manager.viewEmployeeInfo(employee);
+            });
+        }
+
+        // detect mouse on Edit label on Teams tab on dashboard
+        for (Node node: teamsTilePane.lookupAll(".teams-parent-tile"))
+        {
+            Label editLabel = (Label) node.lookup(".teamEditLabel");
+            Label teamName = (Label) node.lookup(".teamNameLabel");
+            Team team = findTeam(teamName.getText());
+
+            editLabel.setOnMouseEntered(mouseEvent -> {
+                editLabel.setStyle("-fx-underline: true");
+            });
+
+            editLabel.setOnMouseExited(mouseEvent -> {
+                editLabel.setStyle("-fx-underline: false");
+            });
+
+            editLabel.setOnMouseClicked(mouseEvent -> {
+                Manager.viewTeamEdit(team, user);
+            });
+        }
 
         logOutBtn.setOnAction(actionEvent -> {
             user.setLogged(false);
-            manager.viewLoginPage();
+            Manager.viewLoginPage();
         });
 
         importCandidateBtn.setOnAction(actionEvent -> {
-            manager.viewSignUpPage(user);
+            Manager.viewSignUpPage(user);
         });
 
         createProjectBtn.setOnAction(actionEvent -> {
-            manager.viewNewProjectPane(user);
+            Manager.viewNewProjectPane(user);
         });
 
         formTeamBtn.setOnAction(actionEvent -> {
-            manager.viewNewTeam(user);
+            Manager.viewNewTeam(user);
         });
     }
 
     /**
-     * Load projects from DB and display them on dashboard.
+     * Load projects from DB and display them on dashboard. Also, refreshes the page.
      */
     private void loadProjects() {
 
@@ -155,7 +188,7 @@ public class Dashboard {
     }
 
     /**
-     * Load projects from DB and display them on dashboard.
+     * Load projects from DB and display them on dashboard. Also, refreshes the page.
      */
     private void loadTeams() {
 
@@ -181,8 +214,12 @@ public class Dashboard {
 
                 Label teamName = (Label) anchorPane.getChildren().get(0);
                 teamName.setText(t.getName());
+                teamName.getStyleClass().add("teamNameLabel");
 
-                TilePane teamsParentTile = (TilePane) anchorPane.getChildren().get(1);
+                Label editLabel = (Label) anchorPane.getChildren().get(1);
+                editLabel.getStyleClass().add("teamEditLabel");
+
+                TilePane teamsParentTile = (TilePane) anchorPane.getChildren().get(2);
 
                 // create tile for titles; manager, analyst...
                 if (t.getManager() != 0) { // check if there is no person with this title
@@ -283,6 +320,67 @@ public class Dashboard {
     }
 
     /**
+     * Gets employee record from the DB.
+     * @return Employee
+     */
+    private Employee findEmployee(String name, String title) {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "select * from company where first_name = ? and last_name = ? and title = ?";
+        Connection connection = Manager.getConnection();
+
+        String fullName = name;
+        String firstName = "";
+        String lastName = "";
+
+        if(fullName.split("\\w+").length>1)
+        {
+            lastName = fullName.substring(fullName.lastIndexOf(" ") + 1);
+            firstName = fullName.substring(0, fullName.lastIndexOf(' '));
+        }
+        else firstName = fullName;
+
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, firstName);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setString(3, title);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next())
+            {
+                Manager.showAlert(Alert.AlertType.ERROR, "", "Something is not right. Employee record is not found on the database.");
+                return null;
+            }
+            else {
+                Employee record = new Employee(
+                        resultSet.getInt("id"),
+                        resultSet.getDate("acceptdate").toLocalDate(),
+                        resultSet.getString("title"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getLong("phone"),
+                        resultSet.getDate("birthdate").toLocalDate(),
+                        resultSet.getString("nationality"),
+                        resultSet.getInt("salary"),
+                        resultSet.getString("accounting"),
+                        resultSet.getString("skills"),
+                        resultSet.getBoolean("admin")
+                );
+                return record;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * Utility method to get the team record from database.
      * @param teamName Name of the team to find it in database
      * @return Team that works on the project
@@ -294,18 +392,17 @@ public class Dashboard {
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, teamName);
             ResultSet resultSet = statement.executeQuery();
-
-            Team team = null;
+            Team team;
 
             if (resultSet.next())
             {
                team = new Team(resultSet.getString("t_name"), resultSet.getInt("manager"),
                        resultSet.getInt("analyst"), resultSet.getInt("designer"), resultSet.getInt("programmer"),
                        resultSet.getInt("tester"));
+                return team;
             }
 
-            return team;
-
+            return null;
         } catch (Exception e) {
             e.printStackTrace();
             return null;
@@ -354,8 +451,12 @@ public class Dashboard {
             result.next();
             return result.getString("first_name") + " " + result.getString("last_name");
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("Exception at getEmployeeName:454 : Employee name not found.");
             return null;
         }
+    }
+
+    private void updateTeam(String teamName, String newName) {
+
     }
 }

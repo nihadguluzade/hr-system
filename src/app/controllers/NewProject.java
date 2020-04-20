@@ -25,7 +25,7 @@ public class NewProject {
     @FXML private Button createBtn;
     @FXML private Button closeBtn;
 
-    public void start(final Manager manager, final String[] programmingLangs, final Employee user) {
+    public void start(final String[] programmingLangs, final Employee user) {
 
         Stage stage = (Stage) NewProjectPane.getScene().getWindow();
         stage.sizeToScene();
@@ -84,12 +84,12 @@ public class NewProject {
 
             createProject(projectNameField.getText(), descriptionArea.getText(), startDatePicker.getValue(),
                     dueDatePicker.getValue(), creationDate, lang, team);
-            manager.viewDashboard(user);
+            Manager.viewDashboard(user);
         });
 
         closeBtn.setOnAction(actionEvent -> {
             //manager.showAlert(Alert.AlertType.CONFIRMATION, "Confirmation", "Do you really want to close?");
-            manager.viewDashboard(user);
+            Manager.viewDashboard(user);
         });
     }
 

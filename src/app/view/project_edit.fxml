@@ -30,7 +30,7 @@
                 <Button fx:id="discardBtn" mnemonicParsing="false" styleClass="mac-btn" text="Discard" GridPane.halignment="RIGHT" />
                 <Button fx:id="saveBtn" mnemonicParsing="false" styleClass="mac-btn" text="Save" GridPane.halignment="RIGHT">
                     <GridPane.margin>
-                        <Insets right="68.0" />
+                        <Insets right="80.0" />
                     </GridPane.margin>
                 </Button>
                 <Separator maxWidth="1.7976931348623157E308" valignment="BOTTOM" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />

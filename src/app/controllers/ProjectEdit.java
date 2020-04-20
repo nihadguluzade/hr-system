@@ -12,7 +12,6 @@ import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
-import java.util.ArrayList;
 
 public class ProjectEdit {
 
@@ -25,7 +24,7 @@ public class ProjectEdit {
     @FXML private DatePicker dueDatePicker;
     @FXML private TextArea descriptionArea;
 
-    public void start(final Manager manager, final Project project, final String[] programmingLangs,
+    public void start(final Project project, final String[] programmingLangs,
                       final Employee employee) {
 
         Stage stage = (Stage) ProjectEditPane.getScene().getWindow();
@@ -40,11 +39,11 @@ public class ProjectEdit {
 
         saveBtn.setOnAction(actionEvent -> {
             Project modifiedProject = saveChanges(project); // 'project' should be final, java rule
-            manager.viewProjectInfo(modifiedProject, employee);
+            Manager.viewProjectInfo(modifiedProject, employee);
         });
 
         discardBtn.setOnAction(actionEvent -> {
-            manager.viewProjectInfo(project, employee);
+            Manager.viewProjectInfo(project, employee);
         });
     }
 

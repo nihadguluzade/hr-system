@@ -26,7 +26,7 @@ public class ProjectInfo {
     @FXML private Label dueDateLabel;
     @FXML private Label description;
 
-    public void start(final Manager manager, final Project project, final Employee employee) {
+    public void start(final Project project, final Employee employee) {
 
         Stage stage = (Stage) ProjectInfoPane.getScene().getWindow();
         stage.sizeToScene();
@@ -46,7 +46,7 @@ public class ProjectInfo {
         });
 
         modifyBtn.setOnAction(actionEvent -> {
-            manager.viewProjectEdit(project, employee);
+            Manager.viewProjectEdit(project, employee);
         });
     }
 
@@ -58,15 +58,15 @@ public class ProjectInfo {
         nameLabel.setText(project.getName());
         langLabel.setText(project.getLanguage());
 
-        if (project.getTeam().getName() == null)
-        {
+        try {
+            if (project.getTeam().getName() != null) {
+                teamLabel.setText(project.getTeam().getName());
+                managerLabel.setText(Dashboard.getEmployeeName(project.getTeam().getManager()));
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Team not found");
             managerLabel.setText("-");
             teamLabel.setText("-");
-        }
-        else
-        {
-            teamLabel.setText(project.getTeam().getName());
-            managerLabel.setText(Dashboard.getEmployeeName(project.getTeam().getManager()));
         }
 
         dueDateLabel.setText(project.getDueDate().toString());

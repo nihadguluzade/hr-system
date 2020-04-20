@@ -10,7 +10,7 @@
    <children>
       <TabPane prefHeight="680.0" prefWidth="980.0" side="LEFT" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <tabs>
-          <Tab text="Dashboard">
+          <Tab fx:id="dashboardTab" text="Dashboard">
             <content>
               <AnchorPane fx:id="DashboardTab" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="db-tab">
                      <children>
@@ -159,7 +159,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="Projects">
+          <Tab fx:id="projectsTab" text="Projects">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="db-projects">
                      <children>
@@ -174,7 +174,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="Company">
+            <Tab fx:id="companyTab" text="Company">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="tb-teams">
                      <children>
