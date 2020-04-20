@@ -37,7 +37,6 @@ public class Dashboard {
     private ObservableList<Project> projects = FXCollections.observableArrayList();
     private ObservableList<Team> teams = FXCollections.observableArrayList();
 
-
     public void start(final Employee user) {
 
         Stage stage = (Stage) MainPane.getScene().getWindow();
@@ -91,12 +90,13 @@ public class Dashboard {
                 node.setStyle("-fx-border-width: 1px; -fx-border-color: #e0e0e0");
             });
 
+            // get employee info
             node.setOnMouseClicked(mouseEvent -> {
                 AnchorPane anchorPane = (AnchorPane) mouseEvent.getSource();
                 Label employeeNameLabel = (Label) anchorPane.lookup("#employeeName");
                 Label employeeTitleLabel = (Label) anchorPane.lookup("#employeeTitle");
                 Employee employee = findEmployee(employeeNameLabel.getText(), employeeTitleLabel.getText());
-                Manager.viewEmployeeInfo(employee);
+                Manager.viewEmployeeInfo(employee, user);
             });
         }
 
@@ -351,7 +351,8 @@ public class Dashboard {
 
             if(!resultSet.next())
             {
-                Manager.showAlert(Alert.AlertType.ERROR, "", "Something is not right. Employee record is not found on the database.");
+                Manager.showAlert(Alert.AlertType.ERROR, "",
+                        "Something is not right. Employee record is not found on the database.");
                 return null;
             }
             else {

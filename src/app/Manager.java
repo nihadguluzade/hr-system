@@ -5,6 +5,8 @@ import app.controllers.*;
 import app.classes.Employee;
 import app.classes.Project;
 import app.resources.Strings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -110,6 +112,27 @@ public class Manager extends Main {
         System.out.println("Table `teams` checked.");
     }
 
+    public static ArrayList<String> DBGetTitles() {
+        String db = "use ysofthr;";
+        String sql = "select column_name from information_schema.columns where table_name = 'teams'";
+        ResultSet resultSet;
+        ArrayList<String> titles = new ArrayList<>();
+        try {
+            PreparedStatement statement = connection.prepareStatement(db);
+            statement.execute();
+            statement = connection.prepareStatement(sql);
+            resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                titles.add(resultSet.getString(1));
+            }
+            titles.remove(0); // remove first item because it is t_name
+            return titles;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public static void showAlert(Alert.AlertType alertType, String title, String message) {
         Alert alert = new Alert(alertType);
         alert.initModality(Modality.APPLICATION_MODAL); // set window on top of everyone
@@ -173,12 +196,12 @@ public class Manager extends Main {
         }
     }
 
-    public static void viewEmployeeInfo(Employee employee) {
+    public static void viewEmployeeInfo(Employee employee, Employee user) {
         try {
             FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/employee_info.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             EmployeeInfo controller = loader.getController();
-            controller.start(employee);
+            controller.start(employee, user, PROGRAMMING_LANGS);
         } catch (IOException e) {
             e.printStackTrace();
         }

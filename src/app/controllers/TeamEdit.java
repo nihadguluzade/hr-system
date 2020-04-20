@@ -154,7 +154,13 @@ public class TeamEdit {
             Integer designerID = Manager.getEmployeeId(designer);
             Integer programmerID = Manager.getEmployeeId(programmer);
             Integer testerID = Manager.getEmployeeId(tester);
-            String sql = "UPDATE teams SET t_name = ?, manager = ?, analyst = ?, designer = ?, programmer = ?, tester = ? WHERE t_name = ?";
+            String sql = "UPDATE teams " +
+                    "SET t_name = ?, " +
+                    "manager = ?, analyst = ?, " +
+                    "designer = ?, " +
+                    "programmer = ?, " +
+                    "tester = ? " +
+                    "WHERE t_name = ?";
 
             preparedStatement = con.prepareStatement(sql);
             preparedStatement.setString(1, newTeamName);
