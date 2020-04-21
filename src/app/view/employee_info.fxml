@@ -40,6 +40,8 @@
          <ColumnConstraints />
          <ColumnConstraints />
          <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints />
@@ -152,6 +154,16 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
          <RowConstraints />
          <RowConstraints />
          <RowConstraints />
@@ -342,7 +354,7 @@
                <Insets left="10.0" top="64.0" />
             </GridPane.margin>
          </TextField>
-         <ComboBox fx:id="titleCombo" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <ComboBox fx:id="titleCombo" onAction="#titleListener" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          <Label alignment="CENTER_RIGHT" layoutX="320.0" layoutY="230.0" minWidth="70.0" text="Senior:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <font>
                <Font size="13.0" />

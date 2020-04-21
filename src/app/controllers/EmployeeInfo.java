@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.Manager;
 import app.classes.Employee;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -50,7 +51,7 @@ public class EmployeeInfo {
     @FXML private CheckBox seniorCheck;
     private boolean admin;
 
-    public void start(Employee employee, final Employee user, final String[] skillsList) {
+    public void start(Employee employee, final Employee user) {
         Stage stage = (Stage) employeeInfoPane.getScene().getWindow();
         stage.sizeToScene();
         stage.setTitle("Employee Details");
@@ -67,11 +68,16 @@ public class EmployeeInfo {
         });
 
         fireBtn.setOnAction(actionEvent -> {
+            if (employee.getId() == user.getId()) {
+                Manager.showAlert(Alert.AlertType.WARNING, "Error", "You cannot fire the currently logged user.");
+                return;
+            }
             fireEmployee(employee);
+            Manager.viewDashboard(user);
         });
 
         editBtn.setOnAction(actionEvent -> {
-            editModeOn(employee, skillsList);
+            editModeOn(employee);
         });
 
         seniorCheck.setOnMouseClicked(mouseEvent -> {
@@ -93,7 +99,10 @@ public class EmployeeInfo {
             Date birthDate = Date.valueOf(birthDatePicker.getValue());
             String country = countryField.getText();
             int salary = Integer.parseInt(salaryField.getText());
-            String skill = skillsCombo.getValue().toString();
+            String skill = null;
+
+            if (title.equals("Programmer"))
+                skill = skillsCombo.getValue().toString();
 
             // do not change title if the person is in team (screws up the system otherwise)
             if (isEmployeeInTeam(employee) && !title.equals(employee.getTitle()))
@@ -106,6 +115,7 @@ public class EmployeeInfo {
             savechanges(employee, firstName, lastName, phone, acceptDate, title, mail, birthDate, country, salary,
                     skill, admin);
             editModeOff();
+            initializeLabels(employee);
         });
 
         discardBtn.setOnAction(actionEvent -> {
@@ -137,6 +147,7 @@ public class EmployeeInfo {
 
         if (employee.getTitle().equals("Programmer")) {
             skills.setText(employee.getSkill());
+            skillsLabel.setVisible(true);
         }
         else {
             skillsLabel.setVisible(false);
@@ -152,7 +163,7 @@ public class EmployeeInfo {
     /**
      * Hide labels and show fields, for editing. Inverse of editModeOff().
      */
-    private void editModeOn(Employee employee, final String[] skillsList) {
+    private void editModeOn(Employee employee) {
         fullName.setVisible(false);
         phone.setVisible(false);
         //id.setVisible(false);
@@ -181,7 +192,7 @@ public class EmployeeInfo {
         acceptDatePicker.setVisible(true);
         salaryField.setVisible(true);
         seniorCheck.setVisible(true);
-        skillsCombo.setVisible(true);
+//        skillsCombo.setVisible(true);
         saveBtn.setVisible(true);
         discardBtn.setVisible(true);
 
@@ -202,18 +213,19 @@ public class EmployeeInfo {
         phoneField.setText(phone.getText());
         //idField.setText(id.getText());
         titleCombo.getItems().addAll(Manager.DBGetTitles());
-        titleCombo.getSelectionModel().selectFirst();
+        titleCombo.getSelectionModel().select(employee.getTitle());
+
         mailField.setText(mail.getText());
         birthDatePicker.setValue(employee.getBirthdate());
         countryField.setText(employee.getNationality());
+
         teamSelector.getItems().addAll(Manager.getTeams());
         teamSelector.getSelectionModel().selectFirst();
+
         acceptDatePicker.setValue(employee.getAcceptdate());
         salaryField.setText(Integer.toString(employee.getSalary()));
-        if (employee.isAdmin()) seniorCheck.setSelected(true);
-        else seniorCheck.setSelected(false);
-        skillsCombo.getItems().addAll(skillsList);
-        skillsCombo.getSelectionModel().selectFirst();
+
+        seniorCheck.setSelected(true);
     }
 
     /**
@@ -241,14 +253,17 @@ public class EmployeeInfo {
         phoneField.setVisible(false);
         idField.setVisible(false);
         titleCombo.setVisible(false);
+        titleCombo.getItems().clear();
         mailField.setVisible(false);
         birthDatePicker.setVisible(false);
         countryField.setVisible(false);
         teamSelector.setVisible(false);
+        teamSelector.getItems().clear();
         acceptDatePicker.setVisible(false);
         salaryField.setVisible(false);
         seniorCheck.setVisible(false);
         skillsCombo.setVisible(false);
+        skillsCombo.getItems().clear();
         saveBtn.setVisible(false);
         discardBtn.setVisible(false);
     }
@@ -343,7 +358,8 @@ public class EmployeeInfo {
             preparedStatement.setDate(7, birthDate);
             preparedStatement.setString(8, country);
             preparedStatement.setInt(9, salary);
-            preparedStatement.setString(10, skills);
+            if (skills != null) preparedStatement.setString(10, skills);
+            else preparedStatement.setNull(10, Types.VARCHAR);
             preparedStatement.setBoolean(11, admin);
             preparedStatement.setInt(12, employee.getId());
 
@@ -396,6 +412,21 @@ public class EmployeeInfo {
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
+        }
+    }
+
+    /**
+     * Listener for the titleCombo while editing. If programmer, show the language selections.
+     * @param event Changes
+     */
+    @FXML
+    private void titleListener(ActionEvent event) {
+        if (titleCombo.getSelectionModel().getSelectedItem().equals("Programmer"))
+        {
+            skillsLabel.setVisible(true);
+            skillsCombo.setVisible(true);
+            skillsCombo.getItems().addAll(Manager.getProgrammingLangs());
+            skillsCombo.getSelectionModel().selectFirst();
         }
     }
 }

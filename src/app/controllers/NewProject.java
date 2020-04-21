@@ -78,8 +78,7 @@ public class NewProject {
             try {
                 team = teamSelector.getValue().toString();
             } catch (NullPointerException e) {
-                Manager.showAlert(Alert.AlertType.WARNING, "Exception", "ERR_NO_TEAM_FOUND");
-                e.printStackTrace();
+                Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Project created without team.");
             }
 
             createProject(projectNameField.getText(), descriptionArea.getText(), startDatePicker.getValue(),

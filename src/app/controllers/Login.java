@@ -2,6 +2,8 @@ package app.controllers;
 
 import app.Manager;
 import app.classes.Employee;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -23,6 +25,7 @@ public class Login {
     @FXML private Button logInBtn;
     @FXML private ChoiceBox langBtn;
     @FXML private Label firstTimeLink;
+    @FXML private Button testBtn;
 
     private boolean isTypeChosen = false;
     private boolean isAdmin = false;
@@ -114,6 +117,18 @@ public class Login {
                         "There is already at least one Senior exists on the system.");
             }
         });
+
+        // TODO: make test button funtional
+        testBtn.setVisible(false);
+        // test button is for development purpose. Creates random employees, projects, teams etc...
+        testBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                //createEmployees();
+                //createProjects();
+                //createTeams();
+            }
+        });
     }
 
     /**
@@ -185,5 +200,29 @@ public class Login {
             e.printStackTrace();
             return false;
         }
+    }
+
+    // TODO: finish it
+    private void createEmployees() {
+        Connection connection = Manager.getConnection();
+        String sql = "insert into company" +
+                "values (" +
+                "        000001," +
+                "        '2020-04-21'," +
+                "        'Manager'," +
+                "        'Durga'," +
+                "        'Kristian'," +
+                "        'durga@mail.com'," +
+                "        'durga1234'," +
+                "        5301002030," +
+                "        '2020-03-01'," +
+                "        'UK'," +
+                "        2100," +
+                "        'Program 1'," +
+                "        null," +
+                "        1" +
+                "       )";
+
+
     }
 }

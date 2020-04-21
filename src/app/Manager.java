@@ -5,8 +5,6 @@ import app.controllers.*;
 import app.classes.Employee;
 import app.classes.Project;
 import app.resources.Strings;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -64,6 +62,8 @@ public class Manager extends Main {
             statement.execute();
         } catch (Exception e) {
             e.printStackTrace();
+            Manager.showAlert(Alert.AlertType.ERROR, "Exception",
+                    "Exception occured while creating tables. Check your MySQL files and try again.");
         }
         System.out.println("Table `company` checked.");
     }
@@ -86,6 +86,8 @@ public class Manager extends Main {
             statement.execute();
         } catch (Exception e) {
             e.printStackTrace();
+            Manager.showAlert(Alert.AlertType.ERROR, "Exception",
+                    "Exception occured while creating tables. Check your MySQL files and try again.");
         }
         System.out.println("Table `projects` checked.");
     }
@@ -108,6 +110,8 @@ public class Manager extends Main {
             statement.execute();
         } catch (Exception e) {
             e.printStackTrace();
+            Manager.showAlert(Alert.AlertType.ERROR, "Exception",
+                    "Exception occured while creating tables. Check your MySQL files and try again.");
         }
         System.out.println("Table `teams` checked.");
     }
@@ -122,8 +126,8 @@ public class Manager extends Main {
             statement.execute();
             statement = connection.prepareStatement(sql);
             resultSet = statement.executeQuery();
-            while (resultSet.next()) {
-                titles.add(resultSet.getString(1));
+            while (resultSet.next()) { // get the values with Capital letter
+                titles.add(resultSet.getString(1).substring(0, 1).toUpperCase() + resultSet.getString(1).substring(1));
             }
             titles.remove(0); // remove first item because it is t_name
             return titles;
@@ -176,7 +180,7 @@ public class Manager extends Main {
 
     public static void viewSignUpPage(Employee loggedUser) {
         try {
-            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/new_employee_form.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/employee_register.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             EmployeeRegister controller = loader.getController();
             controller.start(loggedUser, ACCOUNTING_PROGRAMS, PROGRAMMING_LANGS);
@@ -201,7 +205,7 @@ public class Manager extends Main {
             FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/employee_info.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             EmployeeInfo controller = loader.getController();
-            controller.start(employee, user, PROGRAMMING_LANGS);
+            controller.start(employee, user);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -272,6 +276,39 @@ public class Manager extends Main {
             mainScene.setRoot(loader.load());
             TeamEdit controller = loader.getController();
             controller.start(team, user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void viewTeams(Employee user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/teamsList.fxml"), Strings.GetBundle());
+            mainScene.setRoot(loader.load());
+            TeamsList controller = loader.getController();
+            controller.start(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void viewSeniors(Employee user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/seniors_list.fxml"), Strings.GetBundle());
+            mainScene.setRoot(loader.load());
+            SeniorsList controller = loader.getController();
+            controller.start(user);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void viewEmployees(Employee user) {
+        try {
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/employee_list.fxml"), Strings.GetBundle());
+            mainScene.setRoot(loader.load());
+            EmployeeList controller = loader.getController();
+            controller.start(user);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -350,5 +387,9 @@ public class Manager extends Main {
 
     public static Connection getConnection() {
         return connection;
+    }
+
+    public static String[] getProgrammingLangs() {
+        return PROGRAMMING_LANGS;
     }
 }

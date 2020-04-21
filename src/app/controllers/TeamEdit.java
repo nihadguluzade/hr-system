@@ -64,7 +64,7 @@ public class TeamEdit {
             testerChoice.getSelectionModel().clearSelection();
         });
 
-        discardBtn.setOnAction(actionEvent -> Manager.viewDashboard(user));
+        discardBtn.setOnAction(actionEvent -> Manager.viewTeams(user));
 
         saveBtn.setOnAction(actionEvent -> {
             String manager = (String) managerChoice.getSelectionModel().getSelectedItem();

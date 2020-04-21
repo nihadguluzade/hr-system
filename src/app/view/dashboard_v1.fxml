@@ -44,7 +44,7 @@
                                        </GridPane.margin></Label>
                                     <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
                                        <image>
-                                          <Image url="@../resources/images/icons8-add-user-male-80.png" />
+                                          <Image url="@../resources/images/icons8-resume-80.png" />
                                        </image>
                                        <viewport>
                                           <Rectangle2D height="80.0" width="80.0" />
@@ -183,129 +183,20 @@
                               <AnchorPane prefHeight="640.0" prefWidth="947.0">
                                  <children>
                                     <AnchorPane maxHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="490.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                        <Label alignment="CENTER" text="Company" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                                        <Label alignment="CENTER" text="Teams" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0" GridPane.halignment="LEFT" GridPane.valignment="TOP">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Label alignment="TOP_LEFT" maxHeight="72.0" maxWidth="670.0" prefHeight="72.0" prefWidth="612.0" text="Here you can find all the information about the current employees and their teams. Click on the tile to open the menu." wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0">
+                                        <Label maxHeight="35.0" maxWidth="670.0" text="Here you can find all the information about the current employees and their teams." wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0">
                                         </Label>
                                     </AnchorPane>
-                                     <TilePane fx:id="optionsPane" hgap="25.0" prefColumns="1" prefHeight="200.0" prefTileHeight="180.0" prefWidth="200.0" vgap="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+
+
+                                     <TilePane fx:id="teamsTilePane" prefColumns="1" prefHeight="200.0" prefTileHeight="180.0" prefWidth="200.0" vgap="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
                                        <padding>
                                           <Insets left="25.0" right="25.0" />
-                                       </padding>
-                                       <children>
-                                           <GridPane fx:id="optionSeniors" minHeight="180.0" minWidth="150.0" style="-fx-background-color: #cfd8dc; -fx-border-color: #37474f;" styleClass="optionBlock">
-                                               <columnConstraints>
-                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                               </columnConstraints>
-                                               <rowConstraints>
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                               </rowConstraints>
-                                               <children>
-                                                   <Label text="Seniors" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                       <font>
-                                                           <Font size="18.0" />
-                                                       </font>
-                                                       <GridPane.margin>
-                                                           <Insets />
-                                                       </GridPane.margin></Label>
-                                                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                       <image>
-                                                           <Image url="@../resources/images/icons8-user-male-3-80.png" />
-                                                       </image>
-                                                       <viewport>
-                                                           <Rectangle2D height="80.0" width="80.0" />
-                                                       </viewport>
-                                                       <GridPane.margin>
-                                                           <Insets top="60.0" />
-                                                       </GridPane.margin>
-                                                   </ImageView>
-                                               </children>
-                                               <TilePane.margin>
-                                                   <Insets />
-                                               </TilePane.margin>
-                                               <padding>
-                                                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                               </padding>
-                                           </GridPane>
-                                           <GridPane fx:id="optionEmployees" minHeight="180.0" minWidth="150.0" style="-fx-background-color: #cfd8dc; -fx-border-color: #37474f;" styleClass="optionBlock">
-                                               <columnConstraints>
-                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                               </columnConstraints>
-                                               <rowConstraints>
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                               </rowConstraints>
-                                               <children>
-                                                   <Label text="Employees" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                       <font>
-                                                           <Font size="18.0" />
-                                                       </font>
-                                                       <GridPane.margin>
-                                                           <Insets />
-                                                       </GridPane.margin></Label>
-                                                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                       <image>
-                                                           <Image url="@../resources/images/icons8-administrator-male-80.png" />
-                                                       </image>
-                                                       <viewport>
-                                                           <Rectangle2D height="80.0" width="80.0" />
-                                                       </viewport>
-                                                       <GridPane.margin>
-                                                           <Insets top="60.0" />
-                                                       </GridPane.margin>
-                                                   </ImageView>
-                                               </children>
-                                               <TilePane.margin>
-                                                   <Insets />
-                                               </TilePane.margin>
-                                               <padding>
-                                                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                               </padding>
-                                           </GridPane>
-                                           <GridPane fx:id="optionTeams" minHeight="180.0" minWidth="150.0" style="-fx-background-color: #cfd8dc; -fx-border-color: #37474f;" styleClass="optionBlock">
-                                               <columnConstraints>
-                                                   <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                               </columnConstraints>
-                                               <rowConstraints>
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                                   <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                               </rowConstraints>
-                                               <children>
-                                                   <Label text="Teams" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
-                                                       <font>
-                                                           <Font size="18.0" />
-                                                       </font>
-                                                       <GridPane.margin>
-                                                           <Insets />
-                                                       </GridPane.margin></Label>
-                                                   <ImageView fitHeight="64.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
-                                                       <image>
-                                                           <Image url="@../resources/images/icons8-people-80.png" />
-                                                       </image>
-                                                       <viewport>
-                                                           <Rectangle2D height="80.0" width="80.0" />
-                                                       </viewport>
-                                                       <GridPane.margin>
-                                                           <Insets top="60.0" />
-                                                       </GridPane.margin>
-                                                   </ImageView>
-                                               </children>
-                                               <TilePane.margin>
-                                                   <Insets />
-                                               </TilePane.margin>
-                                               <padding>
-                                                   <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-                                               </padding>
-                                           </GridPane>
-                                       </children>
-                                     </TilePane>
+                                       </padding></TilePane>
                                  </children>
                               </AnchorPane>
                            </content>

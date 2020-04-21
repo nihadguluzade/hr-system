@@ -167,7 +167,7 @@ public class EmployeeRegister {
                     passwordField.getText().isEmpty() || phoneNoField.getText().isEmpty() ||
                     nationField.getText().isEmpty() || salaryField.getText().isEmpty())
             {
-                Manager.showAlert(Alert.AlertType.ERROR, "Empty Field", "Please, do not leave any empty field.");
+                Manager.showAlert(Alert.AlertType.WARNING, "Empty Field", "Please, do not leave any empty field.");
                 return;
             }
 
@@ -196,14 +196,31 @@ public class EmployeeRegister {
 
             if (!isTypeChosen)
             {
-                Manager.showAlert(Alert.AlertType.ERROR, "No title", "Please choose employee title");
+                Manager.showAlert(Alert.AlertType.WARNING, "No title", "Please choose employee title");
                 return;
             }
 
             LocalDate acceptdate = LocalDate.of(year, month + 1, day);
             LocalDate birthdate = birthDatePicker.getValue();
+
+            if (birthdate == null) {
+                Manager.showAlert(Alert.AlertType.WARNING, "No birth date", "Birth Date field cannot be empty.");
+                return;
+            }
+
             String accounting = accountingBox.getValue().toString();
-            String skill = languageBox.getValue().toString();
+            String skill = null;
+            try {
+                skill = languageBox.getValue().toString();
+            } catch (NullPointerException e) {
+                System.out.println("NullPointerException at EmployeeRegister: No skill selected.");
+            }
+
+            // Programmers must have selected language
+            if (skill == null && title.equals("Programmer")) {
+                Manager.showAlert(Alert.AlertType.WARNING, "Empty skill", "Skill for programmer is not selected.");
+                return;
+            }
 
             // add user to db
             signUp(id, acceptdate, title, firstNameField.getText(), lastNameField.getText(), emailField.getText(),
@@ -294,23 +311,26 @@ public class EmployeeRegister {
         try {
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setInt(1, id);
-            preparedStatement.setDate(2, Date.valueOf(acceptDate));
+            if (acceptDate != null) preparedStatement.setDate(2, Date.valueOf(acceptDate));
+            else preparedStatement.setNull(2, Types.DATE);
             preparedStatement.setString(3, title);
             preparedStatement.setString(4, first_name);
             preparedStatement.setString(5, last_name);
             preparedStatement.setString(6, email);
             preparedStatement.setString(7, password);
             preparedStatement.setLong(8, phone);
-            preparedStatement.setDate(9, Date.valueOf(birthDate));
+            if (birthDate != null) preparedStatement.setDate(9, Date.valueOf(birthDate));
+            else preparedStatement.setNull(9, Types.DATE);
             preparedStatement.setString(10, nationality);
             preparedStatement.setInt(11, salary);
             preparedStatement.setString(12, accounting);
-            preparedStatement.setString(13, skill);
+            if (skill != null) preparedStatement.setString(13, skill);
+            else preparedStatement.setNull(13, Types.VARCHAR);
             preparedStatement.setBoolean(14, admin);
             preparedStatement.executeUpdate();
             Manager.showAlert(Alert.AlertType.INFORMATION, "", "Registration successful.");
         } catch (Exception e) {
-            Manager.showAlert(Alert.AlertType.WARNING, "Exception", "ERR_SIGN_UP");
+            Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Couldn't complete registration. ERR_SIGN_UP");
             e.printStackTrace();
         }
     }

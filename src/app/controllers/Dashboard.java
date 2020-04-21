@@ -26,16 +26,17 @@ public class Dashboard {
 
     @FXML private AnchorPane MainPane;
     @FXML private TilePane projectsPane;
-    @FXML private TilePane teamsTilePane;
     @FXML private Label todaysDate;
     @FXML private Label userLabel;
     @FXML private Button logOutBtn;
     @FXML private Button importCandidateBtn;
     @FXML private Button createProjectBtn;
     @FXML private Button formTeamBtn;
+    @FXML private GridPane optionSeniors;
+    @FXML private GridPane optionEmployees;
+    @FXML private GridPane optionTeams;
 
     private ObservableList<Project> projects = FXCollections.observableArrayList();
-    private ObservableList<Team> teams = FXCollections.observableArrayList();
 
     public void start(final Employee user) {
 
@@ -58,7 +59,6 @@ public class Dashboard {
         userLabel.setText(user.getFullName());
 
         loadProjects();
-        loadTeams();
 
         // detect mouse on projects tile on Projects tab of dashboard
         for (Node node: projectsPane.lookupAll(".project-tile"))
@@ -79,47 +79,6 @@ public class Dashboard {
             });
         }
 
-        // detect mouse on employee tile on Teams tab of dashboard
-        for (Node node: teamsTilePane.lookupAll(".teams-indv-tile"))
-        {
-            node.setOnMouseEntered(mouseEvent -> {
-                node.setStyle("-fx-border-width: 1px; -fx-border-color: #42a1ec");
-            });
-
-            node.setOnMouseExited(mouseEvent -> {
-                node.setStyle("-fx-border-width: 1px; -fx-border-color: #e0e0e0");
-            });
-
-            // get employee info
-            node.setOnMouseClicked(mouseEvent -> {
-                AnchorPane anchorPane = (AnchorPane) mouseEvent.getSource();
-                Label employeeNameLabel = (Label) anchorPane.lookup("#employeeName");
-                Label employeeTitleLabel = (Label) anchorPane.lookup("#employeeTitle");
-                Employee employee = findEmployee(employeeNameLabel.getText(), employeeTitleLabel.getText());
-                Manager.viewEmployeeInfo(employee, user);
-            });
-        }
-
-        // detect mouse on Edit label on Teams tab on dashboard
-        for (Node node: teamsTilePane.lookupAll(".teams-parent-tile"))
-        {
-            Label editLabel = (Label) node.lookup(".teamEditLabel");
-            Label teamName = (Label) node.lookup(".teamNameLabel");
-            Team team = findTeam(teamName.getText());
-
-            editLabel.setOnMouseEntered(mouseEvent -> {
-                editLabel.setStyle("-fx-underline: true");
-            });
-
-            editLabel.setOnMouseExited(mouseEvent -> {
-                editLabel.setStyle("-fx-underline: false");
-            });
-
-            editLabel.setOnMouseClicked(mouseEvent -> {
-                Manager.viewTeamEdit(team, user);
-            });
-        }
-
         logOutBtn.setOnAction(actionEvent -> {
             user.setLogged(false);
             Manager.viewLoginPage();
@@ -136,6 +95,16 @@ public class Dashboard {
         formTeamBtn.setOnAction(actionEvent -> {
             Manager.viewNewTeam(user);
         });
+
+        // when Teams option is clicked on dahsbooard->company tab
+        optionTeams.setOnMouseClicked(mouseEvent -> Manager.viewTeams(user));
+
+        // when Seniors option is clicked on dashboard->company tab
+        optionSeniors.setOnMouseClicked(mouseEvent -> Manager.viewSeniors(user));
+
+        // when Employees option is clicked on dashboard->company tab
+        optionEmployees.setOnMouseClicked(mouseEvent -> Manager.viewEmployees(user));
+
     }
 
     /**
@@ -188,100 +157,6 @@ public class Dashboard {
     }
 
     /**
-     * Load projects from DB and display them on dashboard. Also, refreshes the page.
-     */
-    private void loadTeams() {
-
-        teamsTilePane.getChildren().clear(); // clear the view
-        teams.clear();
-
-        try {
-            Connection connection = Manager.getConnection();
-            ResultSet rs = connection.createStatement().executeQuery("select * from teams");
-
-            // store all data in observable list
-            while (rs.next())
-            {
-                teams.add(new Team(rs.getString("t_name"), rs.getInt("manager"), rs.getInt("analyst"),
-                        rs.getInt("designer"), rs.getInt("programmer"), rs.getInt("tester")));
-            }
-
-            // now add those teams to view
-            for (Team t: teams)
-            {
-                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/app/view/team_tile.fxml"));
-                anchorPane.getStyleClass().add("teams-parent-tile");
-
-                Label teamName = (Label) anchorPane.getChildren().get(0);
-                teamName.setText(t.getName());
-                teamName.getStyleClass().add("teamNameLabel");
-
-                Label editLabel = (Label) anchorPane.getChildren().get(1);
-                editLabel.getStyleClass().add("teamEditLabel");
-
-                TilePane teamsParentTile = (TilePane) anchorPane.getChildren().get(2);
-
-                // create tile for titles; manager, analyst...
-                if (t.getManager() != 0) { // check if there is no person with this title
-                    AnchorPane managerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
-                    managerTile.getStyleClass().add("teams-indv-tile");
-                    Label name = (Label) managerTile.getChildren().get(0);
-                    name.setText(getEmployeeName(t.getManager()));
-                    Label title = (Label) managerTile.getChildren().get(1);
-                    title.setText("Manager");
-                    teamsParentTile.getChildren().add(managerTile);
-                }
-
-                if (t.getAnalyst() != 0) {
-                    AnchorPane analystTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
-                    analystTile.getStyleClass().add("teams-indv-tile");
-                    Label name = (Label) analystTile.getChildren().get(0);
-                    name.setText(getEmployeeName(t.getAnalyst()));
-                    Label title = (Label) analystTile.getChildren().get(1);
-                    title.setText("Analyst");
-                    teamsParentTile.getChildren().add(analystTile);
-                }
-
-                if (t.getDesigner() != 0) {
-                    AnchorPane designerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
-                    designerTile.getStyleClass().add("teams-indv-tile");
-                    Label name = (Label) designerTile.getChildren().get(0);
-                    name.setText(getEmployeeName(t.getDesigner()));
-                    Label title = (Label) designerTile.getChildren().get(1);
-                    title.setText("Designer");
-                    teamsParentTile.getChildren().add(designerTile);
-                }
-
-                if (t.getProgrammer() != 0) {
-                    AnchorPane programmerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
-                    programmerTile.getStyleClass().add("teams-indv-tile");
-                    Label name = (Label) programmerTile.getChildren().get(0);
-                    name.setText(getEmployeeName(t.getProgrammer()));
-                    Label title = (Label) programmerTile.getChildren().get(1);
-                    title.setText("Programmer");
-                    teamsParentTile.getChildren().add(programmerTile);
-                }
-
-                if (t.getTester() != 0) {
-                    AnchorPane testerTile = FXMLLoader.load(getClass().getResource("/app/view/employee.fxml"));
-                    testerTile.getStyleClass().add("teams-indv-tile");
-                    Label name = (Label) testerTile.getChildren().get(0);
-                    name.setText(getEmployeeName(t.getTester()));
-                    Label title = (Label) testerTile.getChildren().get(1);
-                    title.setText("Tester");
-                    teamsParentTile.getChildren().add(testerTile);
-                }
-
-                // add parent pane to the dashboard
-                teamsTilePane.getChildren().add(anchorPane);
-            }
-
-        } catch (SQLException | IOException e) {
-            Manager.showAlert(Alert.AlertType.WARNING, "", "Couldn't load teams.");
-        }
-    }
-
-    /**
      * Gets project record from the DB.
      * @return Project
      */
@@ -320,10 +195,37 @@ public class Dashboard {
     }
 
     /**
-     * Gets employee record from the DB.
+     * Centers image inside of ImageView in FXML.
+     * @author https://stackoverflow.com/questions/32674393/centering-imageview-using-javafx
+     */
+    private static void centerImage(ImageView imgView) {
+
+        Image img = imgView.getImage();
+
+        if (img != null) {
+            double w = 0;
+            double h = 0;
+
+            double ratioX = imgView.getFitWidth() / img.getWidth();
+            double ratioY = imgView.getFitHeight() / img.getHeight();
+
+            double reducCoeff = 0;
+            reducCoeff = Math.min(ratioX, ratioY);
+
+            w = img.getWidth() * reducCoeff;
+            h = img.getHeight() * reducCoeff;
+
+            imgView.setX((imgView.getFitWidth() - w) / 2);
+            imgView.setY((imgView.getFitHeight() - h) / 2);
+
+        }
+    }
+
+    /**
+     * Gets employee record from the DB by title.
      * @return Employee
      */
-    private Employee findEmployee(String name, String title) {
+    protected static Employee findEmployeeByTitle(String name, String title) {
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
@@ -382,6 +284,55 @@ public class Dashboard {
     }
 
     /**
+     * Gets employee record from the DB by ID.
+     * @return Employee
+     */
+    protected static Employee findEmployeeByID(int ID) {
+
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String sql = "select * from company where id = ?";
+        Connection connection = Manager.getConnection();
+
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, ID);
+
+            resultSet = preparedStatement.executeQuery();
+
+            if(!resultSet.next())
+            {
+                Manager.showAlert(Alert.AlertType.ERROR, "",
+                        "Something is not right. Employee record is not found on the database.");
+                return null;
+            }
+            else {
+                Employee record = new Employee(
+                        resultSet.getInt("id"),
+                        resultSet.getDate("acceptdate").toLocalDate(),
+                        resultSet.getString("title"),
+                        resultSet.getString("first_name"),
+                        resultSet.getString("last_name"),
+                        resultSet.getString("email"),
+                        resultSet.getString("password"),
+                        resultSet.getLong("phone"),
+                        resultSet.getDate("birthdate").toLocalDate(),
+                        resultSet.getString("nationality"),
+                        resultSet.getInt("salary"),
+                        resultSet.getString("accounting"),
+                        resultSet.getString("skills"),
+                        resultSet.getBoolean("admin")
+                );
+                return record;
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    /**
      * Utility method to get the team record from database.
      * @param teamName Name of the team to find it in database
      * @return Team that works on the project
@@ -397,9 +348,9 @@ public class Dashboard {
 
             if (resultSet.next())
             {
-               team = new Team(resultSet.getString("t_name"), resultSet.getInt("manager"),
-                       resultSet.getInt("analyst"), resultSet.getInt("designer"), resultSet.getInt("programmer"),
-                       resultSet.getInt("tester"));
+                team = new Team(resultSet.getString("t_name"), resultSet.getInt("manager"),
+                        resultSet.getInt("analyst"), resultSet.getInt("designer"), resultSet.getInt("programmer"),
+                        resultSet.getInt("tester"));
                 return team;
             }
 
@@ -407,33 +358,6 @@ public class Dashboard {
         } catch (Exception e) {
             e.printStackTrace();
             return null;
-        }
-    }
-
-    /**
-     * Centers image inside of ImageView in FXML.
-     * @author https://stackoverflow.com/questions/32674393/centering-imageview-using-javafx
-     */
-    private static void centerImage(ImageView imgView) {
-
-        Image img = imgView.getImage();
-
-        if (img != null) {
-            double w = 0;
-            double h = 0;
-
-            double ratioX = imgView.getFitWidth() / img.getWidth();
-            double ratioY = imgView.getFitHeight() / img.getHeight();
-
-            double reducCoeff = 0;
-            reducCoeff = Math.min(ratioX, ratioY);
-
-            w = img.getWidth() * reducCoeff;
-            h = img.getHeight() * reducCoeff;
-
-            imgView.setX((imgView.getFitWidth() - w) / 2);
-            imgView.setY((imgView.getFitHeight() - h) / 2);
-
         }
     }
 
