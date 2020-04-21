@@ -42,6 +42,8 @@
          <ColumnConstraints />
          <ColumnConstraints />
          <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints />
@@ -184,6 +186,16 @@
          <RowConstraints />
          <RowConstraints />
          <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
     </rowConstraints>
     <children>
         <Label fx:id="ERFLabel" text="Employee Information" textFill="#03a9f4" GridPane.columnSpan="2" GridPane.halignment="LEFT">
@@ -262,7 +274,7 @@
          </GridPane.margin>
       </Label>
       <Label fx:id="country" layoutX="194.0" layoutY="467.0" text="German" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Label alignment="CENTER_RIGHT" layoutX="129.0" layoutY="487.0" maxWidth="70.0" text="Team:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="6">
+      <Label fx:id="teamLabel" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="487.0" maxWidth="70.0" text="Team:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="8">
          <font>
             <Font size="13.0" />
          </font>
@@ -270,7 +282,7 @@
             <Insets bottom="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="team" layoutX="207.0" layoutY="487.0" text="Frantics" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+      <Label fx:id="team" layoutX="207.0" layoutY="487.0" text="Frantics" GridPane.columnIndex="1" GridPane.rowIndex="8" />
       <Label fx:id="projectLabel" alignment="CENTER_RIGHT" layoutX="127.0" layoutY="507.0" maxWidth="70.0" text="Project:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.rowIndex="9">
          <font>
             <Font size="13.0" />
@@ -280,7 +292,7 @@
          </GridPane.margin>
       </Label>
       <Label fx:id="project" layoutX="208.0" layoutY="507.0" text="Software Engineering Project" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-      <Label alignment="CENTER_RIGHT" layoutX="120.0" layoutY="527.0" maxWidth="70.0" text="Salary:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.rowIndex="7">
+      <Label alignment="CENTER_RIGHT" layoutX="120.0" layoutY="527.0" maxWidth="70.0" text="Salary:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.rowIndex="6">
          <font>
             <Font size="13.0" />
          </font>
@@ -288,12 +300,12 @@
             <Insets bottom="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="salary" layoutX="201.0" layoutY="527.0" text="\$5000" GridPane.columnIndex="1" GridPane.rowIndex="7">
+      <Label fx:id="salary" layoutX="201.0" layoutY="527.0" text="\$5000" GridPane.columnIndex="1" GridPane.rowIndex="6">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Label>
-      <Label fx:id="skillsLabel" alignment="CENTER_RIGHT" layoutX="120.0" layoutY="507.0" maxWidth="70.0" text="Skills:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="8">
+      <Label fx:id="skillsLabel" alignment="CENTER_RIGHT" layoutX="120.0" layoutY="507.0" maxWidth="70.0" text="Skills:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
          <font>
             <Font size="13.0" />
          </font>
@@ -301,7 +313,7 @@
             <Insets bottom="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Label>
-      <Label fx:id="skills" layoutX="201.0" layoutY="507.0" text="Java" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Label fx:id="skills" layoutX="201.0" layoutY="507.0" text="Java" GridPane.columnIndex="1" GridPane.rowIndex="7" />
       <Button fx:id="backBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Back" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10">
          <GridPane.margin>
             <Insets />
@@ -329,10 +341,10 @@
          <TextField fx:id="idField" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          <TextField fx:id="mailField" layoutX="143.0" layoutY="222.0" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          <TextField fx:id="countryField" layoutX="143.0" layoutY="222.0" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-         <ChoiceBox fx:id="teamSelector" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <ChoiceBox fx:id="teamSelector" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
          <DatePicker fx:id="birthDatePicker" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-         <TextField fx:id="salaryField" layoutX="143.0" layoutY="387.0" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-         <ComboBox fx:id="skillsCombo" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         <TextField fx:id="salaryField" layoutX="143.0" layoutY="387.0" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <ComboBox fx:id="skillsCombo" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
          <DatePicker fx:id="acceptDatePicker" layoutX="143.0" layoutY="350.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          <Button fx:id="saveBtn" layoutX="111.0" layoutY="567.0" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Save" GridPane.columnSpan="3" GridPane.rowIndex="10">
             <GridPane.margin>

@@ -29,7 +29,7 @@ public class ProjectInfo {
     @FXML private Label dueDateLabel;
     @FXML private Label description;
 
-    public void start(final Project project, final Employee employee) {
+    public void start(final Project project, final Employee user) {
 
         Stage stage = (Stage) ProjectInfoPane.getScene().getWindow();
         stage.sizeToScene();
@@ -41,15 +41,17 @@ public class ProjectInfo {
 
         initializeLabels(project);
 
-        if (!employee.isAdmin())
-            modifyBtn.setVisible(false);
+        if (!user.isAdmin()) {
+            modifyBtn.setDisable(true);
+            deleteBtn.setDisable(true);
+        }
 
         xBtn.setOnAction(actionEvent -> {
             stage.close();
         });
 
         modifyBtn.setOnAction(actionEvent -> {
-            Manager.viewProjectEdit(project, employee);
+            Manager.viewProjectEdit(project, user);
         });
 
         deleteBtn.setOnAction(actionEvent -> deleteProject(project));

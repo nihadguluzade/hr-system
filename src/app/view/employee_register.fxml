@@ -41,6 +41,7 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
@@ -54,6 +55,11 @@
       <RowConstraints />
    </rowConstraints>
    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
@@ -377,7 +383,7 @@
                   <Insets bottom="10.0" />
                </GridPane.margin>
             </TextField>
-            <Label layoutX="260.0" layoutY="74.0" text="Nationality" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
+            <Label layoutX="260.0" layoutY="74.0" text="Nation" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2">
                <font>
                   <Font size="14.0" />
                </font>

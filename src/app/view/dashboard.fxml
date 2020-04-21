@@ -392,15 +392,20 @@
                </padding>
             </Label>
             <Pane HBox.hgrow="ALWAYS" />
-            <Label fx:id="todaysDate" layoutX="832.0" layoutY="18.0" text="21/03/2020">
+            <Label fx:id="todaysDate" layoutX="837.0" layoutY="18.0" text="21/03/2020">
                <font>
                   <Font size="14.0" />
                </font>
                <padding>
-                  <Insets right="15.0" top="1.0" />
+                  <Insets right="10.0" top="1.0" />
                </padding>
             </Label>
-            <Label fx:id="userLabel" text="John Doe">
+            <ImageView fx:id="avatar" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../resources/images/pp_av_1.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="username" text="John Doe">
                <font>
                   <Font size="14.0" />
                </font>

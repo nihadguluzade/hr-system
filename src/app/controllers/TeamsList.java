@@ -70,6 +70,10 @@ public class TeamsList {
             Label teamName = (Label) node.lookup(".teamNameLabel");
             Team team = findTeam(teamName.getText());
 
+            if (!user.isAdmin()) {
+                editLabel.setDisable(true);
+            }
+
             editLabel.setOnMouseEntered(mouseEvent -> {
                 editLabel.setStyle("-fx-underline: true");
             });

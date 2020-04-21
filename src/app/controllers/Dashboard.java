@@ -33,7 +33,8 @@ public class Dashboard {
     @FXML private AnchorPane MainPane;
     @FXML private TilePane projectsPane;
     @FXML private Label todaysDate;
-    @FXML private Label userLabel;
+    @FXML private ImageView avatar;
+    @FXML private Label username;
     @FXML private Button logOutBtn;
     @FXML private Button importCandidateBtn;
     @FXML private Button createProjectBtn;
@@ -66,9 +67,20 @@ public class Dashboard {
         int year = calendar.get(Calendar.YEAR);
         todaysDate.setText(day + "/" + (month + 1) + "/" + year);
 
-        userLabel.setText(user.getFullName());
+        username.setText(user.getFullName());
+
+        // distinguish between admin and normal
+        if (!user.isAdmin()) {
+            importCandidateBtn.setDisable(true);
+            createProjectBtn.setDisable(true);
+            formTeamBtn.setDisable(true);
+        }
 
         loadProjects();
+
+        // detect click on avatar or username
+        username.setOnMouseClicked(mouseEvent -> Manager.viewEmployeeInfo(user, user));
+        avatar.setOnMouseClicked(mouseEvent -> Manager.viewEmployeeInfo(user, user));
 
         // detect mouse on projects tile on Projects tab of dashboard
         for (Node node: projectsPane.lookupAll(".project-tile"))

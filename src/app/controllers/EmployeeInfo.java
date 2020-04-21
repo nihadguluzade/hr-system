@@ -45,11 +45,11 @@ public class EmployeeInfo {
     @FXML private DatePicker birthDatePicker;
     @FXML private DatePicker acceptDatePicker;
     @FXML private TextField countryField;
+    @FXML private Label teamLabel;
     @FXML private ChoiceBox teamSelector;
     @FXML private TextField salaryField;
     @FXML private ComboBox skillsCombo;
     @FXML private CheckBox seniorCheck;
-    private boolean admin;
 
     public void start(Employee employee, final Employee user) {
         Stage stage = (Stage) employeeInfoPane.getScene().getWindow();
@@ -60,6 +60,12 @@ public class EmployeeInfo {
         Scene scene = employeeInfoPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
+        if (!user.isAdmin()) {
+            editBtn.setDisable(true);
+            fireBtn.setDisable(true);
+        }
+
+        // set default parameters
         editModeOff();
         initializeLabels(employee);
 
@@ -78,10 +84,6 @@ public class EmployeeInfo {
 
         editBtn.setOnAction(actionEvent -> {
             editModeOn(employee);
-        });
-
-        seniorCheck.setOnMouseClicked(mouseEvent -> {
-            admin = !admin; // toggle
         });
 
         saveBtn.setOnAction(actionEvent ->  {
@@ -116,7 +118,7 @@ public class EmployeeInfo {
             }
 
             savechanges(employee, firstName, lastName, phone, acceptDate, title, mail, birthDate, country, salary,
-                    skill, admin);
+                    skill, seniorCheck.isSelected());
             editModeOff();
             initializeLabels(employee);
         });
@@ -138,8 +140,11 @@ public class EmployeeInfo {
         mail.setText(employee.getEmail());
         birthDate.setText(employee.getBirthdate().toString());
         country.setText(employee.getNationality());
-        for (String t: getEmployeeTeams(employee))
-            team.setText(t);
+
+        // hide the teams for now
+        team.setVisible(false);
+        teamLabel.setVisible(false);
+        teamSelector.setVisible(false);
 
         /*for (String p: getEmployeeProjects(employee))
             project.setText(p);*/ // TODO: For future
@@ -174,7 +179,6 @@ public class EmployeeInfo {
         mail.setVisible(false);
         birthDate.setVisible(false);
         country.setVisible(false);
-        team.setVisible(false);
         acceptDate.setVisible(false);
         salary.setVisible(false);
         senior.setVisible(false);
@@ -191,7 +195,6 @@ public class EmployeeInfo {
         mailField.setVisible(true);
         birthDatePicker.setVisible(true);
         countryField.setVisible(true);
-        teamSelector.setVisible(true);
         acceptDatePicker.setVisible(true);
         salaryField.setVisible(true);
         seniorCheck.setVisible(true);
@@ -222,13 +225,13 @@ public class EmployeeInfo {
         birthDatePicker.setValue(employee.getBirthdate());
         countryField.setText(employee.getNationality());
 
-        teamSelector.getItems().addAll(Manager.getTeams());
-        teamSelector.getSelectionModel().selectFirst();
-
         acceptDatePicker.setValue(employee.getAcceptdate());
         salaryField.setText(Integer.toString(employee.getSalary()));
 
-        seniorCheck.setSelected(true);
+        if (employee.isAdmin())
+            seniorCheck.setSelected(true);
+        else
+            seniorCheck.setSelected(false);
     }
 
     /**
@@ -242,7 +245,6 @@ public class EmployeeInfo {
         mail.setVisible(true);
         birthDate.setVisible(true);
         country.setVisible(true);
-        team.setVisible(true);
         acceptDate.setVisible(true);
         salary.setVisible(true);
         senior.setVisible(true);
@@ -260,8 +262,6 @@ public class EmployeeInfo {
         mailField.setVisible(false);
         birthDatePicker.setVisible(false);
         countryField.setVisible(false);
-        teamSelector.setVisible(false);
-        teamSelector.getItems().clear();
         acceptDatePicker.setVisible(false);
         salaryField.setVisible(false);
         seniorCheck.setVisible(false);
