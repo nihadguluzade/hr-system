@@ -2,6 +2,7 @@ package app.controllers;
 
 import app.Manager;
 import app.classes.Employee;
+import app.classes.Project;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -9,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class EmployeeRegister {
@@ -41,6 +43,7 @@ public class EmployeeRegister {
     private String title;
     private boolean isTypeChosen = false;
     private boolean newAdmin;
+    private Employee newEmployee;
 
     public void start(final Employee loggedUser, final String[] accountingPrograms, final String[] programmingLangs) {
 
@@ -128,6 +131,7 @@ public class EmployeeRegister {
             isTypeChosen = true;
             langLabel.setVisible(true);
             languageBox.setVisible(true);
+            languageBox.getSelectionModel().selectFirst();
         });
 
         testerBtn.setOnAction(actionEvent -> {
@@ -226,6 +230,11 @@ public class EmployeeRegister {
             signUp(id, acceptdate, title, firstNameField.getText(), lastNameField.getText(), emailField.getText(),
                     passwordField.getText(), Long.parseLong(phoneNoField.getText()), birthdate, nationField.getText(),
                     Integer.parseInt(salaryField.getText()), accounting, skill, newAdmin);
+
+            if (newEmployee.getTitle().equals("Programmer"))
+            {
+                assignToProject(newEmployee);
+            }
 
             if (loggedUser.isLogged()) Manager.viewDashboard(loggedUser);
             else Manager.viewLoginPage();
@@ -328,9 +337,72 @@ public class EmployeeRegister {
             else preparedStatement.setNull(13, Types.VARCHAR);
             preparedStatement.setBoolean(14, admin);
             preparedStatement.executeUpdate();
+
+            newEmployee = new Employee(id, acceptDate, title, first_name, last_name, email, password, phone, birthDate,
+                    nationality, salary, accounting, skill, admin);
+
             Manager.showAlert(Alert.AlertType.INFORMATION, "", "Registration successful.");
         } catch (Exception e) {
             Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Couldn't complete registration. ERR_SIGN_UP");
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Assigns employee to appropriate project if exists.
+     */
+    private void assignToProject(Employee employee) {
+        try {
+            Connection connection = Manager.getConnection();
+            String sql = "select * from projects where lang = ?";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, employee.getSkill());
+            ResultSet resultSet = statement.executeQuery();
+
+            ArrayList<Project> projects = new ArrayList<>();
+            ArrayList<String> teams = new ArrayList<>();
+
+            // get all the projects list with matching language
+            while (resultSet.next())
+            {
+                projects.add(new Project(resultSet.getString("pr_name"), resultSet.getString("lang"),
+                        Dashboard.findTeam(resultSet.getString("team")), resultSet.getDate("startDate").toLocalDate(),
+                        resultSet.getDate("dueDate").toLocalDate(), resultSet.getDate("creationDate").toLocalDate(),
+                        resultSet.getString("description")));
+            }
+
+            // now look if there's empty space for programmer in projects' teams
+            for (Project p: projects)
+            {
+                if (p.getTeam().getProgrammer() == 0) // if programmer is null, store team name
+                {
+                    teams.add(p.getTeam().getName());
+                }
+            }
+
+            // if appropriate teams were found
+            if (teams.size() > 0)
+            {
+                System.out.println("sure");
+                String projectList = "";
+                for (String name: teams)
+                {
+                    System.out.println("here");
+                    projectList += name;
+                    projectList += " ";
+                }
+                String message = "Following projects are available for this employee: " + projectList;
+                Manager.showAlert(Alert.AlertType.INFORMATION, "Assign to projects", message);
+            }
+            else
+            {
+                System.out.println("fuck");
+                Manager.showAlert(Alert.AlertType.INFORMATION, "Project", "No suitable project found for this employee.");
+            }
+
+        } catch (SQLException e) {
+            Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Error while trying to assign to project.");
             e.printStackTrace();
         }
     }
@@ -349,5 +421,13 @@ public class EmployeeRegister {
 
     public void setNewPhoneNo(boolean newPhoneNo) {
         this.newPhoneNo = newPhoneNo;
+    }
+
+    public Employee getNewEmployee() {
+        return newEmployee;
+    }
+
+    public void setNewEmployee(Employee newEmployee) {
+        this.newEmployee = newEmployee;
     }
 }

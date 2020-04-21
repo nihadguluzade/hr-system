@@ -105,6 +105,9 @@ public class EmployeeInfo {
                 skill = skillsCombo.getValue().toString();
 
             // do not change title if the person is in team (screws up the system otherwise)
+            System.out.println(title);
+            System.out.println(employee.getTitle());
+            System.out.println(isEmployeeInTeam(employee));
             if (isEmployeeInTeam(employee) && !title.equals(employee.getTitle()))
             {
                 Manager.showAlert(Alert.AlertType.WARNING, "",
@@ -402,7 +405,7 @@ public class EmployeeInfo {
 
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
-        String sql = "select * from teams where " + employee.getId() + " in (manager, analyst, designer, programmer)";
+        String sql = "select * from teams where " + employee.getId() + " in (manager, analyst, designer, programmer, tester)";
         Connection connection = Manager.getConnection();
 
         try {
@@ -421,12 +424,15 @@ public class EmployeeInfo {
      */
     @FXML
     private void titleListener(ActionEvent event) {
-        if (titleCombo.getSelectionModel().getSelectedItem().equals("Programmer"))
-        {
-            skillsLabel.setVisible(true);
-            skillsCombo.setVisible(true);
-            skillsCombo.getItems().addAll(Manager.getProgrammingLangs());
-            skillsCombo.getSelectionModel().selectFirst();
+        try {
+            if (titleCombo.getSelectionModel().getSelectedItem().equals("Programmer")) {
+                skillsLabel.setVisible(true);
+                skillsCombo.setVisible(true);
+                skillsCombo.getItems().addAll(Manager.getProgrammingLangs());
+                skillsCombo.getSelectionModel().selectFirst();
+            }
+        } catch (NullPointerException e) {
+            System.out.println("NullPointerException on titleListener().");
         }
     }
 }

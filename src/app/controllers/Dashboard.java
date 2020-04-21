@@ -11,6 +11,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
@@ -18,9 +20,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
 
+import java.awt.*;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.Calendar;
+import javafx.application.HostServices;
 
 public class Dashboard {
 
@@ -35,6 +41,10 @@ public class Dashboard {
     @FXML private GridPane optionSeniors;
     @FXML private GridPane optionEmployees;
     @FXML private GridPane optionTeams;
+    @FXML private Button salaryCalc1;
+    @FXML private Button salaryCalc2;
+    @FXML private Button compCalc1;
+    @FXML private Button compCalc2;
 
     private ObservableList<Project> projects = FXCollections.observableArrayList();
 
@@ -105,6 +115,38 @@ public class Dashboard {
         // when Employees option is clicked on dashboard->company tab
         optionEmployees.setOnMouseClicked(mouseEvent -> Manager.viewEmployees(user));
 
+        // salary and compensation calculators
+        salaryCalc1.setOnAction(event -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.calculator.net/salary-calculator.html"));
+            } catch (URISyntaxException | IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        salaryCalc2.setOnAction(event -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.pcpayroll.co.uk/uk-salary-calculator/"));
+            } catch (URISyntaxException | IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        compCalc1.setOnAction(event -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.calcxml.com/calculators/total-compensation?skn=73"));
+            } catch (URISyntaxException | IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        compCalc2.setOnAction(event -> {
+            try {
+                Desktop.getDesktop().browse(new URI("https://www.cpasitesolutions.com/content/calcs/calcloader.php?calc=bus08"));
+            } catch (URISyntaxException | IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     /**

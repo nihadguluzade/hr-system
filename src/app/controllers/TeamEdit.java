@@ -18,6 +18,7 @@ public class TeamEdit {
 
     @FXML private AnchorPane editTeamPane;
     @FXML private TextField nameField;
+    @FXML private Button deleteBtn;
     @FXML private Button saveBtn;
     @FXML private Button discardBtn;
     @FXML private ChoiceBox managerChoice;
@@ -73,6 +74,11 @@ public class TeamEdit {
             String programmer = (String) coderChoice.getSelectionModel().getSelectedItem();
             String tester = (String) testerChoice.getSelectionModel().getSelectedItem();
             saveChanges(nameField.getText(), manager, analyst, designer, programmer, tester, team.getName());
+        });
+
+        deleteBtn.setOnAction(actionEvent -> {
+            deleteTeam(team);
+            Manager.viewDashboard(user);
         });
     }
 
@@ -197,6 +203,37 @@ public class TeamEdit {
 
         } catch (Exception e) {
             Manager.showAlert(Alert.AlertType.ERROR, "Error", "Couldn't update team.");
+        }
+    }
+
+    /**
+     * Deletes team records from DB.
+     * @param team Team to be deleted.
+     */
+    private void deleteTeam(Team team) {
+        Connection connection = Manager.getConnection();
+        String sql = "delete from teams where t_name = ?";
+        PreparedStatement statement;
+        try {
+            statement = connection.prepareStatement(sql);
+            statement.setString(1, team.getName());
+
+            // show confirmation dialog
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Remove");
+            alert.initModality(Modality.APPLICATION_MODAL);
+            alert.setHeaderText(null);
+            alert.setContentText("Confirm to delete this team?");
+            alert.showAndWait();
+
+            if (alert.getResult() == ButtonType.OK) {
+                statement.executeUpdate();
+                Manager.showAlert(Alert.AlertType.INFORMATION, "",
+                        "Team has been successfully deleted from this company.");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Couldn't delete the team records.");
         }
     }
 }

@@ -105,6 +105,9 @@ public class EmployeeList {
                 Label id = (Label) gridPane.getChildren().get(2);
                 id.setText(Integer.toString(e.getId()));
 
+                Label title = (Label) gridPane.getChildren().get(3);
+                title.setText(e.getTitle());
+
                 // add parent pane to the dashboard
                 employeesTilePane.getChildren().add(anchorPane);
             }

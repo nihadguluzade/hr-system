@@ -33,6 +33,11 @@
                   <Insets right="43.0" />
                </GridPane.margin>
             </Button>
+            <Button fx:id="deleteBtn" layoutX="435.0" layoutY="37.0" mnemonicParsing="false" styleClass="mac-btn" text="Delete" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets right="110.0" />
+               </GridPane.margin>
+            </Button>
             <Separator maxWidth="1.7976931348623157E308" valignment="BOTTOM" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
             <Label fx:id="nameLabel" text="Software Engineering Project" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                <font>

@@ -101,8 +101,9 @@ public class Login {
                 Manager.showAlert(Alert.AlertType.ERROR, "Invalid user", "No records found. Try again.");
         });
 
-        langBtn.setOnMouseClicked(mouseEvent -> Manager.showAlert(Alert.AlertType.INFORMATION, "Change language",
-                "Language selection is not available right now."));
+        langBtn.setVisible(false);
+        //langBtn.setOnMouseClicked(mouseEvent -> Manager.showAlert(Alert.AlertType.INFORMATION, "Change language",
+        //        "Language selection is not available right now."));
 
         firstTimeLink.setOnMouseEntered(e -> firstTimeLink.setStyle("-fx-underline: true"));
         firstTimeLink.setOnMouseExited(e -> firstTimeLink.setStyle("-fx-underline: false"));

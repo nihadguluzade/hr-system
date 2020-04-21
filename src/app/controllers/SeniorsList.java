@@ -98,6 +98,9 @@ public class SeniorsList {
                 Label id = (Label) gridPane.getChildren().get(2);
                 id.setText(Integer.toString(s.getId()));
 
+                Label title = (Label) gridPane.getChildren().get(3);
+                title.setText(s.getTitle());
+
                 // add parent pane to the dashboard
                 seniorsTilePane.getChildren().add(anchorPane);
             }

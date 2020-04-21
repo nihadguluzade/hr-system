@@ -22,7 +22,7 @@ public class Manager extends Main {
     private static Scene mainScene;
     private static Scene projectInfoScene;
     private static Connection connection;
-    private final static String[] ACCOUNTING_PROGRAMS = {"Program 1", "Program 2"};
+    private final static String[] ACCOUNTING_PROGRAMS = {"PC Payroll", "Calculator.Net"};
     private final static String[] PROGRAMMING_LANGS = {"C", "Java", "Python", "Go", "JavaScript", ".NET"};
 
     public Manager(Scene scene) {
@@ -283,7 +283,7 @@ public class Manager extends Main {
 
     public static void viewTeams(Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/teamsList.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/teams_list.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
             TeamsList controller = loader.getController();
             controller.start(user);

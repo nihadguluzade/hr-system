@@ -66,19 +66,25 @@ public class NewProject {
             // TODO: check if start date exceeds due date
 
             LocalDate creationDate = LocalDate.of(year, month + 1, day);
+            LocalDate startDate;
             String lang = "temp_lang", team = "temp_team";
 
             try {
                 lang = langSelector.getValue().toString();
             } catch (NullPointerException e) {
-                Manager.showAlert(Alert.AlertType.WARNING, "Exception", "ERR_PROJECT_LANGS_NOT_DEFINED");
-                e.printStackTrace();
+                Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Project language cannot be empty.");
+                return;
             }
 
             try {
                 team = teamSelector.getValue().toString();
             } catch (NullPointerException e) {
                 Manager.showAlert(Alert.AlertType.WARNING, "Exception", "Project created without team.");
+            }
+
+            if (startDatePicker.getValue() == null || dueDatePicker.getValue() == null) {
+                Manager.showAlert(Alert.AlertType.WARNING, "Empty Field", "Date fields cannot be empty.");
+                return;
             }
 
             createProject(projectNameField.getText(), descriptionArea.getText(), startDatePicker.getValue(),

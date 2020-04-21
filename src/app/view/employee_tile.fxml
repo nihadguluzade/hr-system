@@ -26,12 +26,20 @@
                   <Insets top="5.0" />
                </GridPane.margin>
             </ImageView>
-            <Label fx:id="employeeName" text="Jason Leroy" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+            <Label fx:id="employeeName" text="Lorem Ipsum" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
             <Label fx:id="employeeID" text="Label" visible="false" />
+            <Label fx:id="employeeName1" layoutX="38.0" layoutY="99.0" text="Title" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="5.0" />
+               </GridPane.margin>
+            </Label>
          </children>
       </GridPane>
    </children>

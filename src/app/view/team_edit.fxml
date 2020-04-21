@@ -33,9 +33,14 @@
                   <Insets bottom="35.0" />
               </GridPane.margin>
           </Label>
+            <Button fx:id="deleteBtn" layoutX="321.0" layoutY="54.0" mnemonicParsing="false" styleClass="btn" text="Delete" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="110.0" />
+               </GridPane.margin>
+            </Button>
             <Button fx:id="saveBtn" mnemonicParsing="false" styleClass="btn" text="Save" GridPane.halignment="RIGHT">
                <GridPane.margin>
-                  <Insets right="70.0" />
+                  <Insets right="60.0" />
                </GridPane.margin>
             </Button>
             <Button fx:id="discardBtn" layoutX="387.0" layoutY="55.0" mnemonicParsing="false" styleClass="btn" text="Back" GridPane.halignment="RIGHT" />

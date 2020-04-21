@@ -49,17 +49,37 @@ public class FormTeam {
 
         submitBtn.setOnAction(actionEvent -> {
 
-            // check if team name field is empty
-            if (teamNameField.getText().isEmpty()) {
-                Manager.showAlert(Alert.AlertType.WARNING, "Empty Field", "Team name field cannot be empty.");
-                return;
-            }
-
             // TODO: check if team name exists
 
-            createTeam();
-            Manager.viewDashboard(user);
+            if (errorCheck()) {
+                createTeam();
+                Manager.viewDashboard(user);
+            }
         });
+    }
+
+    /**
+     * Checks for all possible errors.
+     * @return True if there are no errors found.
+     */
+    private boolean errorCheck() {
+
+        // check if team name field is empty
+        if (teamNameField.getText().isEmpty()) {
+            Manager.showAlert(Alert.AlertType.WARNING, "Empty Field", "Team name field cannot be empty.");
+            return false;
+        }
+
+        // set the minimum number of person
+        if (managerChoice.getSelectionModel().isEmpty() && analystChoice.getSelectionModel().isEmpty() &&
+            designerChoice.getSelectionModel().isEmpty() && coderChoice.getSelectionModel().isEmpty() &&
+            testerChoice.getSelectionModel().isEmpty())
+        {
+            Manager.showAlert(Alert.AlertType.WARNING, "Empty Team", "At least one member should exist in team.");
+            return false;
+        }
+
+        return true;
     }
 
     /**

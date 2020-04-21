@@ -17,7 +17,7 @@
                             <Font size="24.0" />
                         </font>
                     </Label>
-                    <Label alignment="TOP_LEFT" maxHeight="72.0" maxWidth="670.0" prefHeight="72.0" prefWidth="612.0" text="Here you can view all the information about the current teams. To modify them, click Edit on the right side. You can view the employee details by clicking on their names." wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0">
+                    <Label alignment="TOP_LEFT" maxHeight="72.0" maxWidth="670.0" prefHeight="72.0" prefWidth="612.0" text="Here you can view all the information about the current teams. To modify or delete them, click Edit on the right side. You can view the employee details by clicking on their names." wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0">
         </Label>
                      <Button fx:id="backBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="btn" text="Back" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
                 </AnchorPane>
