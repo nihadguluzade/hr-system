@@ -23,27 +23,27 @@ import java.sql.SQLException;
 
 import static app.controllers.Dashboard.*;
 
-public class SeniorsList {
+public class SupervisorsList {
 
-    @FXML private AnchorPane optionSeniorsPane;
-    @FXML private TilePane seniorsTilePane;
+    @FXML private AnchorPane optionSupervisorsPane;
+    @FXML private TilePane supervisorsTilePane;
     @FXML private Button backBtn;
 
-    private ObservableList<Employee> seniors = FXCollections.observableArrayList();
+    private ObservableList<Employee> supervisors = FXCollections.observableArrayList();
 
     public void start(final Employee user) {
-        Stage stage = (Stage) optionSeniorsPane.getScene().getWindow();
+        Stage stage = (Stage) optionSupervisorsPane.getScene().getWindow();
         stage.sizeToScene();
-        stage.setTitle("Seniors");
+        stage.setTitle("Supervisors");
         stage.setResizable(false);
 
-        Scene scene = optionSeniorsPane.getScene();
+        Scene scene = optionSupervisorsPane.getScene();
         scene.getStylesheets().add("app/resources/styles/style.css");
 
-        loadSeniors();
+        loadSupervisors();
 
-        // detect mouse on senior employee tile
-        for (Node node: seniorsTilePane.lookupAll(".employee-indv-tile"))
+        // detect mouse on supervisors employee tile
+        for (Node node: supervisorsTilePane.lookupAll(".employee-indv-tile"))
         {
             node.setOnMouseEntered(mouseEvent -> {
                 node.setStyle("-fx-opacity: 0.5");
@@ -68,10 +68,10 @@ public class SeniorsList {
     /**
      * Load admins from DB.
      */
-    private void loadSeniors() {
+    private void loadSupervisors() {
 
-        seniorsTilePane.getChildren().clear(); // clear the view
-        seniors.clear();
+        supervisorsTilePane.getChildren().clear(); // clear the view
+        supervisors.clear();
 
         try {
             Connection connection = Manager.getConnection();
@@ -79,7 +79,7 @@ public class SeniorsList {
 
             // store all data in observable list
             while (rs.next()) {
-                seniors.add(new Employee(rs.getInt("id"), rs.getDate("acceptdate").toLocalDate(), rs.getString("title"),
+                supervisors.add(new Employee(rs.getInt("id"), rs.getDate("acceptdate").toLocalDate(), rs.getString("title"),
                         rs.getString("first_name"), rs.getString("last_name"), rs.getString("email"),
                         rs.getString("password"), rs.getLong("phone"), rs.getDate("birthdate").toLocalDate(),
                         rs.getString("nationality"), rs.getInt("salary"), rs.getString("accounting"),
@@ -87,7 +87,7 @@ public class SeniorsList {
             }
 
             // now add those teams to view
-            for (Employee s: seniors) {
+            for (Employee s: supervisors) {
                 AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/app/view/employee_tile.fxml"));
                 GridPane gridPane = (GridPane) anchorPane.getChildren().get(0);
                 gridPane.getStyleClass().add("employee-indv-tile");
@@ -102,11 +102,11 @@ public class SeniorsList {
                 title.setText(s.getTitle());
 
                 // add parent pane to the dashboard
-                seniorsTilePane.getChildren().add(anchorPane);
+                supervisorsTilePane.getChildren().add(anchorPane);
             }
 
         } catch (SQLException | IOException e) {
-            Manager.showAlert(Alert.AlertType.ERROR, "", "Couldn't load seniors list.");
+            Manager.showAlert(Alert.AlertType.ERROR, "", "Couldn't load supervisors list.");
         }
     }
 

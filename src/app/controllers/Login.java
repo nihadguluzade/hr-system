@@ -114,8 +114,8 @@ public class Login {
             }
             else
             {
-                Manager.showAlert(Alert.AlertType.INFORMATION, "Senior exists",
-                        "There is already at least one Senior exists on the system.");
+                Manager.showAlert(Alert.AlertType.INFORMATION, "Supervisor exists",
+                        "There is already at least one supervisor exists on the system.");
             }
         });
 

@@ -44,6 +44,7 @@
          <ColumnConstraints />
          <ColumnConstraints />
          <ColumnConstraints />
+         <ColumnConstraints />
     </columnConstraints>
     <rowConstraints>
         <RowConstraints />
@@ -156,6 +157,11 @@
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
          <RowConstraints />
          <RowConstraints />
          <RowConstraints />
@@ -367,13 +373,13 @@
             </GridPane.margin>
          </TextField>
          <ComboBox fx:id="titleCombo" onAction="#titleListener" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-         <Label alignment="CENTER_RIGHT" layoutX="320.0" layoutY="230.0" minWidth="70.0" text="Senior:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.columnIndex="2" GridPane.rowIndex="2">
+         <Label alignment="CENTER_RIGHT" layoutX="320.0" layoutY="230.0" minWidth="70.0" text="Supervisor:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <font>
                <Font size="13.0" />
             </font>
          </Label>
-         <CheckBox fx:id="seniorCheck" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-         <Label fx:id="senior" layoutX="400.0" layoutY="230.0" text="No" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <CheckBox fx:id="supervisorCheck" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <Label fx:id="supervisor" layoutX="400.0" layoutY="230.0" text="No" GridPane.columnIndex="3" GridPane.rowIndex="2" />
          <Button fx:id="discardBtn" layoutX="111.0" layoutY="570.0" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Discard" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
     </children>
 </GridPane>

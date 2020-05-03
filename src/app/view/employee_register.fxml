@@ -42,6 +42,7 @@
       <ColumnConstraints />
       <ColumnConstraints />
       <ColumnConstraints />
+      <ColumnConstraints />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints />
@@ -55,6 +56,11 @@
       <RowConstraints />
    </rowConstraints>
    <rowConstraints>
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
       <RowConstraints />
       <RowConstraints />
       <RowConstraints />
@@ -458,7 +464,7 @@
             </Button>
          </children>
       </GridPane>
-      <CheckBox fx:id="seniorCheck" mnemonicParsing="false" styleClass="mac-checkbox" text="Senior" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+      <CheckBox fx:id="supervisorCheck" mnemonicParsing="false" styleClass="mac-checkbox" text="Supervisor" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets top="8.0" />
          </GridPane.margin>

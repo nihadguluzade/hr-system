@@ -26,7 +26,6 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
 import java.util.Calendar;
-import javafx.application.HostServices;
 
 public class Dashboard {
 
@@ -39,7 +38,7 @@ public class Dashboard {
     @FXML private Button importCandidateBtn;
     @FXML private Button createProjectBtn;
     @FXML private Button formTeamBtn;
-    @FXML private GridPane optionSeniors;
+    @FXML private GridPane optionSupervisors;
     @FXML private GridPane optionEmployees;
     @FXML private GridPane optionTeams;
     @FXML private Button salaryCalc1;
@@ -121,8 +120,8 @@ public class Dashboard {
         // when Teams option is clicked on dahsbooard->company tab
         optionTeams.setOnMouseClicked(mouseEvent -> Manager.viewTeams(user));
 
-        // when Seniors option is clicked on dashboard->company tab
-        optionSeniors.setOnMouseClicked(mouseEvent -> Manager.viewSeniors(user));
+        // when supervisor option is clicked on dashboard->company tab
+        optionSupervisors.setOnMouseClicked(mouseEvent -> Manager.viewAdmins(user));
 
         // when Employees option is clicked on dashboard->company tab
         optionEmployees.setOnMouseClicked(mouseEvent -> Manager.viewEmployees(user));

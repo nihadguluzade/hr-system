@@ -42,7 +42,7 @@ public class EmployeeList {
 
         loadEmployees();
 
-        // detect mouse on senior employee tile
+        // detect mouse on supervisor employee tile
         for (Node node: employeesTilePane.lookupAll(".employee-indv-tile"))
         {
             node.setOnMouseEntered(mouseEvent -> {
@@ -93,7 +93,7 @@ public class EmployeeList {
                 gridPane.getStyleClass().add("employee-indv-tile");
 
                 Label name = (Label) gridPane.getChildren().get(1);
-                if (e.isAdmin()) // distinguish the seniors and normal employees
+                if (e.isAdmin()) // distinguish the admins and normal employees
                 {
                     name.setText(e.getFullName() + " (S)");
                 }
@@ -113,7 +113,7 @@ public class EmployeeList {
             }
 
         } catch (SQLException | IOException e) {
-            Manager.showAlert(Alert.AlertType.ERROR, "", "Couldn't load seniors list.");
+            Manager.showAlert(Alert.AlertType.ERROR, "", "Couldn't load supervisors list.");
         }
     }
 

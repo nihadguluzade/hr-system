@@ -30,7 +30,7 @@ public class EmployeeInfo {
     @FXML private Label skills;
     @FXML private Label skillsLabel;
     @FXML private Label acceptDate;
-    @FXML private Label senior;
+    @FXML private Label supervisor;
     @FXML private Button editBtn;
     @FXML private Button backBtn;
     @FXML private Button fireBtn;
@@ -49,7 +49,7 @@ public class EmployeeInfo {
     @FXML private ChoiceBox teamSelector;
     @FXML private TextField salaryField;
     @FXML private ComboBox skillsCombo;
-    @FXML private CheckBox seniorCheck;
+    @FXML private CheckBox supervisorCheck;
 
     public void start(Employee employee, final Employee user) {
         Stage stage = (Stage) employeeInfoPane.getScene().getWindow();
@@ -118,7 +118,7 @@ public class EmployeeInfo {
             }
 
             savechanges(employee, firstName, lastName, phone, acceptDate, title, mail, birthDate, country, salary,
-                    skill, seniorCheck.isSelected());
+                    skill, supervisorCheck.isSelected());
             editModeOff();
             initializeLabels(employee);
         });
@@ -164,8 +164,8 @@ public class EmployeeInfo {
 
         acceptDate.setText(employee.getAcceptdate().toString());
 
-        if (employee.isAdmin()) senior.setText("Yes");
-        else senior.setText("No");
+        if (employee.isAdmin()) supervisor.setText("Yes");
+        else supervisor.setText("No");
     }
 
     /**
@@ -181,7 +181,7 @@ public class EmployeeInfo {
         country.setVisible(false);
         acceptDate.setVisible(false);
         salary.setVisible(false);
-        senior.setVisible(false);
+        supervisor.setVisible(false);
         skills.setVisible(false);
         editBtn.setVisible(false);
         backBtn.setVisible(false);
@@ -197,7 +197,7 @@ public class EmployeeInfo {
         countryField.setVisible(true);
         acceptDatePicker.setVisible(true);
         salaryField.setVisible(true);
-        seniorCheck.setVisible(true);
+        supervisorCheck.setVisible(true);
 //        skillsCombo.setVisible(true);
         saveBtn.setVisible(true);
         discardBtn.setVisible(true);
@@ -229,9 +229,9 @@ public class EmployeeInfo {
         salaryField.setText(Integer.toString(employee.getSalary()));
 
         if (employee.isAdmin())
-            seniorCheck.setSelected(true);
+            supervisorCheck.setSelected(true);
         else
-            seniorCheck.setSelected(false);
+            supervisorCheck.setSelected(false);
     }
 
     /**
@@ -247,7 +247,7 @@ public class EmployeeInfo {
         country.setVisible(true);
         acceptDate.setVisible(true);
         salary.setVisible(true);
-        senior.setVisible(true);
+        supervisor.setVisible(true);
         skills.setVisible(true);
         editBtn.setVisible(true);
         backBtn.setVisible(true);
@@ -264,7 +264,7 @@ public class EmployeeInfo {
         countryField.setVisible(false);
         acceptDatePicker.setVisible(false);
         salaryField.setVisible(false);
-        seniorCheck.setVisible(false);
+        supervisorCheck.setVisible(false);
         skillsCombo.setVisible(false);
         skillsCombo.getItems().clear();
         saveBtn.setVisible(false);

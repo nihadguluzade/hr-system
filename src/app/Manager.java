@@ -292,11 +292,11 @@ public class Manager extends Main {
         }
     }
 
-    public static void viewSeniors(Employee user) {
+    public static void viewAdmins(Employee user) {
         try {
-            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/seniors_list.fxml"), Strings.GetBundle());
+            FXMLLoader loader = new FXMLLoader(Manager.class.getResource("view/supervisors_list.fxml"), Strings.GetBundle());
             mainScene.setRoot(loader.load());
-            SeniorsList controller = loader.getController();
+            SupervisorsList controller = loader.getController();
             controller.start(user);
         } catch (IOException e) {
             e.printStackTrace();

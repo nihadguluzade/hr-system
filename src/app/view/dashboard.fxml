@@ -196,7 +196,7 @@
                                           <Insets left="25.0" right="25.0" />
                                        </padding>
                                        <children>
-                                           <GridPane fx:id="optionSeniors" minHeight="180.0" minWidth="150.0" style="-fx-background-color: #cfd8dc; -fx-border-color: #37474f;" styleClass="optionBlock">
+                                           <GridPane fx:id="optionSupervisors" minHeight="180.0" minWidth="150.0" style="-fx-background-color: #cfd8dc; -fx-border-color: #37474f;" styleClass="optionBlock">
                                                <columnConstraints>
                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                                </columnConstraints>
@@ -206,7 +206,7 @@
                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                </rowConstraints>
                                                <children>
-                                                   <Label text="Seniors" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
+                                                   <Label text="Supervisors" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER">
                                                        <font>
                                                            <Font size="18.0" />
                                                        </font>

@@ -16,7 +16,7 @@ import java.util.Calendar;
 public class EmployeeRegister {
 
     @FXML private GridPane signUpGridPane;
-    @FXML private CheckBox seniorCheck;
+    @FXML private CheckBox supervisorCheck;
     @FXML private Button managerBtn;
     @FXML private Button analystBtn;
     @FXML private Button designerBtn;
@@ -81,7 +81,7 @@ public class EmployeeRegister {
 
         dateLabel.setText(day + "/" + (month + 1) + "/" + year);
 
-        seniorCheck.setOnMouseClicked(mouseEvent -> {
+        supervisorCheck.setOnMouseClicked(mouseEvent -> {
             newAdmin = !newAdmin; // toggle newAdmin
         });
 
@@ -397,7 +397,6 @@ public class EmployeeRegister {
             }
             else
             {
-                System.out.println("fuck");
                 Manager.showAlert(Alert.AlertType.INFORMATION, "Project", "No suitable project found for this employee.");
             }
 
