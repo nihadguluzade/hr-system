@@ -375,22 +375,31 @@ public class EmployeeRegister {
             // now look if there's empty space for programmer in projects' teams
             for (Project p: projects)
             {
-                if (p.getTeam().getProgrammer() == 0) // if programmer is null, store team name
-                {
-                    teams.add(p.getTeam().getName());
+                try {
+                    if (p.getTeam() != null && p.getTeam().getProgrammer() == 0) // if programmer is null, store team name
+                    {
+                        teams.add(p.getTeam().getName());
+                    }
+                } catch (NullPointerException e) {
+                    System.out.println(p.getName());
+                    System.out.println(p.getTeam().getName());
+                    System.out.println(p.getTeam().getProgrammer());
+                    e.printStackTrace();
                 }
             }
 
             // if appropriate teams were found
             if (teams.size() > 0)
             {
-                System.out.println("sure");
                 String projectList = "";
                 for (String name: teams)
                 {
-                    System.out.println("here");
-                    projectList += name;
-                    projectList += " ";
+                    for (Project p: projects) {
+                        if (p.getTeam() != null && p.getTeam().getName().equals(name)) {
+                            projectList += p.getName();
+                            projectList += " ";
+                        }
+                    }
                 }
                 String message = "Following projects are available for this employee: " + projectList;
                 Manager.showAlert(Alert.AlertType.INFORMATION, "Assign to projects", message);
