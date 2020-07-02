@@ -135,16 +135,23 @@
     -fx-underline: true;
 }
 
-#langBtn {
-    -fx-background-image: url("/app/resources/images/gb-48.png");
+.langBtn {
     -fx-background-position: center;
     -fx-background-repeat: no-repeat;
     -fx-background-size: 32px 32px;
     -fx-background-color: transparent;
 }
 
-#langBtn .arrow {
+.langBtn .arrow {
     -fx-opacity: 0;
+}
+
+.lang-en {
+    -fx-background-image: url("/app/resources/images/gb-48.png");
+}
+
+.lang-tr {
+    -fx-background-image: url("/app/resources/images/tr-32.png");
 }
 
 .project-info-label {

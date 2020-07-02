@@ -2,6 +2,8 @@ package app.controllers;
 
 import app.Manager;
 import app.classes.Employee;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,6 +16,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Set;
 
 public class Login {
 
@@ -30,6 +34,8 @@ public class Login {
     private boolean isTypeChosen = false;
     private boolean isAdmin = false;
     private Employee user = null;
+
+    private ArrayList<String> languageSet = new ArrayList<>();
 
     /**
      * This method is called whenever the view linked to it is opened.
@@ -101,9 +107,42 @@ public class Login {
                 Manager.showAlert(Alert.AlertType.ERROR, "Invalid user", "No records found. Try again.");
         });
 
-        langBtn.setVisible(false);
         //langBtn.setOnMouseClicked(mouseEvent -> Manager.showAlert(Alert.AlertType.INFORMATION, "Change language",
         //        "Language selection is not available right now."));
+
+        languageSet.add("English");
+        languageSet.add("Turkish");
+
+        langBtn.getItems().addAll(
+                "English",
+                "Turkish",
+                "Russian"
+        );
+
+        langBtn.getSelectionModel().selectFirst();
+        langBtn.getStyleClass().add("langBtn");
+        langBtn.getStyleClass().add("lang-en"); // default is English
+
+        langBtn.valueProperty().addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue observableValue, Object o, Object t1) {
+                System.out.println(observableValue.getValue());
+
+                langBtn.getStyleClass().clear();
+                langBtn.getStyleClass().add("langBtn");
+
+                if (observableValue.getValue().equals(languageSet.get(0)))
+                {
+                    langBtn.getStyleClass().add("lang-en");
+                }
+                else if (observableValue.getValue().equals(languageSet.get(1)))
+                {
+                    langBtn.getStyleClass().add("lang-tr");
+                }
+
+                System.out.println(langBtn.getStyleClass());
+            }
+        });
 
         firstTimeLink.setOnMouseEntered(e -> firstTimeLink.setStyle("-fx-underline: true"));
         firstTimeLink.setOnMouseExited(e -> firstTimeLink.setStyle("-fx-underline: false"));
