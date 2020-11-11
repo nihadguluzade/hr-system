@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="ProjectInfoPane" prefHeight="380.0" prefWidth="580.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.ProjectInfo">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="15.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="647.4158480647685" minHeight="10.0" prefHeight="633.4158480647685" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="647.4158480647685" minHeight="10.0" prefHeight="633.4158480647685" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="647.4158480647685" minHeight="10.0" prefHeight="633.4158480647685" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="647.4158480647685" minHeight="10.0" prefHeight="633.4158480647685" vgrow="SOMETIMES" />
+            <RowConstraints />
+        </rowConstraints>
+         <children>
+            <Label text="Project Details">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <Button mnemonicParsing="false" styleClass="mac-btn" text="✕" GridPane.halignment="RIGHT" fx:id="xBtn" />
+            <Button fx:id="modifyBtn" mnemonicParsing="false" styleClass="mac-btn" text="Modify" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets right="43.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="deleteBtn" layoutX="435.0" layoutY="37.0" mnemonicParsing="false" styleClass="mac-btn" text="Delete" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets right="110.0" />
+               </GridPane.margin>
+            </Button>
+            <Separator maxWidth="1.7976931348623157E308" valignment="BOTTOM" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM" />
+            <Label fx:id="nameLabel" text="Software Engineering Project" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+               <font>
+                  <Font size="14.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="langLabel" minWidth="120.0" text="Java" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label styleClass="project-info-label" text="Name" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label minWidth="120.0" styleClass="project-info-label" text="Language" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label styleClass="project-info-label" text="Manager" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="managerLabel" text="Nihad Guluzade" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label minWidth="120.0" styleClass="project-info-label" text="Due Date" GridPane.halignment="RIGHT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label text="Description" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label minWidth="120.0" styleClass="project-info-label" text="Team" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="teamLabel" minWidth="120.0" text="Fuckers" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="dueDateLabel" minWidth="120.0" text="12/03/2020" GridPane.halignment="RIGHT" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets top="10.0" />
+               </GridPane.margin></Label>
+            <Label fx:id="description" alignment="TOP_LEFT" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Some description for the system" GridPane.rowIndex="3" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" />
+         </padding>
+      </GridPane>
+   </children>
+</AnchorPane>

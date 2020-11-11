@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="employeeInfoPane" maxHeight="700.0" maxWidth="575.0" minHeight="700.0" minWidth="575.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.EmployeeInfo">
+    <GridPane alignment="center" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <columnConstraints>
+        <ColumnConstraints />
+    </columnConstraints>
+    <columnConstraints>
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+        <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+      <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+         <ColumnConstraints />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+    </rowConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+    </rowConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+        <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+      <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+         <RowConstraints />
+    </rowConstraints>
+    <children>
+        <Label fx:id="ERFLabel" text="Employee Information" textFill="#03a9f4" GridPane.columnSpan="2" GridPane.halignment="LEFT">
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+            <GridPane.margin>
+                <Insets bottom="15.0" top="25.0" />
+            </GridPane.margin></Label>
+        <Label fx:id="ERFLabel1" layoutX="48.0" layoutY="90.0" text="YSOFT" textFill="#9e9e9e">
+            <font>
+                <Font name="System Bold" size="14.0" />
+            </font>
+            <GridPane.margin>
+                <Insets bottom="35.0" />
+            </GridPane.margin>
+        </Label>
+      <Label fx:id="fullName" layoutX="45.0" layoutY="78.0" text="Christian Bale" GridPane.columnSpan="2">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+         <GridPane.margin>
+            <Insets top="64.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="phone" layoutX="45.0" layoutY="106.0" text="+90 534 200 67 94" GridPane.columnIndex="3" GridPane.halignment="RIGHT">
+         <font>
+            <Font size="14.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="5.0" top="64.0" />
+         </GridPane.margin>
+      </Label>
+        <Label alignment="CENTER_RIGHT" maxWidth="70.0" minWidth="0.0" text="ID:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <font>
+                <Font size="13.0" />
+            </font>
+            <GridPane.margin>
+                <Insets bottom="10.0" right="10.0" top="10.0" />
+            </GridPane.margin>
+        </Label>
+      <Label fx:id="id" text="17011903" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label alignment="CENTER_RIGHT" layoutX="134.0" layoutY="233.0" maxWidth="70.0" text="Title:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="title" layoutX="176.0" layoutY="233.0" text="Manager" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label alignment="CENTER_RIGHT" layoutX="141.0" layoutY="253.0" maxWidth="70.0" text="Personal email:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="mail" layoutX="176.0" layoutY="253.0" text="l1117903@std.yildiz.edu.tr" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Label alignment="CENTER_RIGHT" layoutX="134.0" layoutY="428.0" maxWidth="70.0" text="Birth Date:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="birthDate" layoutX="194.0" layoutY="438.0" text="15/06/2000" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <Label alignment="CENTER_RIGHT" layoutX="134.0" layoutY="467.0" maxWidth="70.0" text="Nationality:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="country" layoutX="194.0" layoutY="467.0" text="German" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Label fx:id="teamLabel" alignment="CENTER_RIGHT" layoutX="129.0" layoutY="487.0" maxWidth="70.0" text="Team:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="8">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="team" layoutX="207.0" layoutY="487.0" text="Frantics" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+      <Label fx:id="projectLabel" alignment="CENTER_RIGHT" layoutX="127.0" layoutY="507.0" maxWidth="70.0" text="Project:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.rowIndex="9">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="project" layoutX="208.0" layoutY="507.0" text="Software Engineering Project" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+      <Label alignment="CENTER_RIGHT" layoutX="120.0" layoutY="527.0" maxWidth="70.0" text="Salary:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.rowIndex="6">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="salary" layoutX="201.0" layoutY="527.0" text="\$5000" GridPane.columnIndex="1" GridPane.rowIndex="6">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="skillsLabel" alignment="CENTER_RIGHT" layoutX="120.0" layoutY="507.0" maxWidth="70.0" text="Skills:" textAlignment="RIGHT" textFill="#9e9e9e" wrapText="true" GridPane.halignment="RIGHT" GridPane.rowIndex="7">
+         <font>
+            <Font size="13.0" />
+         </font>
+         <GridPane.margin>
+            <Insets bottom="10.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Label>
+      <Label fx:id="skills" layoutX="201.0" layoutY="507.0" text="Java" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+      <Button fx:id="backBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Back" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10">
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="editBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Edit" GridPane.columnSpan="3" GridPane.halignment="LEFT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets left="50.0" />
+         </GridPane.margin>
+      </Button>
+      <Button fx:id="fireBtn" layoutX="201.0" layoutY="616.0" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Fire" GridPane.columnSpan="3" GridPane.halignment="RIGHT" GridPane.rowIndex="10" GridPane.valignment="BOTTOM">
+         <GridPane.margin>
+            <Insets right="50.0" />
+         </GridPane.margin>
+      </Button>
+         <Label alignment="CENTER_RIGHT" layoutX="120.0" layoutY="204.0" minWidth="70.0" text="Accepted:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <font>
+               <Font size="13.0" />
+            </font>
+            <GridPane.margin>
+               <Insets right="10.0" />
+            </GridPane.margin>
+         </Label>
+         <Label fx:id="acceptDate" layoutX="201.0" layoutY="204.0" text="21/03/2020" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         <TextField fx:id="idField" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         <TextField fx:id="mailField" layoutX="143.0" layoutY="222.0" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         <TextField fx:id="countryField" layoutX="143.0" layoutY="222.0" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+         <ChoiceBox fx:id="teamSelector" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+         <DatePicker fx:id="birthDatePicker" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+         <TextField fx:id="salaryField" layoutX="143.0" layoutY="387.0" maxWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         <ComboBox fx:id="skillsCombo" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+         <DatePicker fx:id="acceptDatePicker" layoutX="143.0" layoutY="350.0" prefWidth="135.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+         <Button fx:id="saveBtn" layoutX="111.0" layoutY="567.0" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Save" GridPane.columnSpan="3" GridPane.rowIndex="10">
+            <GridPane.margin>
+               <Insets left="50.0" />
+            </GridPane.margin>
+         </Button>
+         <TextField fx:id="phoneField" layoutX="141.0" layoutY="222.0" maxWidth="135.0" GridPane.columnIndex="3">
+            <GridPane.margin>
+               <Insets bottom="5.0" top="64.0" />
+            </GridPane.margin>
+         </TextField>
+         <TextField fx:id="firstNameField" layoutX="400.0" layoutY="188.0" maxWidth="80.0" GridPane.columnSpan="2">
+            <GridPane.margin>
+               <Insets top="64.0" />
+            </GridPane.margin>
+         </TextField>
+         <TextField fx:id="lastNameField" layoutX="61.0" layoutY="190.0" maxWidth="80.0" GridPane.columnIndex="1" GridPane.columnSpan="2">
+            <GridPane.margin>
+               <Insets left="10.0" top="64.0" />
+            </GridPane.margin>
+         </TextField>
+         <ComboBox fx:id="titleCombo" onAction="#titleListener" prefWidth="135.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+         <Label alignment="CENTER_RIGHT" layoutX="320.0" layoutY="230.0" minWidth="70.0" text="Supervisor:" textAlignment="RIGHT" textFill="#9e9e9e" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <font>
+               <Font size="13.0" />
+            </font>
+         </Label>
+         <CheckBox fx:id="supervisorCheck" mnemonicParsing="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <Label fx:id="supervisor" layoutX="400.0" layoutY="230.0" text="No" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+         <Button fx:id="discardBtn" layoutX="111.0" layoutY="570.0" mnemonicParsing="false" prefWidth="70.0" styleClass="btn, btn-red" text="Discard" GridPane.columnSpan="3" GridPane.halignment="CENTER" GridPane.rowIndex="10" />
+    </children>
+</GridPane>
+</AnchorPane>

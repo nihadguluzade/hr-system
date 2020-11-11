@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="editTeamPane" prefHeight="550.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.TeamEdit">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="221.0" minHeight="10.0" prefHeight="67.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="435.0" minHeight="10.0" prefHeight="433.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+      <children>
+          <Label fx:id="ERFLabel" text="Modify Team" textFill="#03a9f4" GridPane.halignment="LEFT">
+              <font>
+                  <Font name="System Bold" size="20.0" />
+              </font>
+              <GridPane.margin>
+                  <Insets bottom="15.0" top="25.0" />
+              </GridPane.margin></Label>
+          <Label fx:id="ERFLabel1" layoutX="48.0" layoutY="90.0" text="YSOFT" textFill="#9e9e9e">
+              <font>
+                  <Font name="System Bold" size="14.0" />
+              </font>
+              <GridPane.margin>
+                  <Insets bottom="35.0" />
+              </GridPane.margin>
+          </Label>
+            <Button fx:id="deleteBtn" layoutX="321.0" layoutY="54.0" mnemonicParsing="false" styleClass="btn" text="Delete" GridPane.halignment="CENTER">
+               <GridPane.margin>
+                  <Insets left="110.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="saveBtn" mnemonicParsing="false" styleClass="btn" text="Save" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets right="60.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="discardBtn" layoutX="387.0" layoutY="55.0" mnemonicParsing="false" styleClass="btn" text="Back" GridPane.halignment="RIGHT" />
+            <GridPane GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+               <children>
+                  <TextField fx:id="nameField" maxWidth="1.7976931348623157E308" GridPane.columnSpan="3" GridPane.valignment="TOP">
+                     <GridPane.margin>
+                        <Insets top="20.0" />
+                     </GridPane.margin>
+                  </TextField>
+                  <Label text="Team name" GridPane.valignment="TOP" />
+                  <HBox alignment="CENTER_LEFT" maxHeight="32.0" prefWidth="200.0" GridPane.rowIndex="1">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-administrator-male-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Manager">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </HBox>
+                  <ChoiceBox fx:id="managerChoice" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <Button fx:id="removeManagerBtn" mnemonicParsing="false" text="Remove" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-red" />
+                     </styleClass></Button>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="171.0" maxHeight="32.0" prefWidth="200.0" GridPane.rowIndex="2">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-combo-chart-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Analyst">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </HBox>
+                  <ChoiceBox fx:id="analystChoice" layoutX="127.0" layoutY="173.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <Button fx:id="removeAnalystBtn" layoutX="268.0" layoutY="173.0" mnemonicParsing="false" text="Remove" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-red" />
+                     </styleClass></Button>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="288.0" maxHeight="32.0" prefWidth="200.0" GridPane.rowIndex="3">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-paint-palette-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Designer">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </HBox>
+                  <ChoiceBox fx:id="designerChoice" layoutX="127.0" layoutY="290.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <Button fx:id="removeDesignerBtn" layoutX="268.0" layoutY="290.0" mnemonicParsing="false" text="Remove" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-red" />
+                     </styleClass></Button>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="201.0" maxHeight="32.0" prefWidth="200.0" GridPane.rowIndex="4">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-code-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Programmer">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </HBox>
+                  <ChoiceBox fx:id="coderChoice" layoutX="127.0" layoutY="203.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <Button fx:id="removeCoderBtn" layoutX="268.0" layoutY="203.0" mnemonicParsing="false" text="Remove" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-red" />
+                     </styleClass></Button>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="259.0" maxHeight="32.0" prefWidth="200.0" GridPane.rowIndex="5">
+                     <children>
+                        <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/icons8-pass-fail-80.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Tester">
+                           <HBox.margin>
+                              <Insets />
+                           </HBox.margin>
+                           <padding>
+                              <Insets left="10.0" />
+                           </padding>
+                        </Label>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </HBox>
+                  <ChoiceBox fx:id="testerChoice" layoutX="127.0" layoutY="262.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                  <Button fx:id="removeTesterBtn" layoutX="268.0" layoutY="262.0" mnemonicParsing="false" text="Remove" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                     <styleClass>
+                        <String fx:value="btn" />
+                        <String fx:value="btn-red" />
+                     </styleClass></Button>
+               </children>
+            </GridPane>
+      </children>
+         <padding>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </padding>
+      </GridPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="NewProjectPane" maxHeight="480.0" maxWidth="720.0" minHeight="480.0" minWidth="720.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.NewProject">
+   <children>
+      <GridPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="192.41583280597948" minHeight="10.0" prefHeight="138.9108866734689" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="183.41584043537404" minHeight="10.0" prefHeight="150.32672710884293" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="123.8217805986393" minHeight="10.0" prefHeight="85.18811604761873" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="94.41584043537404" minHeight="10.0" prefHeight="72.59405621088399" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text="Create New Project" textFill="#03a9f4">
+               <GridPane.margin>
+                  <Insets bottom="25.0" />
+               </GridPane.margin>
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Label>
+            <Label text="This is the windows to create project. Add name, import workers, add timeline, etc." GridPane.columnSpan="2">
+               <GridPane.margin>
+                  <Insets bottom="6.0" top="30.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="projectNameField" maxWidth="300.0" promptText="Project Name" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </TextField>
+            <ChoiceBox fx:id="langSelector" prefWidth="150.0" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="10.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <Separator maxWidth="1.7976931348623157E308" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowSpan="2" GridPane.valignment="CENTER">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Separator>
+            <Button fx:id="createBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="mac-btn" text="Create" GridPane.columnIndex="1" GridPane.halignment="RIGHT">
+               <GridPane.margin>
+                  <Insets right="90.0" />
+               </GridPane.margin>
+            </Button>
+            <Button fx:id="closeBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="mac-btn" text="Close" GridPane.columnIndex="1" GridPane.halignment="RIGHT" />
+            <Label text="Description" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="15.0" />
+               </GridPane.margin>
+            </Label>
+            <TextArea fx:id="descriptionArea" maxHeight="100.0" maxWidth="300.0" prefHeight="200.0" prefWidth="200.0" promptText="(Optional)" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="24.0" />
+               </GridPane.margin>
+            </TextArea>
+            <Label text="Start date" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <DatePicker fx:id="startDatePicker" promptText="Click to choose date" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </DatePicker>
+            <Label text="Due date" GridPane.rowIndex="3" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <DatePicker fx:id="dueDatePicker" promptText="Click to choose date" GridPane.rowIndex="3" />
+            <RadioButton mnemonicParsing="false" selected="true" text="Assign team" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="25.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <RadioButton disable="true" mnemonicParsing="false" text="Assign individually" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="48.0" />
+               </GridPane.margin>
+            </RadioButton>
+            <Label fx:id="teamOrIndvLabel" text="Choose team" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <ChoiceBox fx:id="teamSelector" prefWidth="150.0" visible="true" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="18.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="managerSelector" layoutX="370.0" visible="false" layoutY="239.0" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="18.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="analystChooser" layoutX="370.0" layoutY="262.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+               <GridPane.margin>
+                  <Insets bottom="18.0" />
+               </GridPane.margin>
+            </ChoiceBox>
+            <ChoiceBox fx:id="teamChooser11" layoutX="25.0" layoutY="80.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="teamChooser111" layoutX="25.0" layoutY="80.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
+            <ChoiceBox fx:id="teamChooser1111" layoutX="25.0" layoutY="80.0" prefWidth="150.0" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="teamOrIndvLabel1" layoutX="370.0" layoutY="237.0" text="Analyst" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="85.0" top="20.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="teamOrIndvLabel11" layoutX="565.0" layoutY="241.0" text="Designer" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="teamOrIndvLabel111" layoutX="370.0" layoutY="321.0" text="Programmer" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets left="113.0" top="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label text="Tester" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="3" GridPane.valignment="TOP" />
+            <Label layoutX="369.0" layoutY="402.0" text="Creation Date" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3" GridPane.valignment="TOP">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+            <Label fx:id="creationDateLabel" layoutX="566.0" layoutY="402.0" text="21/03/2020" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="3">
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+      </GridPane>
+   </children>
+</AnchorPane>

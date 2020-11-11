@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="170.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.Dashboard">
+   <children>
+      <Label alignment="CENTER" minWidth="770.0" text="Team Name (# members)" AnchorPane.topAnchor="10.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
+      </Label>
+      <Label text="Edit" textFill="#03a9f4" AnchorPane.bottomAnchor="153.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0" />
+      <TilePane hgap="10.0" maxWidth="500.0" prefColumns="3" prefHeight="200.0" prefRows="2" prefWidth="200.0" vgap="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+   </children>
+</AnchorPane>

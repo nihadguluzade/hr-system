@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="optionSupervisorsPane" prefHeight="640.0" prefWidth="835.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.controller.SupervisorsList">
+    <children>
+        <ScrollPane hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="640.0" prefWidth="835.0">
+                    <children>
+                        <AnchorPane maxHeight="150.0" prefWidth="200.0" AnchorPane.bottomAnchor="490.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <Label alignment="CENTER" text="Supervisors (Administrators)" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0" GridPane.halignment="LEFT" GridPane.valignment="TOP">
+                                <font>
+                                    <Font size="24.0" />
+                                </font>
+                            </Label>
+                            <Label alignment="TOP_LEFT" maxHeight="72.0" maxWidth="670.0" prefHeight="72.0" prefWidth="612.0" text="All the moderators of the system can be viewed here. To reduce their position from seniors to employee, click on their names." wrapText="true" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="70.0">
+                            </Label>
+                            <Button fx:id="backBtn" mnemonicParsing="false" prefWidth="70.0" styleClass="btn" text="Back" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0" />
+                        </AnchorPane>
+                        <TilePane fx:id="supervisorsTilePane" prefColumns="1" prefHeight="200.0" prefTileHeight="128.0" prefWidth="200.0" vgap="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="150.0">
+                            <padding>
+                                <Insets left="25.0" right="25.0" />
+                            </padding></TilePane>
+                    </children></AnchorPane>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>
