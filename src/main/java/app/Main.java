@@ -46,7 +46,7 @@ public class Main extends Application {
         {
             Manager.showAlert(Alert.AlertType.ERROR, "No connection",
                     "No connection to database. To continue using this application, please make sure that the MySQL is running.");
-            e.printStackTrace();
+            System.out.println(e);
         }
     }
 }
