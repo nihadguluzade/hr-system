@@ -19,9 +19,13 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.TilePane;
 import javafx.stage.Stage;
+import org.apache.ibatis.jdbc.ScriptRunner;
 
 import java.awt.Desktop;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
@@ -45,6 +49,8 @@ public class Dashboard {
     @FXML private Button salaryCalc2;
     @FXML private Button compCalc1;
     @FXML private Button compCalc2;
+    @FXML private Button dbInsertBtn;
+    @FXML private Button dbDeleteBtn;
 
     private ObservableList<Project> projects = FXCollections.observableArrayList();
 
@@ -157,6 +163,16 @@ public class Dashboard {
             } catch (URISyntaxException | IOException e) {
                 e.printStackTrace();
             }
+        });
+
+        dbInsertBtn.setOnAction(event -> {
+            insertSampleData();
+            Manager.showAlert(Alert.AlertType.INFORMATION, "Sample data Insert", "Sample data inserted successfully. Reload page to see results.");
+        });
+
+        dbDeleteBtn.setOnAction(event -> {
+            deleteSampleData();
+            Manager.showAlert(Alert.AlertType.INFORMATION, "Sample data Delete", "Sample data deleted successfully. Reload page to see results.");
         });
     }
 
@@ -434,7 +450,27 @@ public class Dashboard {
         }
     }
 
-    private void updateTeam(String teamName, String newName) {
+    private void insertSampleData() {
+        try {
+            Connection connection = Manager.getConnection();
+            ScriptRunner scriptRunner = new ScriptRunner(connection);
+            Reader reader = new BufferedReader(new FileReader("src/main/resources/database/sample-data-insert.sql"));
+            scriptRunner.runScript(reader);
+        } catch (Exception e) {
+            System.out.println("(!) Unexpected error.");
+            e.printStackTrace();
+        }
+    }
 
+    private void deleteSampleData() {
+        try {
+            Connection connection = Manager.getConnection();
+            ScriptRunner scriptRunner = new ScriptRunner(connection);
+            Reader reader = new BufferedReader(new FileReader("src/main/resources/database/sample-data-delete.sql"));
+            scriptRunner.runScript(reader);
+        } catch (Exception e) {
+            System.out.println("(!) Unexpected error.");
+            e.printStackTrace();
+        }
     }
 }

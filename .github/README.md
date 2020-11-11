@@ -6,7 +6,7 @@ and teams. Main functionalities are: create several types of employees (ex: desi
 
 ## Compile
 First check the MySQL username and password in DBUtils class (you need MySQL server).
-After this execute `mvn compile javafx:run` or add this to the command line field in your IDE.
+After this execute `mvn clean compile javafx:run` or add this to the command line field in your IDE.
 
 ## Screenshots
 <p align="center">

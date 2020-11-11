@@ -88,7 +88,7 @@ public class EmployeeList {
 
             // now add those teams to view
             for (Employee e: employees) {
-                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/app/view/employee_tile.fxml"));
+                AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/view/employee_tile.fxml"));
                 GridPane gridPane = (GridPane) anchorPane.getChildren().get(0);
                 gridPane.getStyleClass().add("employee-indv-tile");
 

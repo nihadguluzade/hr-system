@@ -413,7 +413,9 @@
                   <Insets right="15.0" />
                </padding>
             </Label>
-            <Button fx:id="logOutBtn" mnemonicParsing="false" styleClass="mac-btn" text="Sign Out" />
+            <Button fx:id="dbInsertBtn" mnemonicParsing="false" styleClass="mac-btn" text="Insert/Update Sample Data" />
+            <Button fx:id="dbDeleteBtn" mnemonicParsing="false" styleClass="mac-btn" text="Delete Sample Data" />
+            <Button fx:id="logOutBtn" layoutX="915.0" layoutY="15.0" mnemonicParsing="false" styleClass="mac-btn" text="Sign Out" />
         </items>
       </ToolBar>
    </children>
