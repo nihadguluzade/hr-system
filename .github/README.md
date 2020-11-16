@@ -5,7 +5,7 @@ This is a course project where the aim was to create a human resources system co
 and teams. Main functionalities are: create several types of employees (ex: designer), form teams up to 5 people, assign to project. 
 
 ## Compile
-First check the MySQL username and password in DBUtils class (you need MySQL server).
+**(!) IMPORTANT**: JavaFX requires at least JDK 11, so it will not compile with Java version below 11. Check the MySQL username and password in DBUtils class (you need MySQL server).
 After this execute `mvn clean compile javafx:run` or add this to the command line field in your IDE.
 
 ## Screenshots
