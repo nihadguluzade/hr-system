@@ -1,8 +1,6 @@
 package app;
 
-import app.controller.EmployeeRegister;
 import app.controller.Login;
-import app.model.Employee;
 import app.util.Strings;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
