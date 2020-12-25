@@ -20,6 +20,8 @@ public class Employee {
     private boolean admin; // Is admin of the system
     private boolean logged = false; // Is logged to the system
 
+    public Employee() {}
+
     public Employee(int id, LocalDate acceptdate, String title, String first_name, String last_name, String email,
                     String password, long phone, LocalDate birthdate, String nationality, int salary, String accounting,
                     String skill, boolean admin) {

@@ -1,32 +1,32 @@
 package app;
 
-
-import app.model.Employee;
-import app.model.Project;
-import app.model.Team;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import app.Main;
+import app.util.Strings;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.Assertions.*;
 
-
+import java.sql.SQLException;
 import java.time.LocalDate;
 
 public class MainTests {
 
-    public static Main main;
-    public static Stage stage;
+    /* Also includes DBUtils and Manager class tests */
+
+    private static Main main;
+    private static Manager manager;
 
     @BeforeAll
-    public static void set(){
-        main=new Main();
+    public static void set() {
+        main = new Main();
     }
 
-    @Test
-    void exampleTest() {
-        main.start(stage);
-    }
+
+
+
 
 }
