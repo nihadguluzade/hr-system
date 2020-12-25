@@ -202,28 +202,4 @@ public class Login {
             return false;
         }
     }
-
-    // TODO: finish it
-    private void createEmployees() {
-        Connection connection = Manager.getConnection();
-        String sql = "insert into company" +
-                "values (" +
-                "        000001," +
-                "        '2020-04-21'," +
-                "        'Manager'," +
-                "        'Durga'," +
-                "        'Kristian'," +
-                "        'durga@mail.com'," +
-                "        'durga1234'," +
-                "        5301002030," +
-                "        '2020-03-01'," +
-                "        'UK'," +
-                "        2100," +
-                "        'Program 1'," +
-                "        null," +
-                "        1" +
-                "       )";
-
-
-    }
 }
