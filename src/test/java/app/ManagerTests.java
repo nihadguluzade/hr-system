@@ -33,7 +33,7 @@ public class ManagerTests {
         try {
             connection = DBUtils.getConnection();
         } catch (SQLException e) {
-            e.printStackTrace();
+            System.out.println("BeforeAll: No connection to database");
         }
     }
 
